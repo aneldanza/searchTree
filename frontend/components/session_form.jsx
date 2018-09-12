@@ -53,6 +53,7 @@ class SessionForm extends React.Component {
           "Create your <strong>code</strong> account. It's free and only takes a minute."
         </div>
         <form>
+
           <label>Display Name
             <input
               type='text'

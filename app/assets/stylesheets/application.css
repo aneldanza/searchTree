@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+#content {
+  max-width: 1100px;
+  width: calc(100% - 164px);
+  padding: 24px;
+}
