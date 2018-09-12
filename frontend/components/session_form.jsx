@@ -41,27 +41,37 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    let displayName;
+    if (this.props.formType === 'Sign Up') {
+      displayName = (
+        <label>Display Name
+          <input
+            className='input'
+            type='text'
+            value={this.state.username}
+            onChange={this.updateField('username')}/>
+        </label>
+      );
+    }
     return (
       <div id="content" >
 
         <nav className='session-nav'>
-          <NavLink to={`/login`}>Log In</NavLink>
-          <NavLink to={`/signup`}>Sign Up</NavLink>
+          <div id='left'>
+            <NavLink to={`/login`}>Log In</NavLink>
+            <NavLink to={`/signup`}>Sign Up</NavLink>
+          </div>
+          <div id='right'>
+          </div>
         </nav>
 
         <div className='session-page'>
           <div id='explanation-text'>
-            Create your <strong>code</strong> account. It is free and only takes a minute.
+            {this.props.message}
           </div>
 
           <form className='form-container'>
-            <label>Display Name
-              <input
-                className='input'
-                type='text'
-                value={this.state.username}
-                onChange={this.updateField('username')}/>
-            </label>
+            {displayName}
             <label>Email (required, but never shown)
               <input
                 className='input'

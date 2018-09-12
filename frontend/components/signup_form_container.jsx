@@ -5,7 +5,8 @@ import { signup } from '../actions/session_actions';
 const msp = (state) => {
   return {
     errors: state.errors.session,
-    formType: 'Sign Up'
+    formType: 'Sign Up',
+    message: 'Create your code account. It is free and only takes a minute.'
   };
 };
 
