@@ -7,13 +7,12 @@ span, article, footer, time, small {
   padding: 0;
   border: 0;
   outline: 0;
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 1.3;
+  font-family: inherit;
+  font-size: inherit;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;
-  vertical-align: inherit;
+  vertical-align: baseline;
   box-sizing: inherit;
   background: transparent;
 }

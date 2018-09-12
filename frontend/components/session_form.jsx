@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, NavLink} from 'react-router-dom';
 
 
 class SessionForm extends React.Component {
@@ -43,39 +43,46 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div id="content" >
-        <nav className='session-nav'>
-          <div>
-            <nav>
-              <Link to={`/login`}>Log In</Link>
-              <Link to={`/signup`}>Sign Up</Link>
-            </nav>
-            <div>
-              "Create your <strong>code</strong> account. It's free and only takes a minute."
-            </div>
-            <form>
 
-              <label>Display Name
-                <input
-                  type='text'
-                  value={this.state.username}
-                  onChange={this.updateField('username')}/>
-              </label>
-              <label>Email(required, but never shown)
-                <input
-                  type='text'
-                  value={this.state.email}
-                  onChange={this.updateField('email')}/>
-              </label>
-              <label>Password
-                <input
-                  type='password'
-                  value={this.state.password}
-                  onChange={this.updateField('password')}/>
-              </label>
-              <button onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
-            </form>
-          </div>
+        <nav className='session-nav'>
+          <NavLink to={`/login`}>Log In</NavLink>
+          <NavLink to={`/signup`}>Sign Up</NavLink>
         </nav>
+
+        <div className='session-page'>
+          <div id='explanation-text'>
+            Create your <strong>code</strong> account. It is free and only takes a minute.
+          </div>
+
+          <form className='form-container'>
+            <label>Display Name
+              <input
+                className='input'
+                type='text'
+                value={this.state.username}
+                onChange={this.updateField('username')}/>
+            </label>
+            <label>Email (required, but never shown)
+              <input
+                className='input'
+                type='text'
+                value={this.state.email}
+                onChange={this.updateField('email')}/>
+            </label>
+            <label>Password
+              <input
+                className='input'
+                type='password'
+                value={this.state.password}
+                onChange={this.updateField('password')}/>
+            </label>
+            <div className='button'>
+              <button onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
+            </div>
+          </form>
+        </div>
+
+
       </div>
     );
   }
