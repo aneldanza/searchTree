@@ -8,7 +8,6 @@ export const App = () => {
   return(
     <div>
       <header>
-        <h1>Code App</h1>
         <GreetingContainer />
       </header>
 
