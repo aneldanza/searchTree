@@ -17,7 +17,7 @@ body {
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 13px;
   line-height: 1;
-  color: #242729
+  color: #242729;
 }
 
 .main-header {
@@ -42,14 +42,7 @@ body {
   box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
 }
 
-#splash-signup-container {
-  width: 100%;
-  display: flex;
-  background-color: blue;
-  color: white;
-  background: image-url('blue_bg.jpg');
-  background-repeat: no-repeat;
-}
+
 .main-content {
   display: flex;
 }
@@ -185,7 +178,7 @@ body {
   justify-content:flex-end;
 }
 
-button {
+.session-button {
   margin: 5px 0 5px 0;
   background: #07C;
   text-align: center;

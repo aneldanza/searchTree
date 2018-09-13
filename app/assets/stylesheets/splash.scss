@@ -1,0 +1,95 @@
+
+#splash-signup-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: blue;
+  color: white;
+  background: image-url('blue_bg.jpg');
+  background-repeat: no-repeat;
+  padding: 15px 32px;
+
+}
+
+.welcome-text {
+  flex-shrink: 2;
+  font-stretch: 100%;
+  font-size: 17px;
+
+}
+
+.welcome-text>h1 {
+  font-size: 27px;
+  line-height: 1.53;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.welcome-text>p {
+  margin-bottom: 17px;
+}
+
+.splash-form-container {
+  color: #535a60;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: block;
+  margin-left: 32px;
+  margin-right: 32px;
+  width: 50%;
+}
+
+.label-input {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  flex-direction: row;
+  font-size: 13px;
+  margin: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.splash-label {
+  flex-basis: 160px;
+  padding: 0px 15px;
+  background-color: #eff0f1;
+  line-height: 41px;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-radius: 3px 0 0 3px;
+}
+
+.splash-input {
+  font-size: 15px;
+  height: 100%;
+  background-color: white;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 0 3px 3px 0;
+}
+
+
+#splash-signup-button {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 10px;
+  display: block;
+  font-size: 15px;
+  width: 33%;
+  font-stretch: 100%;
+  text-align: center;
+}
+
+.legal-note {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  padding-left: 24px;
+  line-height: 16.8px;
+}

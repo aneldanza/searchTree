@@ -90,7 +90,7 @@ class SessionForm extends React.Component {
                 onChange={this.updateField('password')}/>
             </label>
             <div className='button'>
-              <button onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
+              <button className='session-button' onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
             </div>
           </form>
         </div>
