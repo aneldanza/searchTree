@@ -23,7 +23,7 @@ export const Greeting = (props) => {
   return (
     <nav className='header-right'>
       <div className='inner-header'>
-        <span id="logo">search<strong>Tree</strong></span>
+        <Link to={'/'}><span id="logo">search<strong>Tree</strong></span></Link>
         <input id='search-bar' type='text'/>
         {buttons_section}
       </div>
