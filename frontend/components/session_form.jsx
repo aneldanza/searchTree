@@ -26,18 +26,43 @@ class SessionForm extends React.Component {
     };
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, i) => {
-          return (
-            <li key={`error-${i}`}>
-              {error}
-            </li>
-          );
-        })}
-      </ul>
-    );
+  errors() {
+    let errors = {};
+    if (this.props.errors) {
+      this.props.errors.map((error, i) => {
+        let err = error.toLowerCase();
+
+        if (err.includes('username')) {
+          errors.username = error;
+        } else if(err.includes('email')) {
+          errors.email = error;
+        } else if (err.includes('password')) {
+          errors.password = error;
+        } else {
+          errors.general = error;
+        }
+      });
+    }
+    return errors;
+  }
+
+  userErrors() {
+    if (this.errors() && this.errors().username) {
+      return <div className='message-error' id='password-error'>{this.errors().username}</div>;
+    }
+  }
+
+  emailErrors() {
+    debugger
+    if (this.errors() && this.errors().email) {
+      return <div className='message-error' id='password-error'>{this.errors().email}</div>;
+    }
+  }
+
+  passwordErrors() {
+    if (this.errors() && this.errors().password) {
+      return <div className='message-error' id='password-error'>{this.errors().password}</div>;
+    }
   }
 
   render() {
@@ -51,6 +76,7 @@ class SessionForm extends React.Component {
             type='text'
             value={this.state.username}
             onChange={this.updateField('username')}/>
+          {this.userErrors()}
         </label>
       );
     }
@@ -73,14 +99,18 @@ class SessionForm extends React.Component {
 
           <form className='form-container'>
             {displayName}
-            <label>Email (required, but never shown)
+            <label>Email (required, but never shown)</label>
+            <div>
               <input
                 className='input'
                 placeholder='you@example.org'
                 type='text'
                 value={this.state.email}
                 onChange={this.updateField('email')}/>
-            </label>
+              {this.emailErrors()}
+            </div>
+
+
             <label>Password
               <input
                 className='input'
@@ -88,6 +118,7 @@ class SessionForm extends React.Component {
                 type='password'
                 value={this.state.password}
                 onChange={this.updateField('password')}/>
+                {this.passwordErrors()}
             </label>
             <div className='button'>
               <button className='session-button' onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>

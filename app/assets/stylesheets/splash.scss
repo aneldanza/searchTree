@@ -15,7 +15,6 @@
   flex-shrink: 2;
   font-stretch: 100%;
   font-size: 17px;
-
 }
 
 .welcome-text>h1 {
@@ -52,6 +51,7 @@
   align-items: center;
   border: 1px solid transparent;
   border-radius: 3px;
+  position: relative;
 }
 
 .splash-label {
@@ -71,8 +71,25 @@
   width: 100%;
   padding: 12px 16px;
   border-radius: 0 3px 3px 0;
+
 }
 
+.message-error {
+  position: absolute;
+  border: 1px solid #C04848;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #C04848;
+  color: white;
+  padding: 10px;
+  width: 185px;
+  line-height: 1.5;
+  margin: 10px;
+}
+
+#password-error {
+  left: -200px;
+}
 
 #splash-signup-button {
   color: white;

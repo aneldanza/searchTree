@@ -24,21 +24,45 @@ class SplashSignup extends React.Component {
     };
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, i) => {
-          return (
-            <li key={`error-${i}`}>
-              {error}
-            </li>
-          );
-        })}
-      </ul>
-    );
+  errors() {
+    let errors = {};
+    if (this.props.errors) {
+      this.props.errors.map((error, i) => {
+        let err = error.toLowerCase();
+
+        if (err.includes('username')) {
+          errors.username = error;
+        } else if(err.includes('email')) {
+          errors.email = error;
+        } else if (err.includes('password')) {
+          errors.password = error;
+        } else {
+          errors.general = error;
+        }
+      });
+    }
+    return errors;
   }
 
+  userErrors() {
+    if (this.errors() && this.errors().username) {
+      return <div className='message-error' id='password-error'>{this.errors().username}</div>;
+    }
+  }
+
+  emailErrors() {
+    if (this.errors() && this.errors().email) {
+      return <div className='message-error' id='password-error'>{this.errors().email}</div>;
+    }
+  }
+
+  passwordErrors() {
+    if (this.errors() && this.errors().password) {
+      return <div className='message-error' id='password-error'>{this.errors().password}</div>;
+    }
+  }
   render() {
+
     return(
       <div id='splash-signup-container'>
         <section className='welcome-text'>
@@ -58,6 +82,7 @@ class SplashSignup extends React.Component {
               type='text'
               value={this.state.username}
               onChange={this.updateField('username')}/>
+            {this.userErrors()}
           </div>
 
           <div className='label-input'>
@@ -68,6 +93,7 @@ class SplashSignup extends React.Component {
               type='text'
               value={this.state.email}
               onChange={this.updateField('email')}/>
+            {this.emailErrors()}
           </div>
 
           <div className='label-input'>
@@ -78,15 +104,14 @@ class SplashSignup extends React.Component {
               type='password'
               value={this.state.password}
               onChange={this.updateField('password')}/>
+            {this.passwordErrors()}
           </div>
 
           <div className='label-input' id='button-group'>
             <div id='splash-signup-button'>
               <button onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
             </div>
-            <div className='legal-note'>
-              By clicking "Sign Up", you acknowledge that you have read our updated terms of service, privacy policy and cookie policy, and that your continued use of the website is subject to these policies.
-            </div>
+
           </div>
 
         </form>

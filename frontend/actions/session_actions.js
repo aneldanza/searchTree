@@ -9,6 +9,8 @@ export const login = (user) => {
     return APIUtil.login(user)
     .then(user => {
       dispatch({type: RECEIVE_CURRENT_USER, user: user});
+    }, errors => {
+      dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -27,6 +29,8 @@ export const signup = (user) => {
     return APIUtil.signup(user)
     .then((user) => {
       dispatch({type: RECEIVE_CURRENT_USER, user: user});
+    }, errors => {
+      dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -36,4 +40,9 @@ export const receiveErrors = (errors) => {
     type: RECEIVE_ERRORS,
     errors: errors
   };
+};
+
+export const demoLogin = () => {
+  const demoUser = {password: 'hunter2', email: 'email@email.com'};
+  return login(demoUser);
 };

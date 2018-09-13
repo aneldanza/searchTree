@@ -2,7 +2,7 @@ import React from 'react';
 import GreetingContainer from './greeting_container';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
-import {AuthRoute } from '../util/route_util';
+import { AuthRoute } from '../util/route_util';
 import SideBar from './side_bar';
 import { Route } from 'react-router-dom';
 import SplashSignupContainer from './splash_signup_container';
