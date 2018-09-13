@@ -164,6 +164,10 @@ body {
   font-size: 100%;
 }
 
+.input-form {
+  position: relative;
+}
+
 .input {
   width: 263px;
   height: 18px;
@@ -171,7 +175,33 @@ body {
   border: 1px solid #e4e6e8;
   margin: 5px 0 10px 0;
   color: #3b4045;
-  position: relative;
+
+}
+
+.session-message-error {
+  position: absolute;
+  border: 1px solid #C04848;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #C04848;
+  color: white;
+  padding: 8px;
+  width: 185px;
+  line-height: 1.5;
+  margin: 10px;
+  text-align: center;
+}
+
+
+
+#error {
+  left: -200px;
+  top: -5px;
+}
+
+#general-error {
+  left: 561px;
+  top: 370px;
 }
 
 .button {

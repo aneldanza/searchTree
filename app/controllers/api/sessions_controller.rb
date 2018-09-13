@@ -1,11 +1,15 @@
 class Api::SessionsController < ApplicationController
   def create
-    if (!params[:user][:email]) {
-      render json: ['Email cannot be empty'], status 401
-    }
-    if (!params[:user][:password]) {
-      render json: ['Password cannot be empty'], status 401
-    }
+    errors = []
+
+    unless params[:user][:email].length > 0
+      errors.push('Email cannot be empty')
+    end
+
+    unless params[:user][:password].length > 0
+      errors.push('Password cannot be empty')
+    end
+
     @user = User.find_by_credentials(
       params[:user][:email],
       params[:user][:password]
@@ -15,7 +19,8 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render 'api/users/show'
     else
-      render json: ['Invalid email or password'], status: 401
+      errors.push('Invalid credentials')
+      render json: errors, status: 401
     end
   end
 

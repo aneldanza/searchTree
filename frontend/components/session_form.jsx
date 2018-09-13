@@ -48,20 +48,25 @@ class SessionForm extends React.Component {
 
   userErrors() {
     if (this.errors() && this.errors().username) {
-      return <div className='message-error' id='password-error'>{this.errors().username}</div>;
+      return <div className='session-message-error' id='error'>{this.errors().username}</div>;
     }
   }
 
   emailErrors() {
-    debugger
     if (this.errors() && this.errors().email) {
-      return <div className='message-error' id='password-error'>{this.errors().email}</div>;
+      return <div className='session-message-error' id='error'>{this.errors().email}</div>;
     }
   }
 
   passwordErrors() {
     if (this.errors() && this.errors().password) {
-      return <div className='message-error' id='password-error'>{this.errors().password}</div>;
+      return <div className='session-message-error' id='error'>{this.errors().password}</div>;
+    }
+  }
+
+  generalErrors() {
+    if (this.errors() && this.errors().general) {
+      return <div className='session-message-error' id='general-error'>{this.errors().general}</div>;
     }
   }
 
@@ -100,7 +105,7 @@ class SessionForm extends React.Component {
           <form className='form-container'>
             {displayName}
             <label>Email (required, but never shown)</label>
-            <div>
+            <div className='input-form'>
               <input
                 className='input'
                 placeholder='you@example.org'
@@ -111,19 +116,26 @@ class SessionForm extends React.Component {
             </div>
 
 
-            <label>Password
+            <label>Password</label>
+            <div className='input-form'>
               <input
                 className='input'
                 placeholder='*******'
                 type='password'
                 value={this.state.password}
                 onChange={this.updateField('password')}/>
-                {this.passwordErrors()}
-            </label>
+              {this.passwordErrors()}
+            </div>
+
             <div className='button'>
               <button className='session-button' onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
             </div>
+
+            <div>
+              {this.generalErrors()}
+            </div>
           </form>
+
         </div>
 
 

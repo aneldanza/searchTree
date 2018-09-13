@@ -10,7 +10,7 @@ const msp = (state) => {
 };
 
 const mdp = (dispatch) => {
-  debugger
+
   return {
     logout: () => dispatch(logout())
   };

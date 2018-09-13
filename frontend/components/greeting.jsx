@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Greeting = (props) => {
     if (props.currentUser) {
-      debugger
+  
       return (
         <nav className='header-right'>
           <p>Hello, {props.currentUser.username}!</p>
