@@ -52,6 +52,7 @@
   border: 1px solid transparent;
   border-radius: 3px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .splash-label {
@@ -59,19 +60,26 @@
   padding: 0px 15px;
   background-color: #eff0f1;
   line-height: 41px;
+  max-height: 41px;
+  min-height: 41px;
   align-items: center;
   flex-wrap: nowrap;
   border-radius: 3px 0 0 3px;
+  font-size: 13px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .splash-input {
   font-size: 15px;
   height: 100%;
+  max-height: 41px;
+  min-height: 41px;
   background-color: white;
   width: 100%;
   padding: 12px 16px;
   border-radius: 0 3px 3px 0;
-
+  box-sizing: border-box;
 }
 
 .message-error {
