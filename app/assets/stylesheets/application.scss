@@ -20,20 +20,9 @@ body {
   color: #242729;
 }
 
-// .main-header {
-//   display: flex;
-//   justify-content: flex-start;
-//   align-items: center;
-//   background-color: #fafafb;
-//   height: 47px;
-//   border-top: 3px solid #F48024;
-//   box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
-//   position: fixed;
-// }
 
 .header-right {
   width: 100%;
-  // max-width: 1264px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -50,10 +39,19 @@ body {
   align-items: center;
   display: flex;
   margin: auto;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
+#logo {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 20px;
+}
 
+#buttons-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .main-content {
   display: flex;
   max-width: 1264px;
@@ -65,7 +63,7 @@ body {
   width: 164px;
   padding-top: 24px;
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .sidebar a {
@@ -82,6 +80,7 @@ body {
 
 .nav-links a:active {
   padding-left: 30px;
+  color: #0C0D0E;
   border-right: 2px solid #F48024;
   background-color: #fafafb;
   font-weight: 700;
