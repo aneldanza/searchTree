@@ -1,14 +1,20 @@
 
-#splash-signup-container {
+.splash-welcome {
   width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: blue;
-  color: white;
   background: image-url('blue_bg.jpg');
   background-repeat: no-repeat;
-  padding: 15px 32px;
 
+}
+
+#splash-signup-container {
+  max-width: 1294px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 15px 32px;
 }
 
 .welcome-text {
@@ -36,7 +42,7 @@
   display: block;
   margin-left: 32px;
   margin-right: 32px;
-  width: 50%;
+  width: 40%;
 }
 
 .label-input {
@@ -110,11 +116,4 @@
   width: 33%;
   font-stretch: 100%;
   text-align: center;
-}
-
-.legal-note {
-  font-size: 11px;
-  color: rgba(255,255,255,0.5);
-  padding-left: 24px;
-  line-height: 16.8px;
 }
