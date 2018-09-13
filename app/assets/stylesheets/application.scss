@@ -16,7 +16,7 @@
 body {
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 13px;
-  line-height: 1.3;
+  line-height: 1;
   color: #242729
 }
 
@@ -50,12 +50,36 @@ body {
   width: 164px;
   padding-top: 24px;
   flex-shrink: 0;
+  font-size: 12px;
 }
 
 .sidebar a {
   color: #535a60;
   display: block;
-  padding: 8px;
+  padding: 4px;
+  line-height: 1.8;
+  padding-left: 8px;
+}
+
+.nav-links a {
+  padding-left: 30px;
+}
+
+.nav-links a:active {
+  padding-left: 30px;
+  border-right: 2px solid #F48024;
+  background-color: #fafafb;
+  font-weight: 700;
+}
+
+
+
+#public {
+  color: #6a737c;
+  font-size: 10px;
+  margin-left: 8px;
+  margin-top: 16px;
+  margin-bottom: 4px;
 }
 
 #signup {
@@ -114,6 +138,7 @@ body {
   color: black;
   line-height: 1;
   border: 1px solid #e4e6e8;
+  border-top: 2px solid #F48024;
   border-bottom-color: white;
 }
 
@@ -144,6 +169,7 @@ body {
   padding: 8px;
   border: 1px solid #e4e6e8;
   margin: 5px 0 10px 0;
+  color: #3b4045;
 }
 
 .button {

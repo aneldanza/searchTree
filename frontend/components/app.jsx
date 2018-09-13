@@ -15,6 +15,7 @@ export const App = () => {
         <aside>
           <SideBar />
         </aside>
+
         <AuthRoute path='/login' component={LoginFormContainer} />
         <AuthRoute path='/signup' component={SignupFormContainer} />
       </div>

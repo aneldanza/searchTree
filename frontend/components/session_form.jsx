@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link, NavLink} from 'react-router-dom';
+import { withRouter, NavLink} from 'react-router-dom';
 
 
 class SessionForm extends React.Component {
@@ -47,6 +47,7 @@ class SessionForm extends React.Component {
         <label>Display Name
           <input
             className='input'
+            placeholder='J.Doe'
             type='text'
             value={this.state.username}
             onChange={this.updateField('username')}/>
@@ -75,6 +76,7 @@ class SessionForm extends React.Component {
             <label>Email (required, but never shown)
               <input
                 className='input'
+                placeholder='you@example.org'
                 type='text'
                 value={this.state.email}
                 onChange={this.updateField('email')}/>
@@ -82,6 +84,7 @@ class SessionForm extends React.Component {
             <label>Password
               <input
                 className='input'
+                placeholder='*******'
                 type='password'
                 value={this.state.password}
                 onChange={this.updateField('password')}/>
