@@ -108,6 +108,12 @@ body {
 
 main {
   width: 100%;
+  padding: 24px;
+  border-left: 1px solid #d6d9dc;
+}
+
+.container {
+  width: calc(100% - 300px - 24px);
 }
 
 #login {
@@ -117,8 +123,6 @@ main {
 #content {
   max-width: 1100px;
   width: calc(100% - 164px);
-  padding: 24px;
-  border-left: 1px solid #d6d9dc;
 }
 
 .session-nav {

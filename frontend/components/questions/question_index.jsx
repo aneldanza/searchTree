@@ -32,7 +32,7 @@ class QuestionIndex extends React.Component {
     }
     
     return(
-      <section>
+      <section className='container'>
         <div className='questions-index-header'>
           <h1>All Questions</h1>
           <button id='cool-button'>Ask Question</button>
