@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, NavLink} from 'react-router-dom';
+import { withRouter, NavLink, Link } from 'react-router-dom';
 
 
 class SessionForm extends React.Component {
@@ -89,6 +89,16 @@ class SessionForm extends React.Component {
         </label>
       );
     }
+
+    let additional_signup;
+    if (this.props.formType === 'Log In') {
+      additional_signup = (
+        <div id='switch'>
+          Don't have an account? <Link id="login" to={`/signup`}>Sign up</Link>
+        </div>
+      );
+    }
+
     return (
       <div id="content" >
 
@@ -139,6 +149,8 @@ class SessionForm extends React.Component {
               {this.generalErrors()}
             </div>
           </form>
+
+          {additional_signup}
 
         </div>
 
