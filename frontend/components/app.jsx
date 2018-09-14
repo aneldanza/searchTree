@@ -5,7 +5,7 @@ import SignupFormContainer from './signup_form_container';
 import { AuthRoute } from '../util/route_util';
 import SideBar from './side_bar';
 import { Route } from 'react-router-dom';
-import SplashSignupContainer from './splash_signup_container';
+import HomePageContainer from './home_page/home_page_container';
 
 export const App = () => {
   return(
@@ -13,7 +13,7 @@ export const App = () => {
       <header>
         <GreetingContainer />
       </header>
-      <Route exact path='/' component={SplashSignupContainer} />
+      <Route exact path='/' component={HomePageContainer} />
       <div className='main-content'>
         <aside>
           <SideBar />
