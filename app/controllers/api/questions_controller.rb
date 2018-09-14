@@ -4,7 +4,7 @@ class Api::QuestionsController < ApplicationController
     end
 
     def show 
-        @question = Question.find(params[:id]).includes(:answers)
+        @question = Question.includes(:answers).find(params[:id])
     end
 
     def create
@@ -12,14 +12,23 @@ class Api::QuestionsController < ApplicationController
         if @question.save
             render 'api/questions/show'
         else
-            render json: @question.errors.full_messages
+            render json: @question.errors.full_messages, status: 422
         end
+    end 
+
+    def update
+        @question = Question.find(params[:id])
+        if @question.update_attributes(question_params)
+            render 'api/questions/show'
+        else
+            render json: @question.errors.full_messages, status: 422
+        end 
     end 
 
     def destroy
         @question = Question.find(params[:id])
         @question.destroy
-        render 'api/users/show'
+        render :show
     end 
 
     private 

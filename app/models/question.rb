@@ -11,6 +11,6 @@
 #
 
 class Question < ApplicationRecord
-    validates :title, :body, :user_id, presence
+    validates :title, :body, :user_id, presence: true
     has_many :answers
 end
