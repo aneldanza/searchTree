@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import { configureStore } from './store/store';
 import Root from './components/root';
 import * as APIQuestionsUtil from './util/quesions_api_util';
+import { receiveAllQuestions, receiveQuestion, createQuestion, updateQuestion, deleteQuestion } from './actions/questions_actions';
 
 window.fetchAllQuestions = APIQuestionsUtil.fetchAllQuestions;
 window.fetchQuestion = APIQuestionsUtil.fetchQuestion;
-window.createQuestion = APIQuestionsUtil.createQuestion;
-window.updateQuestion = APIQuestionsUtil.updateQuestion;
-window.deleteQuestion = APIQuestionsUtil.deleteQuestion;
-
-
+window.receiveAllQuestions = receiveAllQuestions;
+window.receiveQuestion = receiveQuestion;
+window.createQuestion = createQuestion;
+window.updateQuestion = updateQuestion;
+window.deleteQuestion = deleteQuestion;
 
 
 document.addEventListener('DOMContentLoaded', () => {
