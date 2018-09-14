@@ -6,6 +6,7 @@ import { AuthRoute } from '../util/route_util';
 import SideBar from './side_bar';
 import { Route } from 'react-router-dom';
 import HomePageContainer from './home_page/home_page_container';
+import QuestionsIndexContainer from './questions/questions_index_container';
 
 export const App = () => {
   return(
@@ -18,8 +19,11 @@ export const App = () => {
         <aside>
           <SideBar />
         </aside>
+        <main>
         <AuthRoute exact path='/login' component={LoginFormContainer} />
         <AuthRoute exact path='/signup' component={SignupFormContainer} />
+        <Route path='/questions' component={QuestionsIndexContainer} />
+        </main>
       </div>
     </div>
   );
