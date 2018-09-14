@@ -17,6 +17,15 @@ class QuestionIndex extends React.Component {
         <QuestionItem question={question} users={this.props.users} />
       );
     });
+
+    let count = this.props.questions.length;
+    let numberOfQuestions;
+    if (count.toString()[count.toString().length - 1] == 1) {
+      numberOfQuestions = `${count} question`;
+    } else {
+      numberOfQuestions = `${count} questions`;
+    }
+    
     return(
       <section>
         <div className='questions-index-header'>
@@ -24,7 +33,7 @@ class QuestionIndex extends React.Component {
           <button id='cool-button'>Ask Question</button>
         </div>
         <nav className='qustions-nav'>
-          {this.props.questions.length} questions
+          {numberOfQuestions}
         </nav>
         <section className='questions'>
           {questions}
