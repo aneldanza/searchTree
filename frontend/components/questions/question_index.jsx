@@ -9,12 +9,17 @@ class QuestionIndex extends React.Component {
 
   componentDidMount() {
     this.props.receiveAllQuestions();
+    this.props.receiveAllUsers();
   }
 
   render() {
-    const questions = this.props.questions.map( question => {
+    if (!((Object.values(this.props.users)).length > 0 && this.props.questions.length > 0)) {
+      return <div></div>;
+    }
+  
+    const questions = this.props.questions.map( (question, idx) => {
       return (
-        <QuestionItem question={question} users={this.props.users} />
+        <QuestionItem question={question} users={this.props.users} key={idx}/>
       );
     });
 
