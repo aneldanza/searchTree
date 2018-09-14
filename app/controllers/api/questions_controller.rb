@@ -3,6 +3,10 @@ class Api::QuestionsController < ApplicationController
         @questions = Question.all
     end
 
+    def show 
+        @question = Question.find(params[:id]).includes(:answers)
+    end
+
     def create
         @question = Question.new(question_params)
         if @question.save
