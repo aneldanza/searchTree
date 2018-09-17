@@ -37,7 +37,7 @@ class QuestionIndex extends React.Component {
           <h1>All Questions</h1>
           <button id='cool-button'>Ask Question</button>
         </div>
-        <nav className='qustions-nav'>
+        <nav className='questions-nav'>
           {numberOfQuestions}
         </nav>
         <section className='questions'>
