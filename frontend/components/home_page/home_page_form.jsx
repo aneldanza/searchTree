@@ -3,12 +3,12 @@ import SplashSignupContainer from '../splash_signup_container';
 
 class HomePage extends React.Component {
   render() {
-    if (this.props.currentUser === undefined) {
+    if (!this.props.currentUser) {
       return (
         <SplashSignupContainer />
       );
     } else {
-      return ('');
+      return null;
     }
   }
 }
