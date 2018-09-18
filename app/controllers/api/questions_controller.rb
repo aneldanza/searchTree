@@ -15,6 +15,7 @@ class Api::QuestionsController < ApplicationController
             user_id: params[:question][:user_id]
         })
         if @question.save
+            # render "/api/questions/#{@question.id}"
             render :show
         else
             render json: @question.errors.full_messages, status: 422
