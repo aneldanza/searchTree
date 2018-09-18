@@ -60,7 +60,14 @@
   grid-column-start: 1;
   grid-column: span 2;
 }
-
+.question-details {
+  display: grid;
+  grid-gap: 5px;
+  direction: ltr;
+  grid-auto-flow: column;
+  justify-content: flex-start;
+  align-content: center;
+}
 .question-details a {
   color: #39739d;
 }

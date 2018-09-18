@@ -16,6 +16,10 @@ class QuestionShow extends React.Component {
     if (this.props.question === undefined) {
       return (<div></div>);
     }
+    let deleteQ = null;
+    if (this.props.user_id === this.props.question.user_id) {
+      deleteQ = (<a href="#" onClick={() => this.props.deleteQuestion(this.props.question.id)}>delete</a>);
+    }
     return(
       <div>
       <div className='question-header'>
@@ -46,6 +50,7 @@ class QuestionShow extends React.Component {
               </article>
               <div className='question-details'>
                 <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
+                {deleteQ}
               </div>
             </div> 
 
@@ -65,13 +70,15 @@ class QuestionShow extends React.Component {
 
 const msp = (state, ownProps) => {
   return {
-    question: state.entities.questions[ownProps.match.params.questionId]
+    question: state.entities.questions[ownProps.match.params.questionId],
+    user_id: state.session.id
   }
 }
 
 const mdp = (dispatch) => {
   return {
-    receiveQuestion: id => dispatch(receiveQuestion(id))
+    receiveQuestion: id => dispatch(receiveQuestion(id)),
+    deleteQuestion: id => dispatch(deleteQuestion(id))
   }
 }
 

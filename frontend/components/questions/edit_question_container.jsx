@@ -12,7 +12,6 @@ const msp = (state, ownProps) => {
   }
 }
 
-
 const mdp = (dispatch) => {
   return {
     action: question => dispatch(updateQuestion(question)),
@@ -26,7 +25,6 @@ class EditQuestion extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.receiveQuestion(this.props.match.params.quesitonId);
   }
 
@@ -34,7 +32,7 @@ class EditQuestion extends React.Component {
     if (this.props.question === undefined) {
       return <div></div>;
     }
-    debugger
+
     const {action, question, user_id, formType, header} = this.props;
     return (
       <QuestionForm 
