@@ -10,7 +10,7 @@ class SideBar extends React.Component {
           <li>
             <ul className='nav-links'>
               <li id='public'>PUBLIC</li>
-              <li><NavLink to={`/questions`}>
+              <li><NavLink to={`api/questions`}>
                 <i className="fas fa-globe-americas"></i> <strong>searchTree</strong></NavLink></li>
               <li><NavLink to={`/tags`}>Tags</NavLink></li>
               <li><NavLink to={`/users`}>Users</NavLink></li>

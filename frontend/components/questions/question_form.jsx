@@ -1,6 +1,7 @@
 import React from 'react';
 import { createQuestion } from '../../actions/questions_actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class QuestionForm extends React.Component {
   constructor(props) {
@@ -21,8 +22,10 @@ class QuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createQuestion(this.state) 
+    .then(data => this.props.history.push(`api/questions/${data.question.id}`));
     this.setState({title: '', body: '', tags: ''})
   }
+  
   render() {
     return(
       <section className='container'>
@@ -74,4 +77,4 @@ const mdp = (dispatch) => {
   }
 }
 
-export default connect(msp, mdp)(QuestionForm);
+export default withRouter(connect(msp, mdp)(QuestionForm));

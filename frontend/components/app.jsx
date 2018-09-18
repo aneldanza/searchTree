@@ -23,12 +23,12 @@ export const App = () => {
         </aside>
         <main>
         <Switch>
-          <Route path={`api/questions/:questionId`} component={QuestionShow} />
-          <Route path='/questions/ask' component={QuestionForm} />
+          <Route path={`/api/questions/:questionId`} component={QuestionShow} />
+          <Route path='/api/questions/ask' component={QuestionForm} />
           <AuthRoute exact path='/login' component={LoginFormContainer} />
           <AuthRoute exact path='/signup' component={SignupFormContainer} />
           <Route exact path='/' component={QuestionsIndexContainer} />
-          <Route path='/questions' component={QuestionsIndexContainer} />
+          <Route path='/api/questions' component={QuestionsIndexContainer} />
         </Switch>
         </main>
       </div>
