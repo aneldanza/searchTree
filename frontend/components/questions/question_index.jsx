@@ -12,12 +12,6 @@ class QuestionIndex extends React.Component {
     this.props.receiveAllUsers().then(this.props.receiveAllQuestions);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.questions.length !== this.props.questions.length) {
-  //     this.props.receiveAllQuestions();
-  //   }
-  // }
-
   shouldComponentUpdate(nextProps) {
     nextProps
     if (nextProps.questions.length !== this.props.questions.length) {
