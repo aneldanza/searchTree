@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveQuestion } from '../../actions/questions_actions';
+import { receiveQuestion, deleteQuestion } from '../../actions/questions_actions';
 import { Link } from 'react-router-dom';
+import AnswerForm from '../answers/answer_form';
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -12,13 +13,21 @@ class QuestionShow extends React.Component {
     this.props.receiveQuestion(this.props.match.params.questionId);
   }
 
+  handleDelete(id) {
+    return () => {
+      this.props.deleteQuestion(id).then(() => {
+        this.props.history.push('/');
+      })
+    }
+  }
+
   render() {
     if (this.props.question === undefined) {
       return (<div></div>);
     }
     let deleteQ = null;
     if (this.props.user_id === this.props.question.user_id) {
-      deleteQ = (<a href="#" onClick={() => this.props.deleteQuestion(this.props.question.id)}>delete</a>);
+      deleteQ = (<span className='delete-link' onClick={this.handleDelete.call(this, this.props.question.id)}>delete</span>);
     }
     return(
       <div>
@@ -27,7 +36,7 @@ class QuestionShow extends React.Component {
           {this.props.question.title}
         </div>
         <div>
-        <Link to='api/questions/ask' id='cool-button'>Ask Question</Link>
+        <Link to={`/questions/ask`} id='cool-button'>Ask Question</Link>
         </div>
       </div>
       
@@ -59,6 +68,7 @@ class QuestionShow extends React.Component {
             </div> 
           </div>
 
+
         </div>
         <div className='question-sidebar'></div>
       </div>
@@ -89,4 +99,7 @@ export default connect(msp, mdp)(QuestionShow);
 <a href="#">ruby</a>
 <a href="#">javascript</a>
 <a href="#">MacOS</a>
+</div> */}
+{/* <div>
+  <AnswerForm />
 </div> */}

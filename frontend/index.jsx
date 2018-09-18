@@ -6,14 +6,14 @@ import * as APIQuestionsUtil from './util/quesions_api_util';
 import { receiveAllQuestions, receiveQuestion, createQuestion, updateQuestion, deleteQuestion } from './actions/questions_actions';
 import { receiveAllUsers } from './actions/users_actions';
 
-window.receiveAllUsers = receiveAllUsers;
-window.fetchAllQuestions = APIQuestionsUtil.fetchAllQuestions;
-window.fetchQuestion = APIQuestionsUtil.fetchQuestion;
-window.receiveAllQuestions = receiveAllQuestions;
-window.receiveQuestion = receiveQuestion;
-window.createQuestion = createQuestion;
-window.updateQuestion = updateQuestion;
-window.deleteQuestion = deleteQuestion;
+// window.receiveAllUsers = receiveAllUsers;
+// window.fetchAllQuestions = APIQuestionsUtil.fetchAllQuestions;
+// window.fetchQuestion = APIQuestionsUtil.fetchQuestion;
+// window.receiveAllQuestions = receiveAllQuestions;
+// window.receiveQuestion = receiveQuestion;
+// window.createQuestion = createQuestion;
+// window.updateQuestion = updateQuestion;
+// window.deleteQuestion = deleteQuestion;
 
 
 document.addEventListener('DOMContentLoaded', () => {

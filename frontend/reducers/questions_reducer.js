@@ -2,7 +2,7 @@ import {RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION, DELETE_QUESTION} from '../actio
 import merge from 'lodash/merge';
 
 export const questionsReducer = (state = {}, action) => {
-  Object.freeze();
+  Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_QUESTIONS:
       return action.questions;

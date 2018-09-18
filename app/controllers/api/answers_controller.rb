@@ -1,8 +1,12 @@
 class Api::AnswersController < ApplicationController
+  def show 
+    @answer = Answer.find(params[:id])
+  end 
+
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      redirect_to `api/questions/${answer.question_id}`
+      render :show
     else
       render json: @answer.errors.full_message_errors, status: 422
     end
