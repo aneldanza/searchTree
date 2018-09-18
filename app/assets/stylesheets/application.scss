@@ -48,9 +48,13 @@ body {
 }
 
 #buttons-section {
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: flex-end;
+  direction: ltr;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+
 }
 .main-content {
   display: flex;
@@ -102,7 +106,6 @@ body {
   padding: 8px 8px;
   border: 1px solid #07C;
   border-radius: 3px;
-  margin: 8px;
   box-shadow: inset 0 1px 0 #66bfff;
 }
 

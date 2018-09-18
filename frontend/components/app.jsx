@@ -7,6 +7,8 @@ import SideBar from './side_bar';
 import { Route, Switch } from 'react-router-dom';
 import HomePageContainer from './home_page/home_page_container';
 import QuestionsIndexContainer from './questions/questions_index_container';
+import QuestionForm from './questions/question_form';
+import QuestionShow from './questions/question_show';
 
 export const App = () => {
   return(
@@ -21,6 +23,8 @@ export const App = () => {
         </aside>
         <main>
         <Switch>
+          <Route path={`api/questions/:questionId`} component={QuestionShow} />
+          <Route path='/questions/ask' component={QuestionForm} />
           <AuthRoute exact path='/login' component={LoginFormContainer} />
           <AuthRoute exact path='/signup' component={SignupFormContainer} />
           <Route exact path='/' component={QuestionsIndexContainer} />

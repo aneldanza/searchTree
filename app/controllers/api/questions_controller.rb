@@ -8,9 +8,14 @@ class Api::QuestionsController < ApplicationController
     end
 
     def create
-        @question = Question.new(question_params)
+        @tags = params[:question][:tags]
+        @question = Question.new({
+            title: params[:question][:title],
+            body: params[:question][:body],
+            user_id: params[:question][:user_id]
+        })
         if @question.save
-            render 'api/questions/show'
+            render :show
         else
             render json: @question.errors.full_messages, status: 422
         end
@@ -33,6 +38,6 @@ class Api::QuestionsController < ApplicationController
 
     private 
     def question_params
-        params.require(:question).permit(:title, :body, :user_id)
+        params.require(:question).permit(:title, :body, :user_id, :tags)
     end 
 end

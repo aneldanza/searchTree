@@ -1,5 +1,6 @@
 import React from 'react';
-import {QuestionItem} from './question_item'
+import {QuestionItem} from './question_item';
+import { Link } from 'react-router-dom';
 
 class QuestionIndex extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class QuestionIndex extends React.Component {
       <section className='container'>
         <div className='questions-index-header'>
           <h1>All Questions</h1>
-          <button id='cool-button'>Ask Question</button>
+          <Link to={`/questions/ask`} id='cool-button'>Ask Question</Link>
         </div>
         <nav className='questions-nav'>
           {numberOfQuestions}
