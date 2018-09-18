@@ -29,15 +29,21 @@
 .post-layout-left {
   grid-column: 1;
   grid-row: span 2;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: auto auto auto auto;
+  grid-auto-flow: row;
+  justify-content: center;
+  color: #c9cbcf;
+  text-align: center;
 }
 
-.fas fa-caret-up {
-  size: 5x;
-}
 
 .post-layout-main {
   grid-column-start: 2;
   grid-column: span 2;
+  display: grid;
+  grid-gap: 10px;
 }
 
 .question-body {
@@ -45,7 +51,16 @@
   line-height: 1.3;
 }
 
-.post-laout-comment {
+.post-layout-comment {
   grid-column-start: 2;
   grid-column: span 2;
+}
+
+.full-width {
+  grid-column-start: 1;
+  grid-column: span 2;
+}
+
+.question-details a {
+  color: #39739d;
 }

@@ -11,6 +11,7 @@ export const clearErrors = () => {
   };
 };
 
+
 export const login = (user) => {
   return dispatch => {
     return APIUtil.login(user)
@@ -23,7 +24,6 @@ export const login = (user) => {
 };
 
 export const logout = () => {
-
   return dispatch => {
 
     return APIUtil.logout()

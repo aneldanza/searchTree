@@ -1,18 +1,12 @@
 import React from 'react';
-import { createQuestion } from '../../actions/questions_actions';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      user_id: this.props.user_id,
-      title: '',
-      body: '',
-      tags: ''
-    }
+    this.state = this.props.question;
   }
+
   updateField(field) {
     return e => {
       this.setState({[field]: e.target.value});
@@ -21,15 +15,19 @@ class QuestionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createQuestion(this.state) 
+    this.props.action(this.state) 
     .then(data => this.props.history.push(`/api/questions/${data.question.id}`));
     this.setState({title: '', body: '', tags: ''})
   }
   
   render() {
+    if (this.state === undefined) {
+      return <div></div>;
+    }
+
     return(
       <section className='container'>
-      <h1>Ask Question</h1>
+      <h1>{this.props.header}</h1>
       <form className='question-form'>
         <div className='form-section'>
           <label className='form-label'>Title</label>
@@ -46,16 +44,9 @@ class QuestionForm extends React.Component {
           value={this.state.body}
           onChange={this.updateField('body').bind(this)}></textarea>
         </div>
-        <div className='form-section'>
-          <label className='form-label'>Tags</label>
-          <input type='text' 
-          className='form-input' 
-          value={this.state.tags}
-          onChange={this.updateField('tags').bind(this)}></input>
-        </div>
   
         <div>
-        <button type='submit' id='cool-button'onClick={this.handleSubmit.bind(this)}>Post Your Question</button>
+        <button type='submit' id='cool-button'onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
         </div>
         
       </form>
@@ -64,17 +55,14 @@ class QuestionForm extends React.Component {
   }
 }
 
-const msp = (state) => {
-  return {
-    user_id: state.session.id
-  }
-}
 
 
-const mdp = (dispatch) => {
-  return {
-    createQuestion: question => dispatch(createQuestion(question))
-  }
-}
+export default withRouter(QuestionForm);
 
-export default withRouter(connect(msp, mdp)(QuestionForm));
+    // <div className='form-section'>
+    //   <label className='form-label'>Tags</label>
+    //   <input type='text' 
+    //   className='form-input' 
+    //   value={this.state.tags}
+    //   onChange={this.updateField('tags').bind(this)}></input>
+    // </div>
