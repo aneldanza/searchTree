@@ -22,7 +22,7 @@ class QuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createQuestion(this.state) 
-    .then(data => this.props.history.push(`api/questions/${data.question.id}`));
+    .then(data => this.props.history.push(`/api/questions/${data.question.id}`));
     this.setState({title: '', body: '', tags: ''})
   }
   

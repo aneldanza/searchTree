@@ -36,7 +36,7 @@ class QuestionIndex extends React.Component {
       <section className='container'>
         <div className='questions-index-header'>
           <h1>All Questions</h1>
-          <Link to={`api/questions/ask`} id='cool-button'>Ask Question</Link>
+          <Link to={`/questions/ask`} id='cool-button'>Ask Question</Link>
         </div>
         <nav className='questions-nav'>
           {numberOfQuestions}
