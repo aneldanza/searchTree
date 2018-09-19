@@ -16,7 +16,7 @@ export const QuestionItem = ({ question, users }) => {
         <div>0 views</div>
       </div>
       <div className='summary'>
-        <div><Link to={`/api/questions/${question.id}`} className='question-hyperlink'>{question.title}</Link></div>
+        <div><Link to={`/questions/${question.id}`} className='question-hyperlink'>{question.title}</Link></div>
         <div className='question-body'>{question.body}</div>
         <div className='user-info'>{users[question.user_id].username}</div> 
       </div>

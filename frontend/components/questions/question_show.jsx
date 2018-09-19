@@ -26,7 +26,7 @@ class QuestionShow extends React.Component {
 
   render() {
 
-    if (!(this.props.question && Object.values(this.props.answers).length > 0)) {
+    if (!(this.props.question)) {
       return (<div></div>);
     }
 
