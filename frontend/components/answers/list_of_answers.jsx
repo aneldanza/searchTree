@@ -10,24 +10,14 @@ class ListOfAnswers extends React.Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   debugger
-  //   if (Object.keys(nextProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) {
-  //     return true
-  //   }
-  //   return false;
-  // }
-
   componentDidUpdate(prevProps) {
-    debugger
     if (Object.keys(prevProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) {
-      this.props.requestQuestion(this.props.question.id)
-      this.state.allAnswers = this.props.allAnswers
-      // this.state.question = this.props.question
+      this.setState({allAnswers: this.props.allAnswers});
     }
   }
+
+  
   render() {
-    debugger
     let answers = [];
       if (Object.values(this.state.allAnswers).length > 0) {    
         answers = Object.values(this.state.allAnswers);    
