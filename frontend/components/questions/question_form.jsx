@@ -16,8 +16,10 @@ class QuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.action(this.state) 
-    .then(data => this.props.history.push(`/api/questions/${data.question.id}`));
-    this.setState({title: '', body: '', tags: ''})
+    .then(data => {
+      this.setState({title: '', body: '', tags: ''})
+      this.props.history.push(`/api/questions/${data.question.id}`)
+    });
   }
   
   render() {
@@ -54,8 +56,6 @@ class QuestionForm extends React.Component {
     );
   }
 }
-
-
 
 export default withRouter(QuestionForm);
 

@@ -7,13 +7,13 @@ class ListOfAnswers extends React.Component {
   }
 
   render() {
-    debugger
-    let answers = [];
-    if (this.props.question.anwerIds && this.props.question.answerIds.length > 0) {
+    
+    const answers = [];
+
       this.props.question.answerIds.map(id => {
         answers.push(this.props.allAnswers[id]);
       });
-    }
+ 
 
     let count = answers.length;
     let numberOfAnswers;
@@ -25,10 +25,10 @@ class ListOfAnswers extends React.Component {
 
     let list = null;
     if (answers.length > 0) {
-    list = answers.map(answer => {
+    list = answers.map((answer, idx) => {
       return (
         
-          <li>
+          <li key={idx}>
             <div className='show-container'>
               <div className='post-layout'>
                 <div className='post-layout-left'>

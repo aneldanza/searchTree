@@ -4,10 +4,11 @@ export const RECEIVE_ALL_QUESTIONS = 'RECEIVE_ALL_QUESTIONS';
 export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'; 
 export const DELETE_QUESTION = 'DELETE_QUESTION'; 
 
-export const requestQuestion = ({ question, answers }) => ({
+export const receiveQuestion = ({ question, answers, users }) => ({
   type: RECEIVE_QUESTION,
   question,
-  answers,
+  users: users || {},
+  answers: answers || {},
 });
 
 export const receiveAllQuestions = () => {
@@ -19,11 +20,11 @@ export const receiveAllQuestions = () => {
   };
 };
 
-export const receiveQuestion = (id) => {
+export const requestQuestion = (id) => {
   return dispatch => {
     return APIQuestionsUtil.fetchQuestion(id)
     .then( payload => {
-      return dispatch(requestQuestion(payload));
+      return dispatch(receiveQuestion(payload));
     });
   };
 };
@@ -40,8 +41,9 @@ export const updateQuestion = (question) => {
 export const createQuestion = (question) => {
   return dispatch => {
     return APIQuestionsUtil.createQuestion(question)
-    .then( question => {
-      return dispatch({type: RECEIVE_QUESTION, question: question});
+    .then( payload => {
+    
+      return dispatch(receiveQuestion(payload));
     });
   };
 };

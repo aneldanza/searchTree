@@ -5,8 +5,9 @@ class Api::QuestionsController < ApplicationController
 
     def show 
         @question = Question.find(params[:id])
-        # debugger
-        @answers = @question.answers.pluck(:id)
+        @answers = @question.answers
+        authorIds = @answers.pluck(:user_id).push(@question.user_id)
+        @authors = User.where(id: authorIds)
     end
 
     def create
@@ -17,7 +18,9 @@ class Api::QuestionsController < ApplicationController
             user_id: params[:question][:user_id]
         })
         if @question.save
-            # render "/api/questions/#{@question.id}"
+            @answers = @question.answers
+            authorIds = @answers.pluck(:user_id).push(@question.user_id)
+            @authors = User.where(id: authorIds)
             render :show
         else
             render json: @question.errors.full_messages, status: 422

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { receiveQuestion, deleteQuestion } from '../../actions/questions_actions';
+import { requestQuestion, deleteQuestion } from '../../actions/questions_actions';
 import { receiveAllAnswers } from '../../actions/answer_actions';
 import { Link } from 'react-router-dom';
 import AnswerFormContainer from '../answers/answer_form_container';
@@ -12,7 +12,8 @@ class QuestionShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.receiveQuestion(this.props.match.params.questionId).then(this.props.receiveAllAnswers());
+  
+    this.props.requestQuestion(this.props.match.params.questionId).then(this.props.receiveAllAnswers());
   }
 
   handleDelete(id) {
@@ -97,7 +98,7 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
   return {
-    receiveQuestion: id => dispatch(receiveQuestion(id)),
+    requestQuestion: id => dispatch(requestQuestion(id)),
     deleteQuestion: id => dispatch(deleteQuestion(id)),
     receiveAllAnswers: () => dispatch(receiveAllAnswers()),
   }
