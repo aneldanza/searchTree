@@ -21,7 +21,8 @@ class QuestionIndex extends React.Component {
   }
 
   render() {
-    if (!((Object.values(this.props.users)).length > 0 && this.props.questions.length > 0)) {
+    debugger
+    if (!(Object.values(this.props.users).length > 0 && this.props.questions.length > 0)) {
       return <div></div>;
     }
   

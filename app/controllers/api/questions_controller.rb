@@ -4,7 +4,9 @@ class Api::QuestionsController < ApplicationController
     end
 
     def show 
-        @question = Question.includes(:answers).find(params[:id])
+        @question = Question.find(params[:id])
+        # debugger
+        @answers = @question.answers.pluck(:id)
     end
 
     def create

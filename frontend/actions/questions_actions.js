@@ -4,6 +4,12 @@ export const RECEIVE_ALL_QUESTIONS = 'RECEIVE_ALL_QUESTIONS';
 export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'; 
 export const DELETE_QUESTION = 'DELETE_QUESTION'; 
 
+export const requestQuestion = ({ question, answers }) => ({
+  type: RECEIVE_QUESTION,
+  question,
+  answers,
+});
+
 export const receiveAllQuestions = () => {
   return dispatch => {
     return APIQuestionsUtil.fetchAllQuestions()
@@ -16,8 +22,8 @@ export const receiveAllQuestions = () => {
 export const receiveQuestion = (id) => {
   return dispatch => {
     return APIQuestionsUtil.fetchQuestion(id)
-    .then( question => {
-      return dispatch({type: RECEIVE_QUESTION, question: question});
+    .then( payload => {
+      return dispatch(requestQuestion(payload));
     });
   };
 };

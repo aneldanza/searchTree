@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { receiveQuestion, deleteQuestion } from '../../actions/questions_actions';
+import { receiveAllAnswers } from '../../actions/answer_actions';
 import { Link } from 'react-router-dom';
-import AnswerForm from '../answers/answer_form';
+import AnswerFormContainer from '../answers/answer_form_container';
+import ListOfAnswers from '../answers/list_of_answers';
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class QuestionShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.receiveQuestion(this.props.match.params.questionId);
+    this.props.receiveQuestion(this.props.match.params.questionId).then(this.props.receiveAllAnswers());
   }
 
   handleDelete(id) {
@@ -22,9 +24,11 @@ class QuestionShow extends React.Component {
   }
 
   render() {
-    if (this.props.question === undefined) {
+
+    if (!(this.props.question && Object.values(this.props.answers).length > 0)) {
       return (<div></div>);
     }
+
     let deleteQ = null;
     if (this.props.user_id === this.props.question.user_id) {
       deleteQ = (<span className='delete-link' onClick={this.handleDelete.call(this, this.props.question.id)}>delete</span>);
@@ -51,23 +55,28 @@ class QuestionShow extends React.Component {
             <i style={{lineHeight: '0.5'}}
             className="fas fa-caret-down fa-3x"></i>
             <i className="fas fa-star fa-2x"></i>
-            </div> 
+          </div> 
 
-            <div className='post-layout-main'>
-              <article className='question-body'>
-                {this.props.question.body}
-              </article>
-              <div className='question-details'>
-                <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
-                {deleteQ}
-              </div>
-            </div> 
+          <div className='post-layout-main'>
+            <article className='question-body'>
+              {this.props.question.body}
+            </article>
+            <div className='question-details'>
+              <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
+              {deleteQ}
+            </div>
+          </div> 
 
-            <div className='post-layout-comment'>
-              add comment
-            </div> 
+          <div className='post-layout-comment'>
+            add comment
+          </div> 
+        </div>
+          <div>
+            <ListOfAnswers question={this.props.question} allAnswers={this.props.answers}/>
           </div>
-
+          <div>
+            <AnswerFormContainer />
+          </div>
 
         </div>
         <div className='question-sidebar'></div>
@@ -81,14 +90,16 @@ class QuestionShow extends React.Component {
 const msp = (state, ownProps) => {
   return {
     question: state.entities.questions[ownProps.match.params.questionId],
-    user_id: state.session.id
+    user_id: state.session.id,
+    answers: state.entities.answers
   }
 }
 
 const mdp = (dispatch) => {
   return {
     receiveQuestion: id => dispatch(receiveQuestion(id)),
-    deleteQuestion: id => dispatch(deleteQuestion(id))
+    deleteQuestion: id => dispatch(deleteQuestion(id)),
+    receiveAllAnswers: () => dispatch(receiveAllAnswers()),
   }
 }
 
@@ -99,7 +110,4 @@ export default connect(msp, mdp)(QuestionShow);
 <a href="#">ruby</a>
 <a href="#">javascript</a>
 <a href="#">MacOS</a>
-</div> */}
-{/* <div>
-  <AnswerForm />
 </div> */}

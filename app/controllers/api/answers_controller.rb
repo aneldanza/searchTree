@@ -1,14 +1,14 @@
 class Api::AnswersController < ApplicationController
-  def show 
-    @answer = Answer.find(params[:id])
-  end 
-
+  def index
+    @answers = Answer.all
+  end
+  
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
       render :show
     else
-      render json: @answer.errors.full_message_errors, status: 422
+      render json: @answer.errors.full_messages, status: 422
     end
   end
 
