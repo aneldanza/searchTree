@@ -1,8 +1,9 @@
 class Api::AnswersController < ApplicationController
   def index
     @answers = Answer.all
+    
   end
-  
+
   def create
     @answer = Answer.new(answer_params)
     if @answer.save

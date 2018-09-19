@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateQuestion, receiveQuestion } from '../../actions/questions_actions';
+import { updateQuestion, requestQuestion } from '../../actions/questions_actions';
 import QuestionForm from './question_form';
 
-const msp = (state, ownProps) => {
+const msp = (state, ownProps) => { 
   return {
     user_id: state.session.id,
     question: state.entities.questions[ownProps.match.params.questionId],
@@ -15,7 +15,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return {
     action: question => dispatch(updateQuestion(question)),
-    receiveQuestion: id => dispatch(receiveQuestion(id))
+    requestQuestion: id => dispatch(requestQuestion(id))
   }
 }
 
@@ -24,8 +24,8 @@ class EditQuestion extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.receiveQuestion(this.props.match.params.quesitonId);
+  componentDidMount() {  
+    this.props.requestQuestion(this.props.match.params.questionId);
   }
 
   render() {
@@ -33,7 +33,7 @@ class EditQuestion extends React.Component {
       return <div></div>;
     }
 
-    const {action, question, user_id, formType, header} = this.props;
+    const {action, question, user_id, formType, header} = this.props;  
     return (
       <QuestionForm 
       action={action}

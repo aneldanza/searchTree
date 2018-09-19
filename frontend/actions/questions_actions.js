@@ -32,8 +32,8 @@ export const requestQuestion = (id) => {
 export const updateQuestion = (question) => {
   return dispatch => {
     return APIQuestionsUtil.updateQuestion(question)
-    .then( question => {
-      return dispatch({type: RECEIVE_QUESTION, question: question});
+    .then( payload => {
+      return dispatch(receiveQuestion(payload));
     });
   };
 };

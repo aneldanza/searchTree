@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 class QuestionForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props)  
     this.state = this.props.question;
   }
 
@@ -18,7 +18,7 @@ class QuestionForm extends React.Component {
     this.props.action(this.state) 
     .then(data => {
       this.setState({title: '', body: '', tags: ''})
-      this.props.history.push(`/api/questions/${data.question.id}`)
+      this.props.history.push(`/questions/${data.question.id}`)
     });
   }
   

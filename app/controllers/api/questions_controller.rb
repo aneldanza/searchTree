@@ -4,6 +4,7 @@ class Api::QuestionsController < ApplicationController
     end
 
     def show 
+       
         @question = Question.find(params[:id])
         @answers = @question.answers
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
@@ -28,9 +29,13 @@ class Api::QuestionsController < ApplicationController
     end 
 
     def update
-        @question = Question.find(params[:id])
+      
+        @question = Question.find(params['question']['id'])
         if @question.update_attributes(question_params)
-            render 'api/questions/show'
+            @answers = @question.answers
+            authorIds = @answers.pluck(:user_id).push(@question.user_id)
+            @authors = User.where(id: authorIds)
+            render :show
         else
             render json: @question.errors.full_messages, status: 422
         end 

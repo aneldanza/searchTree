@@ -9,15 +9,15 @@ class ListOfAnswers extends React.Component {
   render() {
     
     const answers = [];
-
-      this.props.question.answerIds.map(id => {
-        answers.push(this.props.allAnswers[id]);
-      });
- 
+      if (Object.values(this.props.allAnswers) > 0) {
+        this.props.question.answerIds.map(id => {
+          answers.push(this.props.allAnswers[id]);
+        });
+      }
 
     let count = answers.length;
     let numberOfAnswers;
-    if (count.toString()[count.toString().length - 1] == 1) {
+    if (count === 1) {
       numberOfAnswers = `${count} answer`;
     } else {
       numberOfAnswers = `${count} answers`;
