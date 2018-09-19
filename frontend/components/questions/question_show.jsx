@@ -11,9 +11,16 @@ class QuestionShow extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-  
-    this.props.requestQuestion(this.props.match.params.questionId).then(this.props.receiveAllAnswers());
+  componentDidMount() { 
+    this.props.requestQuestion(this.props.match.params.questionId)
+  }
+
+  componendDidUpdate(prevProps) {
+    debugger
+    if (this.props.answers !== prevProps.answers) {
+      debugger
+      this.props.requestQuestion(this.props.match.params.questionId);
+    }
   }
 
   handleDelete(id) {
@@ -73,7 +80,7 @@ class QuestionShow extends React.Component {
           </div> 
         </div>
           <div>
-            <ListOfAnswers question={this.props.question} allAnswers={this.props.answers}/>
+            <ListOfAnswers question={this.props.question} allAnswers={this.props.answers} requestQuestion={this.props.requestQuestion}/>
           </div>
           <div>
             <AnswerFormContainer />

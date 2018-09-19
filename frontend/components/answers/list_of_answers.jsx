@@ -4,15 +4,33 @@ import { Link } from 'react-router-dom';
 class ListOfAnswers extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      allAnswers: this.props.allAnswers,
+      question: this.props.question
+    }
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   debugger
+  //   if (Object.keys(nextProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) {
+  //     return true
+  //   }
+  //   return false;
+  // }
+
+  componentDidUpdate(prevProps) {
+    debugger
+    if (Object.keys(prevProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) {
+      this.props.requestQuestion(this.props.question.id)
+      this.state.allAnswers = this.props.allAnswers
+      // this.state.question = this.props.question
+    }
+  }
   render() {
-    
-    const answers = [];
-      if (Object.values(this.props.allAnswers) > 0) {
-        this.props.question.answerIds.map(id => {
-          answers.push(this.props.allAnswers[id]);
-        });
+    debugger
+    let answers = [];
+      if (Object.values(this.state.allAnswers).length > 0) {    
+        answers = Object.values(this.state.allAnswers);    
       }
 
     let count = answers.length;
@@ -26,8 +44,7 @@ class ListOfAnswers extends React.Component {
     let list = null;
     if (answers.length > 0) {
     list = answers.map((answer, idx) => {
-      return (
-        
+      return (      
           <li key={idx}>
             <div className='show-container'>
               <div className='post-layout'>

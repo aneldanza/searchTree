@@ -10,6 +10,7 @@ class AnswerForm extends React.Component {
     }
   }
 
+  
   updateBody(e) {
     this.setState({body: e.target.value});
   }
