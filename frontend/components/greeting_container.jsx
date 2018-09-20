@@ -1,7 +1,8 @@
 
-import {Greeting} from './greeting';
+import Greeting from './greeting';
 import { connect } from 'react-redux';
 import { logout, demoLogin } from '../actions/session_actions';
+import { startSearch } from '../actions/questions_actions';
 
 const msp = (state) => {
   return {
@@ -12,7 +13,8 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    demoLogin: () => dispatch(demoLogin())
+    demoLogin: () => dispatch(demoLogin()), 
+    search: (query) => dispatch(startSearch(query))
   };
 };
 

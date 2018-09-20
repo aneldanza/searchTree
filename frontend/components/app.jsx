@@ -11,6 +11,7 @@ import CreateQuestionContainer from './questions/create_question_container';
 import QuestionShow from './questions/question_show';
 import EditQuestion from './questions/edit_question_container';
 import EditAnswer from './answers/edit_answer_container';
+import Search from './search/search.jsx';
 
 export const App = () => {
   return(
@@ -31,6 +32,7 @@ export const App = () => {
           <AuthRoute exact path='/login' component={LoginFormContainer} />
           <AuthRoute exact path='/signup' component={SignupFormContainer} />
           <Route exact path='/' component={QuestionsIndexContainer} />
+          <Route exact path={`/questions/search`} component={Search} />
           <Route path={`/questions/:questionId`} component={QuestionShow} />
           <Route path='/questions' component={QuestionsIndexContainer} />
         </Switch>

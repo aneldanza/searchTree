@@ -11,6 +11,17 @@ class Api::QuestionsController < ApplicationController
     end
 
     def search
+       
+        input = params[:q]
+        @questions = Question.all
+        search_words = input.split(' ')
+        @found_question = [];
+        search_words.each do |word|
+            @found_question << Question.where("questions.body LIKE ?", "%#{word}%")
+        end 
+        
+        debugger
+        render :search
     end
 
     def create

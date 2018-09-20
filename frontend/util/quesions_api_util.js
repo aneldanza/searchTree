@@ -14,7 +14,6 @@ export const fetchQuestion = (id) => {
 };
 
 export const search = (query) => {
-
   return $.ajax({
     method: "GET",
     url: `api/questions/search?q=${query}`,

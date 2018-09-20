@@ -68,7 +68,7 @@ body {
   font-size: 14px;
   border-radius: 3px;
   color: #3b4045;
-  padding: 5px 0;
+  padding: 7px 10px;
   width: 100%;
 }
 
@@ -78,11 +78,11 @@ body {
 }
 
 
-.search-button {
-  display: none;
-}
+// .search-button {
+//   display: none;
+// }
 
-.search-button active {
+.search-button {
   display: inline-block;
   height: 100%;
   padding: 0 12px;
