@@ -37,14 +37,56 @@ body {
   max-width:  1264px;
   width: 100%;
   align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: auto;
   justify-content: space-between;
+}
+
+.left-nav {
+  display: grid;
+  grid-template-columns: auto minmax(auto, 364px);
+  justify-content: flex-start;
+  grid-gap: 20px;
+  align-items: center;
 }
 
 #logo {
   font-family: 'PT Sans', sans-serif;
   font-size: 20px;
+}
+
+#search-bar {
+  border: 1px solid #c8ccd0;
+  background-color: white;
+  font-size: 14px;
+  border-radius: 3px;
+  color: #3b4045;
+  padding: 5px 0;
+  width: 100%;
+}
+
+#search-bar:hover {
+  border-color: rgba(0,149,255,0.5);
+  box-shadow: inset 0 1px 2px #e4e6e8,0 0 2px rgba(0,149,255,0.2);
+}
+
+.search-form {
+  display: grid;
+  align-items: center;
+}
+
+.search-button {
+  display: none;
+}
+
+.search-button:hover {
+  display: inline-block;
+  color: #FFF;
+  background-color: #0095ff;
+  border: 1px solid #07c;
+  box-shadow: inset 0 1px 0 #66bfff;
+  box-sizing: border-box;
 }
 
 #buttons-section {

@@ -3,12 +3,14 @@ class Api::QuestionsController < ApplicationController
         @questions = Question.all
     end
 
-    def show 
-       
+    def show      
         @question = Question.find(params[:id])
         @answers = @question.answers
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
         @authors = User.where(id: authorIds)
+    end
+
+    def search
     end
 
     def create
