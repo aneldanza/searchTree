@@ -10,14 +10,13 @@ class Api::QuestionsController < ApplicationController
         @authors = User.where(id: authorIds)
     end
 
-    def search
-       
+    def search     
         input = params[:q]
         @questions = Question.all
         search_words = input.split(' ')
         @found_question = [];
         search_words.each do |word|
-            @found_question << Question.where("questions.body LIKE ?", "%#{word}%")
+            @found_question.concat Question.where("questions.body LIKE ?", "%#{word}%")
         end 
         
         debugger

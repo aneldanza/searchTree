@@ -1,4 +1,4 @@
-import {RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION, DELETE_QUESTION} from '../actions/questions_actions';
+import {RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION, DELETE_QUESTION, RECEIVE_SEARCH_REQUEST} from '../actions/questions_actions';
 import merge from 'lodash/merge';
 
 export const questionsReducer = (state = {}, action) => {
@@ -12,6 +12,8 @@ export const questionsReducer = (state = {}, action) => {
       const newState = merge({}, state);
       delete newState[action.questionID];
       return newState;
+    case RECEIVE_SEARCH_REQUEST:
+      return merge({}, action.query);
     default:
       return state;
   }

@@ -62,6 +62,7 @@ export const startSearch = (query) => {
   return dispatch => {
     return APIQuestionsUtil.search(query) 
     .then(query => {
+      debugger
       return dispatch({type: RECEIVE_SEARCH_REQUEST, query: query})
     });
   };

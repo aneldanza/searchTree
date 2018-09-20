@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -9,16 +9,28 @@ class Greeting extends React.Component {
     }
   }
 
+  toQueryString (obj) {
+    const parts = [];
+    for (let i in obj) {
+        if (obj.hasOwnProperty(i)) {
+            parts.push(`${encodeURIComponent(i)}=${encodeURIComponent(obj[i])}`);
+        }
+    }
+    return parts.join('&');
+  }
+
   updateInput(e) {
     this.setState({input: e.target.value});
   }
 
-  handleSearch(query) {
+  handleSearch(input) {
     return e => {
       e.preventDefault();
-      this.props.search(query)
+      const object = {q: input}
+      const query = this.toQueryString(object)
+      this.props.search(input)
       .then( data => {
-        this.props.history.push(`/questions/search`);
+        this.props.history.push(`/questions/search?${query}`);
       });
     }
   }
@@ -66,5 +78,5 @@ class Greeting extends React.Component {
   }
 }
 
-export default Greeting;
+export default withRouter(Greeting);
 
