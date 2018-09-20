@@ -16,6 +16,11 @@ class ListOfAnswers extends React.Component {
     }
   }
 
+  handleDelete(id) {
+    return () => {
+      this.props.deleteAnswer(id);
+    }
+  }
   
   render() {
     let answers = [];
@@ -33,8 +38,12 @@ class ListOfAnswers extends React.Component {
 
     let list = null;
     if (answers.length > 0) {
-    list = answers.map((answer, idx) => {
-      return (      
+      list = answers.map((answer, idx) => {
+        let deleteA = null;
+        if (this.props.user_id === answer.user_id) {
+          deleteA = (<span className='delete-link' onClick={this.handleDelete.call(this, answer.id)}>delete</span>);
+        }
+        return (      
           <li key={idx}>
             <div className='show-container'>
               <div className='post-layout'>
@@ -52,7 +61,7 @@ class ListOfAnswers extends React.Component {
                   </article>
                   <div className='question-details'>
                     <Link to={`/answers/${answer.id}/edit`}>edit</Link>
-              
+                    {deleteA}
                   </div>
                 </div> 
 

@@ -27,3 +27,10 @@ export const fetchAnswer = (id) => {
     url: `api/answers/${id}`
   });
 };
+
+export const deleteAnswer = (id) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/answers/${id}`,
+  });
+};

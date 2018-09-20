@@ -33,7 +33,7 @@ class QuestionIndex extends React.Component {
 
     let count = this.props.questions.length;
     let numberOfQuestions;
-    if (count.toString()[count.toString().length - 1] == 1) {
+    if (count === 1) {
       numberOfQuestions = `${count} question`;
     } else {
       numberOfQuestions = `${count} questions`;

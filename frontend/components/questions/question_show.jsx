@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { requestQuestion, deleteQuestion } from '../../actions/questions_actions';
-import { receiveAllAnswers } from '../../actions/answer_actions';
+import { receiveAllAnswers, deleteAnswer } from '../../actions/answer_actions';
 import { Link } from 'react-router-dom';
 import AnswerFormContainer from '../answers/answer_form_container';
 import ListOfAnswers from '../answers/list_of_answers';
@@ -78,7 +78,12 @@ class QuestionShow extends React.Component {
           </div> 
         </div>
           <div>
-            <ListOfAnswers question={this.props.question} allAnswers={this.props.answers} requestQuestion={this.props.requestQuestion}/>
+            <ListOfAnswers 
+            user_id={this.props.user_id}
+            question={this.props.question} 
+            allAnswers={this.props.answers} 
+            requestQuestion={this.props.requestQuestion}
+            deleteAnswer={this.props.deleteAnswer}/>
           </div>
           <div>
             <AnswerFormContainer />
@@ -106,6 +111,7 @@ const mdp = (dispatch) => {
     requestQuestion: id => dispatch(requestQuestion(id)),
     deleteQuestion: id => dispatch(deleteQuestion(id)),
     receiveAllAnswers: () => dispatch(receiveAllAnswers()),
+    deleteAnswer: id => dispatch(deleteAnswer(id)),
   }
 }
 

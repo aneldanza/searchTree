@@ -26,6 +26,12 @@ class Api::AnswersController < ApplicationController
     end 
   end 
 
+  def destroy
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    
+  end 
+
   private
   def answer_params
     params.require(:answer).permit(:body, :user_id, :question_id)
