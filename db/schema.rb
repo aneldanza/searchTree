@@ -10,18 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2018_09_16_192231) do
+ActiveRecord::Schema.define(version: 2018_09_20_203236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
+    t.text "body", null: false
     t.integer "user_id", null: false
     t.integer "question_id", null: false
-    t.text "body", null: false
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -37,7 +34,6 @@ ActiveRecord::Schema.define(version: 2018_09_16_192231) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
@@ -48,6 +44,16 @@ ActiveRecord::Schema.define(version: 2018_09_16_192231) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "vote_type", null: false
+    t.integer "post_id", null: false
+    t.string "post_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_votes_on_post_id"
+    t.index ["post_type"], name: "index_votes_on_post_type"
   end
 
 end
