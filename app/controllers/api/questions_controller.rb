@@ -18,8 +18,8 @@ class Api::QuestionsController < ApplicationController
         search_words.each do |word|
             @found_question.concat Question.where("questions.body LIKE ?", "%#{word}%")
         end 
-        
-        debugger
+        @found_question = @found_question.uniq
+       
         render :search
     end
 
@@ -40,8 +40,7 @@ class Api::QuestionsController < ApplicationController
         end
     end 
 
-    def update
-      
+    def update      
         @question = Question.find(params['question']['id'])
         if @question.update_attributes(question_params)
             @answers = @question.answers

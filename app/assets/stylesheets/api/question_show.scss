@@ -13,6 +13,10 @@
   line-height: 1.35;
 }
 
+.search-question-title {
+  grid-column: span 2;
+}
+
 .question-show-container {
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -50,7 +54,6 @@
 
 
 .post-layout-main {
-  // grid-column-start: 2;
   grid-column: span 2;
   display: grid;
   grid-gap: 10px;

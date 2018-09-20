@@ -5,14 +5,14 @@ export const QuestionItem = ({ question, users }) => {
   return(
     <div className='question-summary'>
       <div className='stats-container'>
-      <div className='stats'>
-        <div className='stats-number'>0</div>
-        <div>votes</div>
-      </div>
-      <div className='stats'>
-        <div className='stats-number'>0</div>
-        <div>answers</div>
-      </div>
+        <div className='stats'>
+          <div className='stats-number'>0</div>
+          <div>votes</div>
+        </div>
+        <div className='stats'>
+          <div className='stats-number'>0</div>
+          <div>answers</div>
+        </div>
         <div>0 views</div>
       </div>
       <div className='summary'>
