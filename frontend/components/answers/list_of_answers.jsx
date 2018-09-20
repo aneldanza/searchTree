@@ -51,7 +51,8 @@ class ListOfAnswers extends React.Component {
                     {answer.body}
                   </article>
                   <div className='question-details'>
-                    <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
+                    <Link to={`/answers/${answer.id}/edit`}>edit</Link>
+              
                   </div>
                 </div> 
 

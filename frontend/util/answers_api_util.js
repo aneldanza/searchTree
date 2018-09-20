@@ -12,3 +12,18 @@ export const fetchAllAnswers = () => {
     url: `api/answers`,
   });
 };
+
+export const updateAnswer = (answer) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/answers/${answer.id}`,
+    data: {answer: answer},
+  });
+};
+
+export const fetchAnswer = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/answers/${id}`
+  });
+};

@@ -1,15 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class AnswerForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      body: '',
-      user_id: this.props.user_id,
-      question_id: this.props.question_id
-    }
+    this.state = this.props.answer;
   }
-
   
   updateBody(e) {
     this.setState({body: e.target.value});
@@ -17,8 +13,11 @@ class AnswerForm extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.action(this.state);
-    this.setState({body: ''})
+    this.props.action(this.state)
+    .then(data => {
+      this.setState({title: '', body: '', tags: ''})
+      this.props.history.push(`/questions/${data.answer.question_id}`)
+    });
   }
 
   render() {
@@ -40,4 +39,4 @@ class AnswerForm extends React.Component {
   }
 }
 
-export default AnswerForm;
+export default withRouter(AnswerForm);

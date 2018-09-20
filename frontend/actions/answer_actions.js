@@ -18,11 +18,29 @@ export const createAnswer = (answer) => {
   }
 }
 
+export const updateAnswer = (answer) => {
+  return dispatch => {
+    return APIAnswerUtil.updateAnswer(answer)
+    .then(answer => {
+      return dispatch(receiveAnswer(answer));
+    });
+  }
+}
+
 export const receiveAllAnswers = () => {
   return dispatch => {
     APIAnswerUtil.fetchAllAnswers()
     .then( answers => {
       return dispatch({type: RECEIVE_ALL_ANSWERS, answers: answers});
+    });
+  };
+};
+
+export const requestAnswer = (id) => {
+  return dispatch => {
+    APIAnswerUtil.fetchAnswer(id)
+    .then( answer => {
+      return dispatch(receiveAnswer(answer));
     });
   };
 };

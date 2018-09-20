@@ -10,6 +10,7 @@ import QuestionsIndexContainer from './questions/questions_index_container';
 import CreateQuestionContainer from './questions/create_question_container';
 import QuestionShow from './questions/question_show';
 import EditQuestion from './questions/edit_question_container';
+import EditAnswer from './answers/edit_answer_container';
 
 export const App = () => {
   return(
@@ -26,6 +27,7 @@ export const App = () => {
         <Switch>
           <ProtectedRoute exact path='/questions/ask' component={CreateQuestionContainer} />
           <ProtectedRoute exact path={`/questions/:questionId/edit`} component={EditQuestion} />
+          <ProtectedRoute exact path={`/answers/:answerId/edit`} component={EditAnswer} />
           <AuthRoute exact path='/login' component={LoginFormContainer} />
           <AuthRoute exact path='/signup' component={SignupFormContainer} />
           <Route exact path='/' component={QuestionsIndexContainer} />

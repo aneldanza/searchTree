@@ -4,8 +4,11 @@ import { createAnswer } from '../../actions/answer_actions';
 
 const msp = (state) => {
   return {
-    user_id: state.session.id,
-    question_id: Object.keys(state.entities.questions)[0]
+    answer: {
+      user_id: state.session.id,
+      question_id: Object.keys(state.entities.questions)[0],
+      body: ''
+    }
   }
 }
 

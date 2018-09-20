@@ -16,9 +16,7 @@ class QuestionShow extends React.Component {
   }
 
   componendDidUpdate(prevProps) {
-    debugger
     if (this.props.answers !== prevProps.answers) {
-      debugger
       this.props.requestQuestion(this.props.match.params.questionId);
     }
   }
