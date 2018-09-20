@@ -28,7 +28,7 @@ export const Greeting = (props) => {
 
           <form className='search-form'>
             <input id='search-bar' type='text'/>
-            <button><i class="fas fa-search"></i></button>
+            <button className='search-button'><i class="fas fa-search"></i></button>
           </form>
         </nav>
         {buttons_section}

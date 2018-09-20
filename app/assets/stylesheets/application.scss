@@ -56,6 +56,12 @@ body {
   font-size: 20px;
 }
 
+.search-form {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+}
+
 #search-bar {
   border: 1px solid #c8ccd0;
   background-color: white;
@@ -71,22 +77,22 @@ body {
   box-shadow: inset 0 1px 2px #e4e6e8,0 0 2px rgba(0,149,255,0.2);
 }
 
-.search-form {
-  display: grid;
-  align-items: center;
-}
 
 .search-button {
   display: none;
 }
 
-.search-button:hover {
+.search-button active {
   display: inline-block;
+  height: 100%;
+  padding: 0 12px;
+  text-align: center;
   color: #FFF;
   background-color: #0095ff;
   border: 1px solid #07c;
   box-shadow: inset 0 1px 0 #66bfff;
   box-sizing: border-box;
+  border-radius: 0 3px 3px 0;
 }
 
 #buttons-section {
