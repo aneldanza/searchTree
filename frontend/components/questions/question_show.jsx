@@ -52,31 +52,33 @@ class QuestionShow extends React.Component {
       
       <div className='question-show-container'>
         <div className='show-container'>
-
-          <div className='post-layout'>
+          <div className='question-container'>
             <div className='post-layout-left'>
-            <i style={{lineHeight: '0.5'}}
-            className="fas fa-caret-up fa-3x"></i>
-            <div className='stats-number'>1</div>
-            <i style={{lineHeight: '0.5'}}
-            className="fas fa-caret-down fa-3x"></i>
-            <i className="fas fa-star fa-2x"></i>
-          </div> 
+              <i style={{lineHeight: '0.5'}}
+              className="fas fa-caret-up fa-3x"></i>
+              <div className='stats-number'>1</div>
+              <i style={{lineHeight: '0.5'}}
+              className="fas fa-caret-down fa-3x"></i>
+              <i className="fas fa-star fa-2x"></i>
+            </div> 
 
-          <div className='post-layout-main'>
-            <article className='question-body'>
-              {this.props.question.body}
-            </article>
-            <div className='question-details'>
-              <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
-              {deleteQ}
+            <div className='post-layout'>
+              <div className='post-layout-main'>
+                <article className='question-body'>
+                  {this.props.question.body}
+                </article>
+                <div className='question-details'>
+                  <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
+                  {deleteQ}
+                </div>
+              </div> 
+
+              <div className='post-layout-comment'>
+                add comment
+              </div> 
             </div>
-          </div> 
+          </div>
 
-          <div className='post-layout-comment'>
-            add comment
-          </div> 
-        </div>
           <div>
             <ListOfAnswers 
             user_id={this.props.user_id}

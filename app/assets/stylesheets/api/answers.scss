@@ -1,3 +1,40 @@
+.answers-nav {
+  font-size: 18px;
+  font-weight: 400;
+  color: #3b4045;
+  padding: 20px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e4e6e8;
+}
+.answers-list {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.answer-show-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e4e6e8;
+}
+
+.answer-layout-left {
+  grid-column: 1;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-rows: auto auto auto;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-content: flex-start;
+  color: #c9cbcf;
+  text-align: center;
+}
+
+.answer-layout {
+  display: grid;
+  grid-gap: 15px;
+}
 .answer-form-label {
   font-size: 18px;
   border-top: 1px solid #e4e6e8;

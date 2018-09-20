@@ -45,15 +45,16 @@ class ListOfAnswers extends React.Component {
         }
         return (      
           <li key={idx}>
-            <div className='show-container'>
-              <div className='post-layout'>
-                <div className='post-layout-left'>
-                  <i style={{lineHeight: '0.5'}}
-                  className="fas fa-caret-up fa-3x"></i>
-                  <div className='stats-number'>1</div>
-                  <i style={{lineHeight: '0.5'}}
-                  className="fas fa-caret-down fa-3x"></i>
-                </div> 
+            <div className='answer-show-container'>
+              <div className='answer-layout-left'>
+                <i style={{lineHeight: '0.5'}}
+                className="fas fa-caret-up fa-3x"></i>
+                <div className='stats-number'>1</div>
+                <i style={{lineHeight: '0.5'}}
+                className="fas fa-caret-down fa-3x"></i>
+              </div> 
+
+              <div className='answer-layout'>
 
                 <div className='post-layout-main'>
                   <article className='question-body'>
@@ -78,8 +79,8 @@ class ListOfAnswers extends React.Component {
 
     return (
       <div>
-        <div className='questions-nav'>{numberOfAnswers}</div>
-        <ul>{list}</ul>
+        <div className='answers-nav'>{numberOfAnswers}</div>
+        <ul className='answers-list'>{list}</ul>
       </div>
     );
   }

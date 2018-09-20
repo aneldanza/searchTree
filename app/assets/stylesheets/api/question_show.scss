@@ -24,10 +24,15 @@
   grid-gap: 20px;
 }
 
+.question-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 25px;
+}
 .post-layout {
   width: 100%;
   display: grid;
-  grid-template-columns: 46px 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 15px;
 }
 
@@ -45,7 +50,7 @@
 
 
 .post-layout-main {
-  grid-column-start: 2;
+  // grid-column-start: 2;
   grid-column: span 2;
   display: grid;
   grid-gap: 10px;
@@ -54,6 +59,7 @@
 .question-body {
   font-size: 15px;
   line-height: 1.3;
+  word-wrap: break-word;
 }
 
 .post-layout-comment {
