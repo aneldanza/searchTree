@@ -8,6 +8,7 @@ class Search extends React.Component {
 
   componentDidMount() {
     let query = this.props.location.search.slice(3).split('%20').join(" ");
+    
     this.props.search(query)
   }
 

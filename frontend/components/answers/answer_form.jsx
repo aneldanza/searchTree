@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+import { toolbar } from '../../util/quil_toolbar';
 
 class AnswerForm extends React.Component {
   constructor(props) {
@@ -39,4 +41,11 @@ class AnswerForm extends React.Component {
   }
 }
 
+AnswerForm.modules = {
+  toolbar: {
+    containder: toolbar
+  }
+}
+
 export default withRouter(AnswerForm);
+
