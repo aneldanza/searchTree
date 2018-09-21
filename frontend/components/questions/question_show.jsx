@@ -5,6 +5,7 @@ import { receiveAllAnswers, deleteAnswer } from '../../actions/answer_actions';
 import { Link } from 'react-router-dom';
 import AnswerFormContainer from '../answers/answer_form_container';
 import ListOfAnswers from '../answers/list_of_answers';
+import { createVote } from '../../util/votes_api_util';
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -92,7 +93,8 @@ class QuestionShow extends React.Component {
             question={this.props.question} 
             allAnswers={this.props.answers} 
             requestQuestion={this.props.requestQuestion}
-            deleteAnswer={this.props.deleteAnswer}/>
+            deleteAnswer={this.props.deleteAnswer}
+            createVote={this.props.createVote}/>
           </div>
           <div>
             <AnswerFormContainer />
@@ -108,7 +110,7 @@ class QuestionShow extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-  debugger
+  
   return {
     
     question: state.entities.questions[ownProps.match.params.questionId],
@@ -123,6 +125,7 @@ const mdp = (dispatch) => {
     deleteQuestion: id => dispatch(deleteQuestion(id)),
     receiveAllAnswers: () => dispatch(receiveAllAnswers()),
     deleteAnswer: id => dispatch(deleteAnswer(id)),
+    createVote: vote => createVote(vote)
   }
 }
 

@@ -12,7 +12,18 @@ class ListOfAnswers extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (Object.keys(prevProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) {
+    let old_votes_count = 0;
+    prevProps.AllAsnswers.forEach(answer => {
+      old_votes_count += answer.votes.length
+    })
+
+    let new_votes_count = 0;
+    this.props.AllAsnswers.forEach(answer => {
+      new_votes_count += answer.votes.length
+    })
+    debugger
+    if ((Object.keys(prevProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) || (old_votes_count !== new_votes_count)) {
+      debugger
       this.setState({allAnswers: this.props.allAnswers});
     }
   }
@@ -21,6 +32,17 @@ class ListOfAnswers extends React.Component {
     return () => {
       this.props.deleteAnswer(id);
     }
+  }
+
+  createDownVote(idx) {
+    const vote = {
+      post_id: idx,
+      user_id: this.props.user_id,
+      vote_type: -1,
+      post_type: 'Answer'
+    }
+
+    this.props.createVote(vote)
   }
   
   render() {
@@ -36,12 +58,11 @@ class ListOfAnswers extends React.Component {
     } else {
       numberOfAnswers = `${count} answers`;
     }
-
     
     let list = null;
     if (answers.length > 0) {
       list = answers.map((answer, idx) => {
-        debugger
+        
         let votes = 0 
         if (answer.votes.length > 0) {
           votes = answer.votes.reduce((acc, el) => acc + el);
@@ -59,7 +80,8 @@ class ListOfAnswers extends React.Component {
                 className="fas fa-caret-up fa-3x"></i>
                 <div className='stats-number'>{votes}</div>
                 <i style={{lineHeight: '0.5'}}
-                className="fas fa-caret-down fa-3x"></i>
+                className="fas fa-caret-down fa-3x"
+                onClick={() => this.createDownVote.call(this, answer.id)}></i>
               </div> 
 
               <div className='answer-layout'>
