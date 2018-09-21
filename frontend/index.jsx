@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { configureStore } from './store/store';
 import Root from './components/root';
+import { createVote } from './util/votes_api_util';
+import { requestQuestion } from './actions/questions_actions';
 
 
+window.createVote = createVote;
+window.requestQuestion = requestQuestion;
 
 
 

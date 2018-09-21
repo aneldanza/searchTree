@@ -13,7 +13,7 @@ export const questionsReducer = (state = {}, action) => {
       delete newState[action.questionID];
       return newState;
     case RECEIVE_SEARCH_REQUEST:
-      return merge({}, action.query);
+      return action.query;
     default:
       return state;
   }

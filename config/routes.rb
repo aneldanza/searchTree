@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     get '/questions/search', to: 'questions#search'
     resources :questions, only: [:create, :index, :destroy, :show, :update]
     resources :answers, only: [:create, :show, :index, :update, :destroy]
+    resources :votes, only: [:create]
   end
 end

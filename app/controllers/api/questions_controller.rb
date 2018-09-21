@@ -16,7 +16,7 @@ class Api::QuestionsController < ApplicationController
         search_words = input.split(' ')
         @found_question = [];
         search_words.each do |word|
-            @found_question.concat Question.where("questions.body LIKE ?", "%#{word}%")
+            @found_question.concat Question.where("questions.body ILIKE ?", "%#{word}%")
         end 
         @found_question = @found_question.uniq
        

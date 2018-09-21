@@ -5,3 +5,4 @@ end
 json.author do
   json.partial! '/api/users/user', user: @answer.user
 end
+
