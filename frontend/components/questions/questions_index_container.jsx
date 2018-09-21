@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { receiveAllQuestions, requestQuestion } from '../../actions/questions_actions';
+import { receiveAllQuestions } from '../../actions/questions_actions';
 import { receiveAllUsers } from '../../actions/users_actions';
 import QuestionIndex from './question_index';
 

@@ -8,6 +8,7 @@ class ListOfAnswers extends React.Component {
       allAnswers: this.props.allAnswers,
       question: this.props.question
     }
+    
   }
 
   componentDidUpdate(prevProps) {
@@ -36,9 +37,16 @@ class ListOfAnswers extends React.Component {
       numberOfAnswers = `${count} answers`;
     }
 
+    
     let list = null;
     if (answers.length > 0) {
       list = answers.map((answer, idx) => {
+        debugger
+        let votes = 0 
+        if (answer.votes.length > 0) {
+          votes = answer.votes.reduce((acc, el) => acc + el);
+        }
+
         let deleteA = null;
         if (this.props.user_id === answer.user_id) {
           deleteA = (<span className='delete-link' onClick={this.handleDelete.call(this, answer.id)}>delete</span>);
@@ -49,7 +57,7 @@ class ListOfAnswers extends React.Component {
               <div className='answer-layout-left'>
                 <i style={{lineHeight: '0.5'}}
                 className="fas fa-caret-up fa-3x"></i>
-                <div className='stats-number'>1</div>
+                <div className='stats-number'>{votes}</div>
                 <i style={{lineHeight: '0.5'}}
                 className="fas fa-caret-down fa-3x"></i>
               </div> 

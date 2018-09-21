@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const QuestionItem = ({ question, users }) => {
   let votes = 0 
-  debugger
+  
   if (question.votes.length > 0) {
     votes = question.votes.reduce((acc, el) => acc + el);
   }

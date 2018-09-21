@@ -39,6 +39,13 @@ class QuestionShow extends React.Component {
     if (this.props.user_id === this.props.question.user_id) {
       deleteQ = (<span className='delete-link' onClick={this.handleDelete.call(this, this.props.question.id)}>delete</span>);
     }
+
+    let votes = 0 
+   
+    if (this.props.question.votes.length > 0) {
+      votes = this.props.question.votes.reduce((acc, el) => acc + el);
+    }
+
     return(
       <div>
       <div className='question-header'>
@@ -56,7 +63,7 @@ class QuestionShow extends React.Component {
             <div className='post-layout-left'>
               <i style={{lineHeight: '0.5'}}
               className="fas fa-caret-up fa-3x"></i>
-              <div className='stats-number'>1</div>
+              <div className='stats-number'>{votes}</div>
               <i style={{lineHeight: '0.5'}}
               className="fas fa-caret-down fa-3x"></i>
               <i className="fas fa-star fa-2x"></i>
@@ -101,7 +108,9 @@ class QuestionShow extends React.Component {
 }
 
 const msp = (state, ownProps) => {
+  debugger
   return {
+    
     question: state.entities.questions[ownProps.match.params.questionId],
     user_id: state.session.id,
     answers: state.entities.answers

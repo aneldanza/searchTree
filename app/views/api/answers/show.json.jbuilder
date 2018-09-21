@@ -6,3 +6,4 @@ json.author do
   json.partial! '/api/users/user', user: @answer.user
 end
 
+json.votes @answer.votes.pluck(:vote_type)
