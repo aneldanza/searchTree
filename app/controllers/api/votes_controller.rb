@@ -4,7 +4,6 @@ class Api::VotesController < ApplicationController
   # end
 
   def create
-    debugger
     @vote = Vote.new(votes_params)
     unless @vote.save 
       render json: @vote.errors.full_messages, status: 422

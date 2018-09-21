@@ -12,8 +12,6 @@ class SideBar extends React.Component {
               <li id='public'>PUBLIC</li>
               <li><NavLink to={`/questions`}>
                 <i className="fas fa-globe-americas"></i> <strong>searchTree</strong></NavLink></li>
-              <li><NavLink to={`/tags`}>Tags</NavLink></li>
-              <li><NavLink to={`/users`}>Users</NavLink></li>
             </ul>
           </li>
         </ul>
@@ -25,3 +23,6 @@ class SideBar extends React.Component {
 
 
 export default SideBar;
+
+{/* <li><NavLink to={`/tags`}>Tags</NavLink></li>
+<li><NavLink to={`/users`}>Users</NavLink></li> */}

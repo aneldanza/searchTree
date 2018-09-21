@@ -4,26 +4,18 @@ import { Link } from 'react-router-dom';
 class ListOfAnswers extends React.Component {
   constructor(props) {
     super(props);
+  
     this.state = {
       allAnswers: this.props.allAnswers,
-      question: this.props.question
+      question: this.props.question,
     }
     
   }
 
   componentDidUpdate(prevProps) {
-    let old_votes_count = 0;
-    prevProps.AllAsnswers.forEach(answer => {
-      old_votes_count += answer.votes.length
-    })
-
-    let new_votes_count = 0;
-    this.props.AllAsnswers.forEach(answer => {
-      new_votes_count += answer.votes.length
-    })
-    debugger
-    if ((Object.keys(prevProps.allAnswers).length !== Object.keys(this.props.allAnswers).length) || (old_votes_count !== new_votes_count)) {
-      debugger
+  
+    if ((Object.keys(prevProps.allAnswers).length !== Object.keys(this.props.allAnswers).length)) {
+  
       this.setState({allAnswers: this.props.allAnswers});
     }
   }
@@ -34,11 +26,11 @@ class ListOfAnswers extends React.Component {
     }
   }
 
-  createDownVote(idx) {
+  createVote(idx, vote_type) {
     const vote = {
       post_id: idx,
       user_id: this.props.user_id,
-      vote_type: -1,
+      vote_type: vote_type,
       post_type: 'Answer'
     }
 
@@ -77,11 +69,12 @@ class ListOfAnswers extends React.Component {
             <div className='answer-show-container'>
               <div className='answer-layout-left'>
                 <i style={{lineHeight: '0.5'}}
-                className="fas fa-caret-up fa-3x"></i>
+                className="fas fa-caret-up fa-3x"
+                onClick={() => this.createVote.call(this, answer.id, 1)}></i>
                 <div className='stats-number'>{votes}</div>
                 <i style={{lineHeight: '0.5'}}
                 className="fas fa-caret-down fa-3x"
-                onClick={() => this.createDownVote.call(this, answer.id)}></i>
+                onClick={() => this.createVote.call(this, answer.id, -1)}></i>
               </div> 
 
               <div className='answer-layout'>

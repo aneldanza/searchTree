@@ -93,8 +93,11 @@ class SessionForm extends React.Component {
     let additional_signup;
     if (this.props.formType === 'Log In') {
       additional_signup = (
-        <div id='switch'>
-          Don't have an account? <Link id="login" to={`/signup`}>Sign up</Link>
+      
+          <div id='switch'>
+            Don't have an account? <Link id="login" to={`/signup`}>Sign up </Link>
+             or <button id="login" onClick={() => this.props.demoLogin()}>DemoLogIn</button>
+       
         </div>
       );
     }
