@@ -6,6 +6,12 @@ class Search extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    let query = this.props.location.search.slice(3).split('%20').join(" ");
+    
+    this.props.search(query)
+  }
+
   render() {
 
     let count = this.props.questions.length;
@@ -19,18 +25,32 @@ class Search extends React.Component {
     let list = null;
     if (this.props.questions.length > 0) {
       list = this.props.questions.map((question, idx) => {
-    
+        
+        let votes = 0    
+        if (question.votes.length > 0) {
+          votes = question.votes.reduce((acc, el) => acc + el);
+        }
+
+        let proper_wording = "votes";
+        if (votes === 1) {
+          proper_wording = 'vote'
+        }
+
+        let answer_wording = "answers";
+        if (question.answerIds.length === 1) {
+          answer_wording = 'answer'
+        }
         return (      
           <li key={idx}>
             <div className='answer-show-container'>
             
               <div className='answer-layout-left'>                
                   <div className='stats'>
-                    <div className='stats-number'>0</div>
-                    <div>votes</div>
+                    <div className='stats-number'>{votes}</div>
+                    <div>{proper_wording}</div>
                   </div>
                   <div className='stats'>
-                    <div className='stats-number'>0</div>
+                    <div className='stats-number'>{question.answerIds.length}</div>
                     <div>answers</div>
                   </div>          
               </div> 

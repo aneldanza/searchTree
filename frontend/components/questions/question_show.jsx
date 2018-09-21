@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { requestQuestion, deleteQuestion } from '../../actions/questions_actions';
-import { receiveAllAnswers, deleteAnswer } from '../../actions/answer_actions';
+import { receiveAllAnswers, deleteAnswer, requestAnswer } from '../../actions/answer_actions';
 import { Link } from 'react-router-dom';
 import AnswerFormContainer from '../answers/answer_form_container';
 import ListOfAnswers from '../answers/list_of_answers';
+import { createVote } from '../../actions/vote_actions';
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -29,6 +30,16 @@ class QuestionShow extends React.Component {
     }
   }
 
+  createVote(idx, vote_type) {
+    const vote = {
+      post_id: idx,
+      user_id: this.props.user_id,
+      vote_type: vote_type,
+      post_type: 'Question'
+    }
+    this.props.createVote(vote)
+  }
+
   render() {
 
     if (!(this.props.question)) {
@@ -39,6 +50,13 @@ class QuestionShow extends React.Component {
     if (this.props.user_id === this.props.question.user_id) {
       deleteQ = (<span className='delete-link' onClick={this.handleDelete.call(this, this.props.question.id)}>delete</span>);
     }
+
+    let votes = 0 
+   
+    if (this.props.question.votes.length > 0) {
+      votes = this.props.question.votes.reduce((acc, el) => acc + el);
+    }
+
     return(
       <div>
       <div className='question-header'>
@@ -55,10 +73,12 @@ class QuestionShow extends React.Component {
           <div className='question-container'>
             <div className='post-layout-left'>
               <i style={{lineHeight: '0.5'}}
-              className="fas fa-caret-up fa-3x"></i>
-              <div className='stats-number'>1</div>
+              className="fas fa-caret-up fa-3x"
+              onClick={() => this.createVote.call(this, this.props.question.id, 1)}></i>
+              <div className='stats-number'>{votes}</div>
               <i style={{lineHeight: '0.5'}}
-              className="fas fa-caret-down fa-3x"></i>
+              className="fas fa-caret-down fa-3x"
+              onClick={() => this.createVote.call(this, this.props.question.id, -1)}></i>
               <i className="fas fa-star fa-2x"></i>
             </div> 
 
@@ -85,7 +105,9 @@ class QuestionShow extends React.Component {
             question={this.props.question} 
             allAnswers={this.props.answers} 
             requestQuestion={this.props.requestQuestion}
-            deleteAnswer={this.props.deleteAnswer}/>
+            deleteAnswer={this.props.deleteAnswer}
+            createVote={this.props.createVote}
+            requestAnswer={this.props.requestAnswer}/>
           </div>
           <div>
             <AnswerFormContainer />
@@ -101,7 +123,9 @@ class QuestionShow extends React.Component {
 }
 
 const msp = (state, ownProps) => {
+  
   return {
+    
     question: state.entities.questions[ownProps.match.params.questionId],
     user_id: state.session.id,
     answers: state.entities.answers
@@ -114,6 +138,8 @@ const mdp = (dispatch) => {
     deleteQuestion: id => dispatch(deleteQuestion(id)),
     receiveAllAnswers: () => dispatch(receiveAllAnswers()),
     deleteAnswer: id => dispatch(deleteAnswer(id)),
+    createVote: vote => dispatch(createVote(vote)),
+    requestAnswer: id => dispatch(requestAnswer(id)),
   }
 }
 

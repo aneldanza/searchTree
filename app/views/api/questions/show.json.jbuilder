@@ -15,8 +15,13 @@
     @answers.each do |ans|
       json.set! ans.id do 
         json.extract! ans, :id, :user_id, :question_id, :body
+        json.votes ans.votes.pluck(:vote_type)
       end 
     end 
   end 
+
+  json.votes @question.votes.pluck(:vote_type)
+
+
 
 

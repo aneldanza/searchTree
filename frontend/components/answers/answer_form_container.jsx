@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import AnswerForm from './answer_form';
 import { createAnswer } from '../../actions/answer_actions';
+import { withRouter } from 'react-router-dom';
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
   return {
     answer: {
       user_id: state.session.id,
-      question_id: Object.keys(state.entities.questions)[0],
+      question_id: ownProps.match.params.questionId,
       body: ''
     }
   }
@@ -18,4 +19,4 @@ const mdp = (dispatch) => {
   }
 }
 
-export default connect(msp, mdp)(AnswerForm);
+export default withRouter(connect(msp, mdp)(AnswerForm));

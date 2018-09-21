@@ -14,7 +14,8 @@ const msp = (state) => {
 const mdp = (dispatch) => {
   return {
     receiveAllQuestions: () => dispatch(receiveAllQuestions()),
-    receiveAllUsers: () => dispatch(receiveAllUsers())
+    receiveAllUsers: () => dispatch(receiveAllUsers()),
+    requestQuestion: (id) => dispatch(requestQuestion(id))
   };
 };
 

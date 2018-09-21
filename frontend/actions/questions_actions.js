@@ -5,11 +5,12 @@ export const RECEIVE_QUESTION = 'RECEIVE_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION'; 
 export const RECEIVE_SEARCH_REQUEST = 'RECEIVE_SEARCH_REQUEST';
 
-export const receiveQuestion = ({ question, answers, users }) => ({
+export const receiveQuestion = ({ question, answers, users, votes }) => ({
   type: RECEIVE_QUESTION,
   question,
   users: users || {},
   answers: answers || {},
+  votes: votes || {},
 });
 
 export const receiveAllQuestions = () => {

@@ -14,4 +14,13 @@ class Question < ApplicationRecord
     validates :title, :body, :user_id, presence: true
     has_many :answers
     belongs_to :user
+    has_many :votes, as: :post
+
+    def vote_count
+        sum = 0
+        self.votes.each do |vote|
+            sum += vote.vote_type
+        end
+        sum
+    end
 end

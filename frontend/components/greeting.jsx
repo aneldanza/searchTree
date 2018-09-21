@@ -4,8 +4,9 @@ import { Link, withRouter } from 'react-router-dom';
 class Greeting extends React.Component {
   constructor(props) {
     super(props);
+    let query = this.props.location.search.slice(3).split('%20').join(" ");
     this.state = {
-      input: ''
+      input: query || ''
     }
   }
 
