@@ -1,5 +1,5 @@
 {
-  "name": "Code",
+  "name": "searchTree",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.0.0",
