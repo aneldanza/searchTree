@@ -5,9 +5,7 @@ import thunk from 'redux-thunk';
 
 const middlewares = [thunk];
 
-if (true) {
-  if (process.env.NODE_ENV !== 'production') {
-    must use 'require' (import only allowed at top of file)
+if (process.env.NODE_ENV !== 'production') {
   const { logger } = require('redux-logger');
   middlewares.push(logger);
 }
