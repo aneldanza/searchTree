@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
 import { Link } from 'react-router-dom';
 
 class AnswerItem extends React.Component {
@@ -52,9 +53,12 @@ class AnswerItem extends React.Component {
               <div className='answer-layout'>
 
                 <div className='post-layout-main'>
-                  <article className='question-body'>
-                    {this.props.answer.body}
-                  </article>
+                <ReactQuill 
+                className='question-body'
+                readOnly
+                modules={{toolbar: null}}
+                value={this.props.answer.body}
+                />
                   <div className='question-details'>
                     <Link to={`/answers/${this.props.answer.id}/edit`}>edit</Link>
                     {deleteA}
@@ -72,3 +76,6 @@ class AnswerItem extends React.Component {
 
 
 export default AnswerItem;
+{/* <article className='question-body'>
+  {this.props.answer.body}
+</article> */}
