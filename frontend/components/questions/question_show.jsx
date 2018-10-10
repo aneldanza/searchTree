@@ -73,13 +73,12 @@ class QuestionShow extends React.Component {
           <div className='question-container'>
             <div className='post-layout-left'>
               <i style={{lineHeight: '0.5'}}
-              className="fas fa-caret-up icon-3x"
+              className="fas fa-caret-up fa-3x"
               onClick={() => this.createVote.call(this, this.props.question.id, 1)}></i>
               <div className='stats-number'>{votes}</div>
               <i style={{lineHeight: '0.5'}}
-              className="fas fa-caret-down icon-3x"
+              className="fas fa-caret-down fa-3x"
               onClick={() => this.createVote.call(this, this.props.question.id, -1)}></i>
-              <i className="fas fa-star icon-2x"></i>
             </div> 
 
             <div className='post-layout'>
@@ -151,3 +150,5 @@ export default connect(msp, mdp)(QuestionShow);
 <a href="#">javascript</a>
 <a href="#">MacOS</a>
 </div> */}
+
+{/* <i className="fas fa-star fa-2x"></i> */}

@@ -3,6 +3,12 @@ import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import { toolbar } from '../../util/quil_toolbar';
 
+var icons = ReactQuill.Quill.import('ui/icons');
+icons['bold'] = '<i class="fa fa-bold" aria-hidden="true"></i>';
+icons['italic'] = '<i class="fa fa-italic" aria-hidden="true"></i>';
+icons['underline'] = '<i class="fa fa-underline" aria-hidden="true"></i>';
+icons['link'] = '<i class="fa fa-link" aria-hidden="true"></i>';
+
 class AnswerForm extends React.Component {
   constructor(props) {
     super(props)
@@ -10,7 +16,8 @@ class AnswerForm extends React.Component {
   }
   
   updateBody(e) {
-    this.setState({body: e.target.value});
+    debugger
+    this.setState({body: e});
   }
 
   handleClick(e) {
@@ -26,11 +33,13 @@ class AnswerForm extends React.Component {
     return (
       <form className='question-form'>
         <label className='answer-form-label'>Your Answer</label>
-        <textarea className='form-input' 
-        cols='92' 
-        rows='15' 
+        <ReactQuill 
         value={this.state.body}
-        onChange={this.updateBody.bind(this)}></textarea>
+        onChange={this.updateBody.bind(this)}
+        modules={AnswerForm.modules}
+        formats={AnswerForm.formats}
+        theme={'snow'}
+        />
         <div>
           <button id='cool-button'
           onClick={this.handleClick.bind(this)}>
@@ -41,11 +50,21 @@ class AnswerForm extends React.Component {
   }
 }
 
-AnswerForm.modules = {
+AnswerForm.modules = toolbar;
+
+AnswerForm.customModules = {
   toolbar: {
-    containder: toolbar
+    container: '#toolbar'
   }
 }
 
+AnswerForm.formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline',
+  'list', 'bullet', 'indent',
+  'link','align','color'
+]
+
 export default withRouter(AnswerForm);
+
 

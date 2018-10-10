@@ -40,3 +40,31 @@
   border-top: 1px solid #e4e6e8;
   padding: 10px 0;
 }
+
+.quill {
+  // margin: 1rem auto;
+  max-width: 45rem;
+}
+
+.ql-container {
+  min-height: 10em;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  background: #fefcfc;
+  border: 1px solid #ccc;
+  border-top: 0;
+}
+
+.ql-toolbar {
+  background: #eaecec;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+#toolbar {
+  background: #eaecec;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  border: 1px solid #ccc;
+  padding: 0.75em;
+}
