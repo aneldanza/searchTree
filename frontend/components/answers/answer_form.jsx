@@ -1,15 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
-import Quill from 'react-quill';
 import { toolbar } from '../../util/quil_toolbar';
-import {UnprivilegedEditor} from 'react-quill';
 
 var icons = ReactQuill.Quill.import('ui/icons');
 icons['bold'] = '<i class="fa fa-bold" aria-hidden="true"></i>';
 icons['italic'] = '<i class="fa fa-italic" aria-hidden="true"></i>';
 icons['underline'] = '<i class="fa fa-underline" aria-hidden="true"></i>';
 icons['link'] = '<i class="fa fa-link" aria-hidden="true"></i>';
+icons['image'] = '<i class="fa fa-image" aria-hidden="true"></i>';
+
 
 class AnswerForm extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class AnswerForm extends React.Component {
   }
   
   updateBody(value) {
-    debugger
     this.setState({body: value});
   }
 
@@ -27,10 +26,9 @@ class AnswerForm extends React.Component {
     const answer = {
       user_id: this.state.user_id,
       body: this.state.body,
-      // body: this.state.body.replace(/<\/?[^>]+(>|$)/g, ""),
       question_id: this.state.question_id
     }
-    debugger
+ 
     this.props.action(answer)
     .then(data => {
       this.setState({title: '', body: '', tags: ''})
@@ -38,19 +36,14 @@ class AnswerForm extends React.Component {
     });
   }
 
-  // onBlur(input) {
-  //   debugger
-  //   this.setState({body: input.trim()});
-  // }
   render() {
     return (
       <form className='question-form'>
         <label className='answer-form-label'>Your Answer</label>
         <ReactQuill 
-        className='textarea'
-        value={this.state.body}
-        onChange={this.updateBody.bind(this)}
-      
+          className='textarea'
+          value={this.state.body}
+          onChange={this.updateBody.bind(this)}
           modules={AnswerForm.modules}
           formats={AnswerForm.formats}
           theme={'snow'}
@@ -65,7 +58,6 @@ class AnswerForm extends React.Component {
   }
 }
 
-// onChange={this.updateBody.bind(this)}
 AnswerForm.modules = toolbar;
 
 AnswerForm.customModules = {
@@ -78,17 +70,7 @@ AnswerForm.formats = [
   'header', 'font', 'size',
   'bold', 'italic', 'underline',
   'list', 'bullet', 'indent',
-  'link','align','color'
+  'link','image','align','color', 'code-block'
 ]
 
 export default withRouter(AnswerForm);
-
-
-// onBlur={(range, source, quill) => {
-//   debugger
-//   this.onBlur(quill.getText());
-// }}
-
-// onBlur={(range, source, quill) => {
-//   this.onBlur(quill.getHTML());
-// }}
