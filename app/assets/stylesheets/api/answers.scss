@@ -66,6 +66,11 @@
   border: none !important
 }
 
+.ql-snow .ql-editor pre.ql-syntax {
+  background-color: rgb(239, 240, 241) !important;
+  color: black !important;
+}
+
 .ql-toolbar {
   background: #eaecec;
   border-top-left-radius: 0.5em;
@@ -78,6 +83,11 @@
   border-top-right-radius: 0.5em;
   border: 1px solid #ccc;
   padding: 0.75em;
+}
+
+.ql-editor {
+  padding: 0px !important;
+
 }
 
 .ql-editor p {
