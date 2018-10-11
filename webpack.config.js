@@ -10,7 +10,7 @@ var prodPlugins = [
     'process.env': {
       'NODE_ENV': JSON.stringify('production')
     }
-  }),
+  }), 
   {
     optimization: {
       minimizer: [new UglifyJsPlugin()]
