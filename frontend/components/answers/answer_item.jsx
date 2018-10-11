@@ -37,7 +37,7 @@ class AnswerItem extends React.Component {
     if (this.props.answer.votes.length > 0) {
       votes = this.props.answer.votes.reduce((acc, el) => acc + el);
     }
-
+   
     return (
             <div className='answer-show-container'>
               <div className='answer-layout-left'>
@@ -67,6 +67,7 @@ class AnswerItem extends React.Component {
 
                 <div className='post-layout-comment'>
                   add comment
+                  
                 </div> 
               </div>
             </div>

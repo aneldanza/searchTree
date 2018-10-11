@@ -155,6 +155,6 @@ export default connect(msp, mdp)(QuestionShow);
 <a href="#">ruby</a>
 <a href="#">javascript</a>
 <a href="#">MacOS</a>
-</div> */}
+</div> */}  
 
 {/* <a href="https://stackoverflow.com/jobs/remote-developer-jobs"><div className='advertising'></div></a> */}
