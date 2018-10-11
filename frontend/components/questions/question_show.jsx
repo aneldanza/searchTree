@@ -118,6 +118,7 @@ class QuestionShow extends React.Component {
 
         </div>
         <div className='question-sidebar'>
+      <a href="https://stackoverflow.com/jobs/remote-developer-jobs"><div className='advertising'></div></a>
 
         </div>
       </div>
@@ -156,5 +157,3 @@ export default connect(msp, mdp)(QuestionShow);
 <a href="#">javascript</a>
 <a href="#">MacOS</a>
 </div> */}  
-
-{/* <a href="https://stackoverflow.com/jobs/remote-developer-jobs"><div className='advertising'></div></a> */}
