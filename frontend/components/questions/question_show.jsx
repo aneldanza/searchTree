@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
 import { requestQuestion, deleteQuestion } from '../../actions/questions_actions';
 import { receiveAllAnswers, deleteAnswer, requestAnswer } from '../../actions/answer_actions';
@@ -83,9 +84,12 @@ class QuestionShow extends React.Component {
 
             <div className='post-layout'>
               <div className='post-layout-main'>
-                <article className='question-body'>
-                  {this.props.question.body}
-                </article>
+                 <ReactQuill 
+                className='question-body'
+                readOnly
+                modules={{toolbar: null}}
+                value={this.props.question.body}
+                />
                 <div className='question-details'>
                   <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
                   {deleteQ}
@@ -150,5 +154,3 @@ export default connect(msp, mdp)(QuestionShow);
 <a href="#">javascript</a>
 <a href="#">MacOS</a>
 </div> */}
-
-{/* <i className="fas fa-star fa-2x"></i> */}
