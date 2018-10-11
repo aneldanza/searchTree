@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactQuill from 'react-quill'
 import { Link } from 'react-router-dom';
 
 export const QuestionItem = ({ question, users }) => {
@@ -33,14 +34,20 @@ export const QuestionItem = ({ question, users }) => {
       </div>
       <div className='summary'>
         <div><Link to={`/questions/${question.id}`} className='question-hyperlink'>{question.title}</Link></div>
-        <div className='question-body'>{question.body}</div>
+        <ReactQuill
+        className='question-body' 
+        readOnly
+        modules={{toolbar: null}}
+        value={question.body}
+        />
         <div className='user-info'>{users[question.user_id].username}</div> 
       </div>
     </div>
   );
 };
-        // <div className='tags'>
-        // <a href="#">ruby</a>
-        // <a href="#">javascript</a>
-        // <a href="#">MacOS</a>
-        // </div>
+// <div className='tags'>
+// <a href="#">ruby</a>
+// <a href="#">javascript</a>
+// <a href="#">MacOS</a>
+// </div>
+{/* <div className='question-body'>{question.body}</div> */}
