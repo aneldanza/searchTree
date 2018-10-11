@@ -1,4 +1,6 @@
 import React from 'react';
+// import hljs from 'highlight.js';
+// import 'highlight.js/styles/monokai-sublime.css'
 import ReactQuill from 'react-quill';
 import { toolbar } from '../../util/quil_toolbar';
 import { withRouter } from 'react-router-dom';

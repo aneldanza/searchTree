@@ -117,7 +117,10 @@ class QuestionShow extends React.Component {
           </div>
 
         </div>
-        <div className='question-sidebar'></div>
+        <div className='question-sidebar'>
+        <a href="https://stackoverflow.com/jobs/remote-developer-jobs"><div className='advertising'></div></a>
+
+        </div>
       </div>
  
       </div>

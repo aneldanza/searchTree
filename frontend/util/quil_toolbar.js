@@ -1,4 +1,5 @@
 export const toolbar =  { 
+// syntax: true,
 toolbar: [[{ size: [] }],
 ['bold', 'italic', 'underline'],
 ['link', 'image'],

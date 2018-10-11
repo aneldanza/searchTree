@@ -11,7 +11,9 @@ var prodPlugins = [
       'NODE_ENV': JSON.stringify('production')
     }
   }), 
-  
+  new webpack.ProvidePlugin({
+    "window.hljs": "highlight.js",
+  })
 ];
 
 plugins = plugins.concat(
@@ -26,7 +28,7 @@ plugins = plugins.concat(
       filename: 'bundle.js'
     },
     resolve: {
-      extensions: ['.js', '.jsx', '*']
+      extensions: ['.js', '.jsx', '.hljs', '*']
     },
     plugins: plugins,
     module: {
