@@ -63,7 +63,8 @@
 }
 
 .ql-container.ql-snow {
-  border: none !important
+  border: none !important;
+  // padding: 10px;
 }
 
 .ql-snow .ql-editor pre.ql-syntax {
@@ -92,4 +93,7 @@
 
 .ql-editor p {
   font-size: 15px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top: 10px !important;
 }
