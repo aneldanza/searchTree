@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
 import { Link } from 'react-router-dom';
 
 class Search extends React.Component {
@@ -58,9 +59,12 @@ class Search extends React.Component {
               <div className='answer-layout'>
                 <div className='post-layout-main'>
                   <div className='search-question-title'><Link to={`/questions/${question.id}`} className='question-hyperlink'>{question.title}</Link></div>
-                  <article className='question-body'>
-                    {question.body}
-                  </article>
+                  <ReactQuill
+                  className='question-body'
+                  readOnly
+                  modules={{toolbar: null}}
+                  value={question.body}
+                  />
                   <div className='question-details'>     
                   </div>
                 </div>  
@@ -71,7 +75,7 @@ class Search extends React.Component {
         );
       });
     }
-
+    
     return (
       <section className='container'>
         <div className='questions-index-header'>
@@ -88,3 +92,6 @@ class Search extends React.Component {
 }
 
 export default Search;
+{/* <article className='question-body'>
+  {question.body}
+</article> */}
