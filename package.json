@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "redux-logger": "^3.0.6",
-    "serviceworker-webpack-plugin": "^1.0.0-alpha02"
+    "serviceworker-webpack-plugin": "^1.0.0-alpha02",
+    "uglifyjs-webpack-plugin": "^2.0.1"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
