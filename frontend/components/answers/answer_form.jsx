@@ -23,14 +23,16 @@ class AnswerForm extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    const answer = {
-      id: this.state.id,
-      user_id: this.state.user_id,
-      body: this.state.body,
-      question_id: this.state.question_id
-    }
     debugger
-    this.props.action(answer)
+   
+    // const answer = {
+    //   id: this.state.id,
+    //   user_id: this.state.user_id,
+    //   body: this.state.body,
+    //   question_id: this.state.question_id
+    // }
+    debugger
+    this.props.action(this.state)
     .then(data => {
       this.setState({title: '', body: '', tags: ''})
       this.props.history.push(`/questions/${data.answer.question_id}`)
