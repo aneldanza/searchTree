@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
+import { toolbar } from '../../util/quil_toolbar';
 import { withRouter } from 'react-router-dom';
 
 class QuestionForm extends React.Component {
@@ -11,6 +13,10 @@ class QuestionForm extends React.Component {
     return e => {
       this.setState({[field]: e.target.value});
     }
+  }
+
+  updateBody(value) {
+    this.setState({body: value});
   }
 
   handleSubmit(e) {
@@ -40,11 +46,14 @@ class QuestionForm extends React.Component {
         </div>
         <div className='form-section'>
           <label className='form-label'>Body</label>
-          <textarea className='form-input' 
-          cols='92' 
-          rows='15' 
+          <ReactQuill 
+          className='textarea'
           value={this.state.body}
-          onChange={this.updateField('body').bind(this)}></textarea>
+          onChange={this.updateBody.bind(this)}
+          modules={QuestionForm.modules}
+          formats={QuestionForm.formats}
+          theme={'snow'}
+          />
         </div>
   
         <div>
@@ -56,6 +65,21 @@ class QuestionForm extends React.Component {
     );
   }
 }
+
+QuestionForm.modules = toolbar;
+
+QuestionForm.customModules = {
+  toolbar: {
+    container: '#toolbar'
+  }
+}
+
+QuestionForm.formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline',
+  'list', 'bullet', 'indent',
+  'link','image','align','color', 'code-block'
+]
 
 export default withRouter(QuestionForm);
 
