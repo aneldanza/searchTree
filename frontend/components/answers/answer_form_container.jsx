@@ -9,7 +9,8 @@ const msp = (state, ownProps) => {
       user_id: state.session.id,
       question_id: ownProps.match.params.questionId,
       body: ''
-    }
+    },
+    
   }
 }
 

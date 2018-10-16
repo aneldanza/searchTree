@@ -23,15 +23,6 @@ class AnswerForm extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    debugger
-   
-    // const answer = {
-    //   id: this.state.id,
-    //   user_id: this.state.user_id,
-    //   body: this.state.body,
-    //   question_id: this.state.question_id
-    // }
-    debugger
     this.props.action(this.state)
     .then(data => {
       this.setState({title: '', body: '', tags: ''})
@@ -40,23 +31,32 @@ class AnswerForm extends React.Component {
   }
 
   render() {
+    let warning = '';
+    if (this.props.answer.user_id === null) {
+      warning = (
+        <div class='warning'>Please sign in to post an answer</div>
+      )
+    }
     return (
-      <form className='question-form'>
-        <label className='answer-form-label'>Your Answer</label>
-        <ReactQuill 
-          className='textarea'
-          value={this.state.body}
-          onChange={this.updateBody.bind(this)}
-          modules={AnswerForm.modules}
-          formats={AnswerForm.formats}
-          theme={'snow'}
-          />
-        <div>
-          <button id='cool-button'
-          onClick={this.handleClick.bind(this)}>
-          Post Your Answer</button>
-        </div>
-      </form>
+      <div>
+        {warning}
+        <form className='question-form'>
+          <label className='answer-form-label'>Your Answer</label>
+          <ReactQuill 
+            className='textarea'
+            value={this.state.body}
+            onChange={this.updateBody.bind(this)}
+            modules={AnswerForm.modules}
+            formats={AnswerForm.formats}
+            theme={'snow'}
+            />
+          <div>
+            <button id='cool-button'
+            onClick={this.handleClick.bind(this)}>
+            Post Your Answer</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

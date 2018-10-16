@@ -38,6 +38,7 @@ class AnswerItem extends React.Component {
       votes = this.props.answer.votes.reduce((acc, el) => acc + el);
     }
    
+    
     return (
             <div className='answer-show-container'>
               <div className='answer-layout-left'>

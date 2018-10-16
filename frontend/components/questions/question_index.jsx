@@ -12,7 +12,6 @@ class QuestionIndex extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    nextProps
     if (nextProps.questions.length !== this.props.questions.length) {
       return true;
     }
