@@ -23,7 +23,7 @@ class AnswerItem extends React.Component {
       vote_type: vote_type,
       post_type: 'Answer'
     }
-  
+    debugger
     this.props.createVote(vote);
   }
 
@@ -38,9 +38,15 @@ class AnswerItem extends React.Component {
       votes = this.props.answer.votes.reduce((acc, el) => acc + el);
     }
    
-    
+    let vote_error = ''
+    debugger
+    if (this.props.errors.length > 0) {
+      vote_error = this.props.errors[0]
+    }
     return (
+
             <div className='answer-show-container'>
+            <div>{vote_error}</div>
               <div className='answer-layout-left'>
                 <i style={{lineHeight: '0.5'}}
                 className="fas fa-caret-up fa-3x"

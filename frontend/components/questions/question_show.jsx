@@ -58,6 +58,12 @@ class QuestionShow extends React.Component {
       votes = this.props.question.votes.reduce((acc, el) => acc + el);
     }
 
+    let vote_error = ''
+    debugger
+    if (this.props.errors.length > 0) {
+      vote_error = this.props.errors[0]
+    }
+
     return(
       <div>
       <div className='question-header'>
@@ -72,6 +78,7 @@ class QuestionShow extends React.Component {
       <div className='question-show-container'>
         <div className='show-container'>
           <div className='question-container'>
+            <div>{vote_error}</div>
             <div className='post-layout-left'>
               <i style={{lineHeight: '0.5'}}
               className="fas fa-caret-up fa-3x"
@@ -104,13 +111,9 @@ class QuestionShow extends React.Component {
 
           <div>
             <ListOfAnswers 
-            user_id={this.props.user_id}
             question={this.props.question} 
             allAnswers={this.props.answers} 
-            requestQuestion={this.props.requestQuestion}
-            deleteAnswer={this.props.deleteAnswer}
-            createVote={this.props.createVote}
-            requestAnswer={this.props.requestAnswer}/>
+            />
           </div>
           <div>
             <AnswerFormContainer />
@@ -131,10 +134,10 @@ class QuestionShow extends React.Component {
 const msp = (state, ownProps) => {
   
   return {
-    
     question: state.entities.questions[ownProps.match.params.questionId],
     user_id: state.session.id,
-    answers: state.entities.answers
+    answers: state.entities.answers,
+    errors: state.errors.session,
   }
 }
 
@@ -143,7 +146,6 @@ const mdp = (dispatch) => {
     requestQuestion: id => dispatch(requestQuestion(id)),
     deleteQuestion: id => dispatch(deleteQuestion(id)),
     receiveAllAnswers: () => dispatch(receiveAllAnswers()),
-    deleteAnswer: id => dispatch(deleteAnswer(id)),
     createVote: vote => dispatch(createVote(vote)),
     requestAnswer: id => dispatch(requestAnswer(id)),
   }

@@ -1,6 +1,7 @@
 import * as VoteAPIUtil from '../util/votes_api_util';
 import { receiveQuestion } from '../actions/questions_actions'
 import { receiveAnswer } from '../actions/answer_actions';
+import { receiveErrors } from '../actions/session_actions';
 
 export const createVote = (vote) => {
   return dispatch => {
@@ -11,6 +12,8 @@ export const createVote = (vote) => {
       } else {
         return dispatch(receiveAnswer(post));
       }
+    }, errors => {
+      dispatch(receiveErrors(errors.responseJSON));
     })
   }
 }

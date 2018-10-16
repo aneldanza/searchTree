@@ -3,11 +3,21 @@ class Api::VotesController < ApplicationController
   #   @votes = Vote.all
   # end
 
+  def valid_vote?
+    all_votes = Vote.where('user_id = ? AND post_id = ? AND post_type = ?', votes_params[:user_id], votes_params[:post_id], votes_params[:post_type])
+    votes_count = all_votes.pluck(:vote_type).reduce(0, :+)
+    vote_sum = votes_count + Integer(votes_params[:vote_type])
+    debugger
+    if vote_sum > 1 || vote_sum < -1
+      return false
+    end
+    return true
+  end
+
   def create
     @vote = Vote.new(votes_params)
-   
-    if @vote.save
-  
+
+    if  valid_vote? && @vote.save
       if votes_params[:post_type] == "Question"
         @question = Question.find(votes_params[:post_id])
         @answers = @question.answers
@@ -19,7 +29,11 @@ class Api::VotesController < ApplicationController
         render "api/answers/show"
       end
     else 
-      render json: @vote.errors.full_messages, status: 422
+      errors = []
+      errors.push('Invalid entry')
+      debugger
+      render json: errors, status: 422
+      # render json: @vote.errors.full_messages, status: 422
     end
   end
 

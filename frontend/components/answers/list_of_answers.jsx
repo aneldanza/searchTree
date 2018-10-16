@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AnswerItem from './answer_item';
+import AnswerItemContainer from './answer_item_container';
 
 class ListOfAnswers extends React.Component {
   constructor(props) {
@@ -39,12 +39,9 @@ class ListOfAnswers extends React.Component {
       list = answers.map((answer, idx) => {    
         return (      
           <li key={idx}>
-            <AnswerItem 
+            <AnswerItemContainer 
             answer={answer}
-            user_id={this.props.user_id}
-            deleteAnswer={this.props.deleteAnswer}
-            createVote={this.props.createVote}
-            requestAnswer={this.props.requestAnswer}/>
+            />
           </li>
         );
       });
