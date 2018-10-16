@@ -60,7 +60,7 @@ class QuestionShow extends React.Component {
 
     let vote_error = ''
     debugger
-    if (this.props.errors.length > 0) {
+    if (this.props.errors.length > 0 && this.props.errors[2] === "Question") {
       vote_error = this.props.errors[0]
     }
 

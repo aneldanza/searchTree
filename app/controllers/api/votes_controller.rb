@@ -7,7 +7,7 @@ class Api::VotesController < ApplicationController
     all_votes = Vote.where('user_id = ? AND post_id = ? AND post_type = ?', votes_params[:user_id], votes_params[:post_id], votes_params[:post_type])
     votes_count = all_votes.pluck(:vote_type).reduce(0, :+)
     vote_sum = votes_count + Integer(votes_params[:vote_type])
-    debugger
+    
     if vote_sum > 1 || vote_sum < -1
       return false
     end
@@ -30,8 +30,8 @@ class Api::VotesController < ApplicationController
       end
     else 
       errors = []
-      errors.push('Invalid entry')
-      debugger
+      errors.push('Invalid entry', votes_params[:post_id], votes_params[:post_type])
+     
       render json: errors, status: 422
       # render json: @vote.errors.full_messages, status: 422
     end

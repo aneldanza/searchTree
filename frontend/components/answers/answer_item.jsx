@@ -23,7 +23,7 @@ class AnswerItem extends React.Component {
       vote_type: vote_type,
       post_type: 'Answer'
     }
-    debugger
+    this.props.clearErrors();
     this.props.createVote(vote);
   }
 
@@ -39,8 +39,7 @@ class AnswerItem extends React.Component {
     }
    
     let vote_error = ''
-    debugger
-    if (this.props.errors.length > 0) {
+    if (this.props.errors.length > 0 && this.props.errors[2] === "Answer" && this.props.errors[1] == this.props.answer.id) {
       vote_error = this.props.errors[0]
     }
     return (
