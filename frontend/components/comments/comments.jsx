@@ -21,10 +21,17 @@ class Comments extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createComment(this.state);
+    this.props.clearErrors();
+    this.props.createComment(this.state)
+    this.setState({body: ''})
+  
   }
 
   render() {
+    let comment_error = ''
+    if (this.props.errors.length > 0 && this.props.errors[1] == this.props.post.id) {
+      comment_error = this.props.errors[0]
+    }
     return (
       <div className='post-layout-comment' >
         <div className='comments-list'>
@@ -41,6 +48,7 @@ class Comments extends React.Component {
 
             <button id='cool-button' type='submit'>Add Comment</button>
           </form>
+          <div className='comment-error'>{comment_error}</div>
         </div>
       </div> 
     )

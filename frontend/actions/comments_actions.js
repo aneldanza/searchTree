@@ -4,7 +4,7 @@ import { receiveAnswer } from '../actions/answer_actions';
 export const RECEIVE_COMMENTS_ERRORS = 'RECEIVE_COMMENTS_ERRORS';
 export const CLEAR_COMMENTS_ERRORS = 'CLEAR_COMMENTS_ERRORS';
 
-export const clearErrors = () => {
+export const clearCommentsErrors = () => {
   return {
     type: CLEAR_COMMENTS_ERRORS,
   };
