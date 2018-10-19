@@ -8,6 +8,7 @@ class Api::QuestionsController < ApplicationController
         @answers = @question.answers
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
         @authors = User.where(id: authorIds)
+        @comments = @question.comments 
     end
 
     def search     

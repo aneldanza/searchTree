@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentsListContainer from './comments_list_container';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -34,8 +35,8 @@ class Comments extends React.Component {
     }
     return (
       <div className='post-layout-comment' >
-        <div className='comments-list'>
-        </div>
+        <CommentsListContainer />
+        
         <div className='comment-link' onClick={() => this.displayCommentTextarea()}>
           add comment
         </div>
