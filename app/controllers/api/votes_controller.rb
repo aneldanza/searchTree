@@ -2,10 +2,19 @@ class Api::VotesController < ApplicationController
 
   def valid_vote?
     all_votes = Vote.where('user_id = ? AND post_id = ? AND post_type = ?', votes_params[:user_id], votes_params[:post_id], votes_params[:post_type])
-   
+     
     if all_votes.length > 0 && all_votes.last.vote_type === Integer(votes_params[:vote_type]) 
       return false
     end
+    if votes_params[:post_type] == 'Answer' 
+      post = Answer
+    else 
+      post = Question
+    end
+    if Integer(votes_params[:user_id]) == post.where('id = ?', votes_params[:post_id]).last.user_id
+      return false
+    end 
+    
     return true
   end
 
@@ -24,10 +33,21 @@ class Api::VotesController < ApplicationController
         render "api/answers/show"
       end
     else 
-      errors = []
-      errors.push('Invalid entry', votes_params[:post_id], votes_params[:post_type])
+      @errors = []
+      message = ''
+      if votes_params[:post_type] == 'Answer' 
+        post = Answer
+      else 
+        post = Question
+      end
+      if Integer(votes_params[:user_id]) == post.where('id = ?', votes_params[:post_id]).last.user_id
+        message = 'You cannot vote on your own post'
+      else 
+        message = 'Invalid entry'
+      end 
+      @errors.push(message, votes_params[:post_id], votes_params[:post_type])
      
-      render json: errors, status: 422
+      render json: @errors, status: 422
    
     end
   end
