@@ -59,7 +59,7 @@ class QuestionShow extends React.Component {
     }
 
     let vote_error = ''
-    debugger
+
     if (this.props.errors.length > 0 && this.props.errors[2] === "Question") {
       vote_error = this.props.errors[0]
     }
@@ -78,7 +78,7 @@ class QuestionShow extends React.Component {
       <div className='question-show-container'>
         <div className='show-container'>
           <div className='question-container'>
-            <div>{vote_error}</div>
+            <div className='error'>{vote_error}</div>
             <div className='post-layout-left'>
               <i style={{lineHeight: '0.5'}}
               className="fas fa-caret-up fa-3x"

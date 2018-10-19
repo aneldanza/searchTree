@@ -1,9 +1,13 @@
 class Api::VotesController < ApplicationController
 
   def valid_vote?
+    if votes_params[:user_id] == ''
+     return false
+    end
+
     all_votes = Vote.where('user_id = ? AND post_id = ? AND post_type = ?', votes_params[:user_id], votes_params[:post_id], votes_params[:post_type])
-     
-    if all_votes.length > 0 && all_votes.last.vote_type === Integer(votes_params[:vote_type]) 
+
+    if all_votes.length > 0 && all_votes.last.vote_type == Integer(votes_params[:vote_type]) 
       return false
     end
     if votes_params[:post_type] == 'Answer' 
@@ -40,7 +44,9 @@ class Api::VotesController < ApplicationController
       else 
         post = Question
       end
-      if Integer(votes_params[:user_id]) == post.where('id = ?', votes_params[:post_id]).last.user_id
+      if votes_params[:user_id] == ''
+        message = 'You need to login in order to vote'
+      elsif Integer(votes_params[:user_id]) == post.where('id = ?', votes_params[:post_id]).last.user_id
         message = 'You cannot vote on your own post'
       else 
         message = 'Invalid entry'

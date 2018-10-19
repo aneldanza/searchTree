@@ -6,7 +6,6 @@ import { createVote } from '../../actions/vote_actions';
 import { clearErrors } from '../../actions/session_actions';
 
 const msp = (state, ownProps) => {
-  debugger
   return {
     errors: state.errors.session, 
     user_id: state.session.id,

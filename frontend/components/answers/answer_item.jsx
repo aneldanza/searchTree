@@ -45,7 +45,7 @@ class AnswerItem extends React.Component {
     return (
 
             <div className='answer-show-container'>
-            <div>{vote_error}</div>
+            <div className='error'>{vote_error}</div>
               <div className='answer-layout-left'>
                 <i style={{lineHeight: '0.5'}}
                 className="fas fa-caret-up fa-3x"

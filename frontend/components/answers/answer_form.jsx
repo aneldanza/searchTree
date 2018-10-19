@@ -34,7 +34,7 @@ class AnswerForm extends React.Component {
     let warning = '';
     if (this.props.answer.user_id === null) {
       warning = (
-        <div class='warning'>Please sign in to post an answer</div>
+        <div className='warning'>Please sign in to post an answer</div>
       )
     }
     return (
