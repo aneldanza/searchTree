@@ -31,15 +31,15 @@ class AnswerForm extends React.Component {
   }
 
   render() {
-    let warning = '';
+    let prompt = '';
     if (this.props.answer.user_id === null) {
-      warning = (
+      prompt = (
         <div className='warning'>Please sign in to post an answer</div>
       )
     }
     return (
       <div>
-        {warning}
+        {prompt}
         <form className='question-form'>
           <label className='answer-form-label'>Your Answer</label>
           <ReactQuill 

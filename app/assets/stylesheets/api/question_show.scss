@@ -32,6 +32,14 @@
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 25px;
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  top: -19px;
+  display: inline-block;
+  color:#C91D2E;
 }
 .post-layout {
   width: 100%;
