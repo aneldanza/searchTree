@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   has_many :questions
   has_many :answers
+  has_many :votes
+  has_many :comments
   
   attr_reader :password
   after_initialize :ensure_session_token
