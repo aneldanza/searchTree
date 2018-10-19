@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import AnswerFormContainer from '../answers/answer_form_container';
 import ListOfAnswers from '../answers/list_of_answers';
 import { createVote } from '../../actions/vote_actions';
+import CommentsContainer from '../comments/comments_container';
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class QuestionShow extends React.Component {
       vote_error = this.props.errors[0]
     }
 
+
     return(
       <div>
       <div className='question-header'>
@@ -103,9 +105,7 @@ class QuestionShow extends React.Component {
                 </div>
               </div> 
 
-              <div className='post-layout-comment'>
-                add comment
-              </div> 
+              <CommentsContainer post_id={this.props.question.id}/>
             </div>
           </div>
 
