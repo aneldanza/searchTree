@@ -105,7 +105,7 @@ class QuestionShow extends React.Component {
                 </div>
               </div> 
 
-              <CommentsContainer post_id={this.props.question.id}/>
+              <CommentsContainer post={this.props.question}/>
             </div>
           </div>
 

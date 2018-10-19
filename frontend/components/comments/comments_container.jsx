@@ -5,7 +5,8 @@ import { createComment } from '../../actions/comments_actions';
 
 const msp = (state, ownProps) => {
   return {
-    post_id: own_Props.post_id,
+    post: ownProps.post,
+
   }
 }
 

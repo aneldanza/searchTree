@@ -6,8 +6,11 @@ class Comments extends React.Component {
   }
 
   displayCommentTextarea() {
-    commentLink = document.getElementsByClassName('comment-link').last;
-    commentInput = document.getElementsByClassName('comment-textarea').last;
+    const commentLink = document.getElementsByClassName('comment-link')[0];
+    const commentInput = document.getElementsByClassName('comment-textarea')[0];
+    debugger
+    commentInput.style.display = 'grid';
+    commentLink.style.display = 'none';
   }
 
   render() {
@@ -15,7 +18,7 @@ class Comments extends React.Component {
       <div className='post-layout-comment' >
         <div className='comments-list'>
         </div>
-        <div className='comment-link' onClick={() => displayCommentTextarea()}>
+        <div className='comment-link' onClick={() => this.displayCommentTextarea()}>
           add comment
         </div>
         <div className='comment-textarea'>
