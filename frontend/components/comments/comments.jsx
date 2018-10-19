@@ -8,7 +8,6 @@ class Comments extends React.Component {
   displayCommentTextarea() {
     const commentLink = document.getElementsByClassName('comment-link')[0];
     const commentInput = document.getElementsByClassName('comment-textarea')[0];
-    debugger
     commentInput.style.display = 'grid';
     commentLink.style.display = 'none';
   }
@@ -22,8 +21,8 @@ class Comments extends React.Component {
           add comment
         </div>
         <div className='comment-textarea'>
-          <form>
-            <textarea></textarea>
+          <form className='comment-form'>
+            <textarea className='comment-input'></textarea>
             <button id='cool-button'>Add Comment</button>
           </form>
         </div>

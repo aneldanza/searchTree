@@ -1,8 +1,25 @@
 .comment-link {
   display: inline-block;
   color: blue;
+  cursor: pointer;
 }
 
 .comment-textarea {
   display: none;
+
+}
+
+.comment-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.comment-input {
+  border: 1px solid #c8ccd0;
+  background-color: white;
+  font-size: 13px;
+  border-radius: 3px;
+  color: #3b4045;
+  padding: 0px 5px;
+  // width: 100%;
 }
