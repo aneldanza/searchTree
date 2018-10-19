@@ -1,7 +1,21 @@
 import * as CommentAPIUtil from '../util/comments_api_util';
 import { receiveQuestion } from '../actions/questions_actions'
 import { receiveAnswer } from '../actions/answer_actions';
+export const RECEIVE_COMMENTS_ERRORS = 'RECEIVE_COMMENTS_ERRORS';
+export const CLEAR_COMMENTS_ERRORS = 'CLEAR_COMMENTS_ERRORS';
 
+export const clearErrors = () => {
+  return {
+    type: CLEAR_COMMENTS_ERRORS,
+  };
+};
+
+export const receiveCommentsErrors = (errors) => {
+  return {
+    type: RECEIVE_COMMENTS_ERRORS,
+    errors: errors
+  };
+};
 
 export const createComment = (comment) => {
   return dispatch => {
@@ -13,7 +27,7 @@ export const createComment = (comment) => {
         return dispatch(receiveAnswer(post));
       }
     }, errors => {
-      dispatch(receiveErrors(errors.responseJSON));
+      dispatch(receiveCommentsErrors(errors.responseJSON));
     })
   }
 }

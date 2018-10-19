@@ -1,10 +1,11 @@
-import { RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
+
+import { RECEIVE_COMMENTS_ERRORS, CLEAR_COMMENTS_ERRORS } from '../actions/comments_actions';
 
 const CommentsErrorsReducer = (state = [], action) => {
   switch (action.type) {
-    case RECEIVE_ERRORS:
+    case RECEIVE_COMMENTS_ERRORS:
       return action.errors;
-    case CLEAR_ERRORS:
+    case CLEAR_COMMENTS_ERRORS:
       return [];
     default:
       return state;

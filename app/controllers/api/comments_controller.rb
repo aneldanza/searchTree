@@ -13,7 +13,6 @@ class Api::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comments_params)
-
     if  valid_comment? && @comment.save
       if comments_params[:post_type] == "Question"
         @question = Question.find(comments_params[:post_id])
