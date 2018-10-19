@@ -6,7 +6,11 @@ import { createComment } from '../../actions/comments_actions';
 const msp = (state, ownProps) => {
   return {
     post: ownProps.post,
-
+    comment: {
+      user_id: state.session.id,
+      post_id: ownProps.post.id,
+      body: '',
+    }
   }
 }
 
