@@ -6,9 +6,15 @@ class CommentsList extends React.Component {
   }
 
   render() {
+    const list = this.props.comments.map((post, idx) => {
+      return (
+        <li className='comment' key={idx}>{post.body}</li>
+      )
+    })
     return(
-      <div className='comments-list'>
-      </div>
+      <ul className='comments-list'>
+      {list}
+      </ul>
     );
   }
 }

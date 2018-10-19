@@ -29,3 +29,15 @@
   border-color: rgba(0,149,255,0.5);
   box-shadow: inset 0 1px 2px #e4e6e8,0 0 2px rgba(0,149,255,0.2);
 }
+
+.comments-list {
+  display: grid;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #e4e6e8;
+}
+
+.comment {
+  padding: 6px 0;
+  border-bottom: 1px solid #eff0f1;
+}

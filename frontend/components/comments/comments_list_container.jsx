@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import CommentsList from './comments_list';
 
 const msp = (state, ownProps) => {
-  debugger
+  const comments = Object.values(state.entities.comments[ownProps.id]);
   return {
-    
+    comments: comments,
   }
 }
 
