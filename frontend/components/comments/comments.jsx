@@ -5,7 +5,7 @@ class Comments extends React.Component {
     super(props)
     this.state = this.props.comment;
     this.updateBody = this.updateBody.bind(this);
-    
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   displayCommentTextarea() {
@@ -19,6 +19,11 @@ class Comments extends React.Component {
     this.setState({body: e.target.value});
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createComment(this.state);
+  }
+
   render() {
     return (
       <div className='post-layout-comment' >
@@ -28,13 +33,13 @@ class Comments extends React.Component {
           add comment
         </div>
         <div className='comment-textarea'>
-          <form className='comment-form'>
+          <form className='comment-form' onSubmit={this.handleSubmit}>
             <textarea className='comment-input' rows='3' cols='68'
             placeholder='Use comments to reply to other users or notify them of changes.'
             value={this.state.body}
             onChange={this.updateBody}/>
 
-            <button id='cool-button'>Add Comment</button>
+            <button id='cool-button' type='submit'>Add Comment</button>
           </form>
         </div>
       </div> 
