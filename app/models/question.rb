@@ -15,5 +15,5 @@ class Question < ApplicationRecord
     has_many :answers
     belongs_to :user
     has_many :votes, as: :post
-
+    has_many :comments, as: :post
 end
