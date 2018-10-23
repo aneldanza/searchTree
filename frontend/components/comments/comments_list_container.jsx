@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CommentsList from './comments_list';
 
 const msp = (state, ownProps) => {
-  const comments = Object.values(state.entities.comments[ownProps.id]);
+  const comments = state.entities.comments;
   return {
     comments: comments,
   }

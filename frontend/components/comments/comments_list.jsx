@@ -6,7 +6,10 @@ class CommentsList extends React.Component {
   }
 
   render() {
-    const list = this.props.comments.map((post, idx) => {
+    if (!this.props.comments[this.props.id]) {
+      return <div></div>
+    }
+    const list = Object.values(this.props.comments[this.props.id]).map((post, idx) => {
       return (
         <li className='comment' key={idx}>{post.body}</li>
       )
