@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import { Link } from 'react-router-dom';
+import CommentsContainer from '../comments/comments_container';
 
 class AnswerItem extends React.Component {
   constructor(props) {
@@ -71,10 +72,7 @@ class AnswerItem extends React.Component {
                   </div>
                 </div> 
 
-                <div className='post-layout-comment'>
-                  add comment
-                  
-                </div> 
+                <CommentsContainer post={this.props.answer}/>
               </div>
             </div>
     );

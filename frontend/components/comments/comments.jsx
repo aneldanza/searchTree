@@ -10,8 +10,11 @@ class Comments extends React.Component {
   }
 
   displayCommentTextarea() {
-    const commentLink = document.getElementsByClassName('comment-link')[0];
-    const commentInput = document.getElementsByClassName('comment-textarea')[0];
+    if (this.props.position === -1) {
+      return
+    }
+    const commentLink = document.getElementsByClassName('comment-link')[this.props.position];
+    const commentInput = document.getElementsByClassName('comment-textarea')[this.props.position];
     commentInput.style.display = 'grid';
     commentLink.style.display = 'none';
   }
