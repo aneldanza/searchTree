@@ -6,6 +6,7 @@ const msp = (state, ownProps) => {
   let post_comments = [];
   let commentsIds = [];
   const comments = state.entities.comments;
+
   
   if (ownProps.post.title) {
     commentsIds = state.entities.questions[ownProps.id].commentsIds;
@@ -21,6 +22,7 @@ const msp = (state, ownProps) => {
 
   return {
     comments: post_comments,
+    users: state.entities.users,
   }
 }
 
