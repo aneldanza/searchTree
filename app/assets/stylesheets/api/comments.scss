@@ -1,6 +1,6 @@
 .comment-link {
   display: inline-block;
-  color: blue;
+  color: #3af;
   cursor: pointer;
 }
 
@@ -39,7 +39,11 @@
 
 .comment {
   display: grid;
-  
+
   padding: 6px 0;
   border-bottom: 1px solid #eff0f1;
+}
+
+.username {
+  color: #3af;
 }

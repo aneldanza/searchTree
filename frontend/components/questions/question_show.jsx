@@ -8,6 +8,7 @@ import AnswerFormContainer from '../answers/answer_form_container';
 import ListOfAnswers from '../answers/list_of_answers';
 import { createVote } from '../../actions/vote_actions';
 import CommentsContainer from '../comments/comments_container';
+import PostLinks from '../functional_pieces/post_links';
 
 class QuestionShow extends React.Component {
   constructor(props) {
@@ -24,14 +25,6 @@ class QuestionShow extends React.Component {
     }
   }
 
-  handleDelete(id) {
-    return () => {
-      this.props.deleteQuestion(id).then(() => {
-        this.props.history.push('/');
-      })
-    }
-  }
-
   createVote(idx, vote_type) {
     const vote = {
       post_id: idx,
@@ -43,14 +36,8 @@ class QuestionShow extends React.Component {
   }
 
   render() {
-
     if (!(this.props.question)) {
       return (<div></div>);
-    }
-
-    let deleteQ = null;
-    if (this.props.user_id === this.props.question.user_id) {
-      deleteQ = (<span className='delete-link' onClick={this.handleDelete.call(this, this.props.question.id)}>delete</span>);
     }
 
     let votes = 0 
@@ -64,7 +51,6 @@ class QuestionShow extends React.Component {
     if (this.props.errors.length > 0 && this.props.errors[2] === "Question") {
       vote_error = this.props.errors[0]
     }
-
 
     return(
       <div>
@@ -99,10 +85,13 @@ class QuestionShow extends React.Component {
                 modules={{toolbar: null}}
                 value={this.props.question.body}
                 />
-                <div className='question-details'>
-                  <Link to={`/questions/${this.props.question.id}/edit`}>edit</Link>
-                  {deleteQ}
-                </div>
+                <PostLinks user_id={this.props.user_id}
+                           author_id={this.props.question.user_id} 
+                           post_id={this.props.question.id}
+                           deletePost={this.props.deleteQuestion}
+                           post='question'
+                           history={this.props.history}
+                           />
               </div> 
 
               <CommentsContainer post={this.props.question}/>

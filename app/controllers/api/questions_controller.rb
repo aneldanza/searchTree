@@ -7,8 +7,7 @@ class Api::QuestionsController < ApplicationController
         @question = Question.find(params[:id])
         @answers = @question.answers
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
-        @authors = User.where(id: authorIds)
-        @comments = @question.comments 
+        @authors = User.where(id: authorIds) 
         ids = @answers.pluck(:id)
         ids.unshift(@question.id)
         @all_related_comments = Comment.where(post_id: ids )
@@ -38,6 +37,9 @@ class Api::QuestionsController < ApplicationController
             @answers = @question.answers
             authorIds = @answers.pluck(:user_id).push(@question.user_id)
             @authors = User.where(id: authorIds)
+            ids = @answers.pluck(:id)
+            ids.unshift(@question.id)
+            @all_related_comments = Comment.where(post_id: ids)
             render :show
         else
             render json: @question.errors.full_messages, status: 422
@@ -50,6 +52,9 @@ class Api::QuestionsController < ApplicationController
             @answers = @question.answers
             authorIds = @answers.pluck(:user_id).push(@question.user_id)
             @authors = User.where(id: authorIds)
+            ids = @answers.pluck(:id)
+            ids.unshift(@question.id)
+            @all_related_comments = Comment.where(post_id: ids)
             render :show
         else
             render json: @question.errors.full_messages, status: 422

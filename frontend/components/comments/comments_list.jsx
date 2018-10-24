@@ -19,7 +19,7 @@ class CommentsList extends React.Component {
   
     const list = this.props.comments.map((post, idx) => {
       return (
-        <li className='comment' key={idx}>{post.body} - {this.props.users[post.user_id].username}</li>
+        <li className='comment' key={idx}>{post.body} - <span className='username'>{this.props.users[post.user_id].username}</span></li>
       )
     })
     return(

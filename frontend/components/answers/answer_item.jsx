@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
-import { Link } from 'react-router-dom';
 import CommentsContainer from '../comments/comments_container';
+import PostLinks from '../functional_pieces/post_links';
 
 class AnswerItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       votes: this.props.answer.votes,
-    }
-  }
-
-  handleDelete(id) {
-    return () => {
-      this.props.deleteAnswer(id);
     }
   }
 
@@ -29,11 +23,6 @@ class AnswerItem extends React.Component {
   }
 
   render() {
-    let deleteA = null;
-        if (this.props.user_id === this.props.answer.user_id) {
-          deleteA = (<span className='delete-link' onClick={this.handleDelete.call(this, this.props.answer.id)}>delete</span>);
-        }
-
     let votes = 0 
     if (this.props.answer.votes.length > 0) {
       votes = this.props.answer.votes.reduce((acc, el) => acc + el);
@@ -66,10 +55,13 @@ class AnswerItem extends React.Component {
                 modules={{toolbar: null}}
                 value={this.props.answer.body}
                 />
-                  <div className='question-details'>
-                    <Link to={`/answers/${this.props.answer.id}/edit`}>edit</Link>
-                    {deleteA}
-                  </div>
+                <PostLinks user_id={this.props.user_id}
+                           author_id={this.props.answer.user_id} 
+                           post_id={this.props.answer.id}
+                           deletePost={this.props.deleteAnswer}
+                           post='answer'
+                           history={this.props.history}
+                           />
                 </div> 
 
                 <CommentsContainer post={this.props.answer}/>
@@ -82,5 +74,5 @@ class AnswerItem extends React.Component {
 
 export default AnswerItem;
 {/* <article className='question-body'>
-  {this.props.answer.body}
+{this.props.answer.body}
 </article> */}

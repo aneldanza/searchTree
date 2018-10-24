@@ -94,13 +94,14 @@
   justify-content: flex-start;
   align-content: center;
 }
-.question-details a {
-  color: #39739d;
+
+.post-link {
+  color: #848d95;
+  cursor: pointer;
 }
 
-.delete-link {
-  color: #39739d;
-  cursor: pointer;
+.post-link:hover {
+  color: #3b4045;
 }
 
 .advertising {
