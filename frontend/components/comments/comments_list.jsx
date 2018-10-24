@@ -5,11 +5,19 @@ class CommentsList extends React.Component {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.post.commentsIds.length !== this.props.post.commentsIds.length) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    if (!this.props.comments[this.props.id]) {
+    if (this.props.comments.length === 0) {
       return <div></div>
     }
-    const list = Object.values(this.props.comments[this.props.id]).map((post, idx) => {
+  
+    const list = this.props.comments.map((post, idx) => {
       return (
         <li className='comment' key={idx}>{post.body}</li>
       )

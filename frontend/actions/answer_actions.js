@@ -4,10 +4,12 @@ export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const RECEIVE_ALL_ANSWERS = 'RECEIVE_ALL_ANSWERS';
 export const REMOVE_ANSWER = 'REMOVE_ANSWER';
 
-export const receiveAnswer = ({ answer, author }) => ({
+export const receiveAnswer = ({ answer, author, votes, comments }) => ({
   type: RECEIVE_ANSWER,
   answer,
   author,
+  votes: votes || {},
+  comments: comments || {}
 });
 
 export const createAnswer = (answer) => {

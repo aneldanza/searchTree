@@ -14,8 +14,7 @@
   json.answers do 
     @answers.each do |ans|
       json.set! ans.id do 
-        json.extract! ans, :id, :user_id, :question_id, :body
-        json.votes ans.votes.pluck(:vote_type)
+        json.partial! 'api/answers/answer', answer: ans
       end 
     end 
   end 
@@ -23,11 +22,11 @@
   json.votes @question.votes.pluck(:vote_type)
 
   json.comments do 
-    @comments.each do |comment|
+    @all_related_comments.each do |comment|
       json.set! comment.id do 
         json.extract! comment, :id, :user_id, :post_id, :post_type, :body
       end 
-    end 
+    end
   end
 
 

@@ -18,12 +18,15 @@ class Api::CommentsController < ApplicationController
         @question = Question.find(comments_params[:post_id])
         @answers = @question.answers
         @comments = @question.comments 
+        ids = @answers.pluck(:id)
+        ids.unshift(@question.id)
+        @all_related_comments = Comment.where(post_id: ids )
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
         @authors = User.where(id: authorIds)
         render "api/questions/show"
       elsif comments_params[:post_type] == 'Answer'
         @answer = Answer.find(comments_params[:post_id])
-        @comments = @answer.comments 
+        @comments = @answer.comments
         render "api/answers/show"
       end
     else 

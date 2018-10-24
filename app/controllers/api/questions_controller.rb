@@ -9,6 +9,9 @@ class Api::QuestionsController < ApplicationController
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
         @authors = User.where(id: authorIds)
         @comments = @question.comments 
+        ids = @answers.pluck(:id)
+        ids.unshift(@question.id)
+        @all_related_comments = Comment.where(post_id: ids )
     end
 
     def search     

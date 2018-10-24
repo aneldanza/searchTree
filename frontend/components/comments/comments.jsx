@@ -38,7 +38,7 @@ class Comments extends React.Component {
     }
     return (
       <div className='post-layout-comment' >
-        <CommentsListContainer id={this.props.post.id}/>
+        <CommentsListContainer id={this.props.post.id} post={this.props.post}/>
         
         <div className='comment-link' onClick={() => this.displayCommentTextarea()}>
           add comment
