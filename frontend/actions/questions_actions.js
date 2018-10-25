@@ -1,4 +1,5 @@
 import * as APIQuestionsUtil from '../util/quesions_api_util'; 
+import { receiveErrors } from '../actions/session_actions';
 
 export const RECEIVE_ALL_QUESTIONS = 'RECEIVE_ALL_QUESTIONS'; 
 export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'; 
@@ -47,6 +48,8 @@ export const createQuestion = (question) => {
     .then( payload => {
     
       return dispatch(receiveQuestion(payload));
+    }, errors => {
+      dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };

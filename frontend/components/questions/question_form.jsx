@@ -23,6 +23,7 @@ class QuestionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.clearErrors();
     this.props.action(this.state) 
     .then(data => {
       this.setState({title: '', body: '', tags: ''})
@@ -34,7 +35,13 @@ class QuestionForm extends React.Component {
     if (this.state === undefined) {
       return <div></div>;
     }
-
+    let errors;
+    if (this.props.errors.length > 0) {
+      errors = this.props.errors.map((err) => {
+        return <li>{err}</li>
+      })
+    }
+    debugger
     return(
       <section className='container'>
       <h1>{this.props.header}</h1>
@@ -59,6 +66,7 @@ class QuestionForm extends React.Component {
         </div>
   
         <div>
+          <ul className='question-form-error'>{errors}</ul>
         <button type='submit' id='cool-button'onClick={this.handleSubmit.bind(this)}>{this.props.formType}</button>
         </div>
         
