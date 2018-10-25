@@ -3,6 +3,7 @@ import * as APIAnswerUtil from '../util/answers_api_util';
 export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 export const RECEIVE_ALL_ANSWERS = 'RECEIVE_ALL_ANSWERS';
 export const REMOVE_ANSWER = 'REMOVE_ANSWER';
+import { receiveErrors } from '../actions/session_actions';
 
 export const receiveAnswer = ({ answer, author, votes, comments }) => ({
   type: RECEIVE_ANSWER,
@@ -17,6 +18,8 @@ export const createAnswer = (answer) => {
     return APIAnswerUtil.createAnswer(answer)
     .then(answer => {
       return dispatch(receiveAnswer(answer));
+    }, errors => {
+      dispatch(receiveErrors(errors.responseJSON));
     });
   }
 }

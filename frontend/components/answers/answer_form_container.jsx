@@ -3,6 +3,7 @@ import AnswerForm from './answer_form';
 import { createAnswer } from '../../actions/answer_actions';
 import { withRouter } from 'react-router-dom';
 
+
 const msp = (state, ownProps) => {
   return {
     answer: {
@@ -11,6 +12,7 @@ const msp = (state, ownProps) => {
       body: ''
     },
     formType: 'Post Your Answer',
+    errors: state.errors.session,
   }
 }
 

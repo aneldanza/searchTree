@@ -36,6 +36,10 @@ class AnswerForm extends React.Component {
       prompt = (
         <div className='warning'>Please sign in to post an answer</div>
       )
+    } else if (this.props.errors.length > 0) {
+      prompt = (
+        <div className='warning'>{this.props.errors[0]}</div>
+      )
     }
     return (
       <div>
