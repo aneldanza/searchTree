@@ -31,8 +31,13 @@ class Comments extends React.Component {
   }
 
   render() {
+ 
     let comment_error = ''
-    if (this.props.errors.length > 0 && this.props.errors[1] == this.props.post.id) {
+    if (this.props.comment.user_id === null) {
+      comment_error = (
+        <div className='warning'>Please sign in to post an answer</div>
+      )
+    } else if (this.props.errors.length > 0 && this.props.errors[1] == this.props.post.id) {
       comment_error = this.props.errors[0]
     }
     return (

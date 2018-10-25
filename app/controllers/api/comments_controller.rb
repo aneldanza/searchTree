@@ -31,10 +31,8 @@ class Api::CommentsController < ApplicationController
     else 
       @errors = []
       message = ''
-      
-      if comments_params[:user_id] == ''
-        message = 'You need to login in order to comment'
-      elsif comments_params[:body].length < 15
+
+      if comments_params[:body].length < 15
         message = 'Enter at least 15 characters'
       else 
         message = 'Invalid entry'
