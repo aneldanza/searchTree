@@ -6,7 +6,7 @@ class CommentsList extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if (nextProps.post.commentsIds.length !== this.props.post.commentsIds.length) {
+    if (nextProps.post.commentsIds.length !== this.props.comments.length) {
       return true;
     }
     return false;
@@ -22,6 +22,7 @@ class CommentsList extends React.Component {
         <li className='comment' key={idx}>{post.body} - <span className='username'>{this.props.users[post.user_id].username}</span></li>
       )
     })
+  
     return(
       <ul className='comments-list'>
       {list}

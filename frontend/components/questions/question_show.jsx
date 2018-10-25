@@ -20,7 +20,7 @@ class QuestionShow extends React.Component {
   }
 
   componendDidUpdate(prevProps) {
-    if (this.props.answers !== prevProps.answers) {
+    if ((this.props.answers !== prevProps.answers) || (nextProps.comments.length !== this.props.comments.length)) {
       this.props.requestQuestion(this.props.match.params.questionId);
     }
   }
@@ -126,6 +126,7 @@ const msp = (state, ownProps) => {
     question: state.entities.questions[ownProps.match.params.questionId],
     user_id: state.session.id,
     answers: state.entities.answers,
+    comments: Object.values(state.entities.comments),
     errors: state.errors.session,
   }
 }

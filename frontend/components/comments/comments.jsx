@@ -28,7 +28,6 @@ class Comments extends React.Component {
     this.props.clearErrors();
     this.props.createComment(this.state)
     this.setState({body: ''})
-  
   }
 
   render() {

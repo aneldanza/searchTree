@@ -16,8 +16,7 @@ class Api::CommentsController < ApplicationController
     if  valid_comment? && @comment.save
       if comments_params[:post_type] == "Question"
         @question = Question.find(comments_params[:post_id])
-        @answers = @question.answers
-        @comments = @question.comments 
+        @answers = @question.answers 
         ids = @answers.pluck(:id)
         ids.unshift(@question.id)
         @all_related_comments = Comment.where(post_id: ids )
