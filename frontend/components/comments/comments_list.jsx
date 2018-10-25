@@ -18,7 +18,6 @@ class CommentsList extends React.Component {
       return <div></div>
     } else {
       list = this.props.comments.map((post, idx) => {
-        debugger
         return (
           <li className='comment' key={idx}>
           {post.body} &nbsp;-&nbsp;
@@ -26,7 +25,7 @@ class CommentsList extends React.Component {
           &nbsp;<span className='timestamp'>{this.props.timestamp}</span>
           </li>
         )
-      }, this)
+      })
 
     }
   

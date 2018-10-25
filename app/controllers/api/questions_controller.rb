@@ -31,7 +31,7 @@ class Api::QuestionsController < ApplicationController
         @question = Question.new({
             title: params[:question][:title],
             body: params[:question][:body],
-            user_id: params[:question][:user_id]
+            user_id: params[:question][:user_id], 
         })
         if @question.save
             @answers = @question.answers

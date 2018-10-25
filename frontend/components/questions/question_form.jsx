@@ -1,6 +1,4 @@
 import React from 'react';
-// import hljs from 'highlight.js';
-// import 'highlight.js/styles/monokai-sublime.css'
 import ReactQuill from 'react-quill';
 import { toolbar } from '../../util/quil_toolbar';
 import { withRouter } from 'react-router-dom';
@@ -9,6 +7,11 @@ class QuestionForm extends React.Component {
   constructor(props) {
     super(props)  
     this.state = this.props.question;
+  }
+
+  componentDidMount() {
+    const tags = document.getElementsByClassName('ql-container')[1];
+    tags.classList.add('tags-input');
   }
 
   updateField(field) {
@@ -64,6 +67,16 @@ class QuestionForm extends React.Component {
           theme={'snow'}
           />
         </div>
+        <div className='form-section'>
+          <label className='form-label'>Tags</label>
+          <ReactQuill
+          className='form-input tags-input'
+          value={this.state.tags}
+          modules={QuestionForm.tagModules}
+          theme={'snow'}
+          formats={QuestionForm.tagFormats}
+          />
+        </div>
   
         <div>
           <ul className='question-form-error'>{errors}</ul>
@@ -84,6 +97,10 @@ QuestionForm.customModules = {
   }
 }
 
+QuestionForm.tagModules = {toolbar: false}
+
+QuestionForm.tagFormats = ['code-block']
+
 QuestionForm.formats = [
   'header', 'font', 'size',
   'bold', 'italic', 'underline',
@@ -93,10 +110,7 @@ QuestionForm.formats = [
 
 export default withRouter(QuestionForm);
 
-    // <div className='form-section'>
-    //   <label className='form-label'>Tags</label>
-    //   <input type='text' 
-    //   className='form-input' 
-    //   value={this.state.tags}
-    //   onChange={this.updateField('tags').bind(this)}></input>
-    // </div>
+{/* <input type='text' 
+className='form-input' 
+value={this.state.tags}
+onChange={this.updateField('tags').bind(this)}></input> */}
