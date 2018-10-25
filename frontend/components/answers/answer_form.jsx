@@ -52,8 +52,7 @@ class AnswerForm extends React.Component {
             />
           <div>
             <button id='cool-button'
-            onClick={this.handleClick.bind(this)}>
-            Post Your Answer</button>
+            onClick={this.handleClick.bind(this)}>{this.props.formType}</button>
           </div>
         </form>
       </div>

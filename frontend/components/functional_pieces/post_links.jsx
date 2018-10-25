@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 const PostLinks = ({user_id, author_id, post_id, deletePost, post, history}) => {
 
   function handleDelete(id) {
-    debugger
     return () => {
       deletePost(id)
       .then(() => {

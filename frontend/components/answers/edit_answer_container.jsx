@@ -7,6 +7,7 @@ const msp = (state, ownProps) => {
   return {
     user_id: state.session.id,
     answer: state.entities.answers[ownProps.match.params.answerId],
+    formType: 'Edit Answer',
   }
 }
 
@@ -31,14 +32,13 @@ class EditAnswer extends React.Component {
       return <div></div>;
     }
 
-    const {action, answer, user_id, formType, header} = this.props;  
+    const {action, answer, user_id, formType} = this.props;  
     return (
       <AnswerForm 
       action={action}
       answer={answer}
       user_id={user_id}
       formType={formType}
-      header={header}
       />
     );
   }
