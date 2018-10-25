@@ -19,10 +19,14 @@ const msp = (state, ownProps) => {
       post_comments.push(comments[key]);
     }
   };
-
+  debugger
+  let date = Date.parse(ownProps.post.created_at);
+  let date_function = new Date(date);
+  let timestamp = date_function.toLocaleString();
   return {
     comments: post_comments,
     users: state.entities.users,
+    timestamp: timestamp,
   }
 }
 

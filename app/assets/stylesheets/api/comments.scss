@@ -39,11 +39,17 @@
 
 .comment {
   display: grid;
-
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, auto);
+  justify-content: flex-start;
   padding: 6px 0;
   border-bottom: 1px solid #eff0f1;
 }
 
 .username {
   color: #3af;
+}
+
+.timestamp {
+  color: #848d95;
 }
