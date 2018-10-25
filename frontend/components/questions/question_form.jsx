@@ -37,11 +37,11 @@ class QuestionForm extends React.Component {
     }
     let errors;
     if (this.props.errors.length > 0) {
-      errors = this.props.errors.map((err) => {
-        return <li>{err}</li>
+      errors = this.props.errors.map((err, idx) => {
+        return <li key={idx}>{err}</li>
       })
     }
-    debugger
+
     return(
       <section className='container'>
       <h1>{this.props.header}</h1>

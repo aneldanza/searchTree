@@ -18,6 +18,7 @@ class QuestionShow extends React.Component {
 
   componentDidMount() { 
     this.props.requestQuestion(this.props.match.params.questionId)
+    this.props.clearErrors();
   }
 
   componendDidUpdate(prevProps) {
