@@ -69,11 +69,11 @@ class QuestionShow extends React.Component {
             <div className='error'>{vote_error}</div>
             <div className='post-layout-left'>
               <i style={{lineHeight: '0.5'}}
-              className="fas fa-caret-up fa-3x"
+              className="fas fa-caret-up fa-3x vote"
               onClick={() => this.createVote.call(this, this.props.question.id, 1)}></i>
               <div className='stats-number'>{votes}</div>
               <i style={{lineHeight: '0.5'}}
-              className="fas fa-caret-down fa-3x"
+              className="fas fa-caret-down fa-3x vote"
               onClick={() => this.createVote.call(this, this.props.question.id, -1)}></i>
             </div> 
 

@@ -51,9 +51,15 @@ h1 {
   text-align: center;
 }
 
+.vote:hover {
+  color: #F48024;
+  cursor: pointer;
+}
+
 .stats-number {
   font-size: 20px;
   color: #6a737c;
+  text-align: center;
 }
 
 .summary {
