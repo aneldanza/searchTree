@@ -23,6 +23,7 @@ class AnswerForm extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+    this.props.clearErrors();
     this.props.action(this.state)
     .then(data => {
       this.setState({title: '', body: '', tags: ''})

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import AnswerForm from './answer_form';
 import { createAnswer } from '../../actions/answer_actions';
 import { withRouter } from 'react-router-dom';
-
+import { clearErrors } from '../../actions/session_actions';
 
 const msp = (state, ownProps) => {
   return {
@@ -18,7 +18,8 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
   return {
-    action: answer => dispatch(createAnswer(answer))
+    action: answer => dispatch(createAnswer(answer)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 
