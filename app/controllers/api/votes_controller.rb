@@ -31,9 +31,13 @@ class Api::VotesController < ApplicationController
         @answers = @question.answers
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
         @authors = User.where(id: authorIds)
+        ids = @answers.pluck(:id)
+        ids.unshift(@question.id)
+        @all_related_comments = Comment.where(post_id: ids)
         render "api/questions/show"
       elsif votes_params[:post_type] == 'Answer'
         @answer = Answer.find(votes_params[:post_id])
+        @comments = @answer.comments
         render "api/answers/show"
       end
     else 

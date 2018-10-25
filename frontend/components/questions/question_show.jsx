@@ -2,6 +2,7 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
 import { requestQuestion, deleteQuestion } from '../../actions/questions_actions';
+import { clearErrors } from '../../actions/session_actions';
 import { receiveAllAnswers, deleteAnswer, requestAnswer } from '../../actions/answer_actions';
 import { Link } from 'react-router-dom';
 import AnswerFormContainer from '../answers/answer_form_container';
@@ -32,6 +33,7 @@ class QuestionShow extends React.Component {
       vote_type: vote_type,
       post_type: 'Question'
     }
+    this.props.clearErrors();
     this.props.createVote(vote)
   }
 
@@ -138,6 +140,7 @@ const mdp = (dispatch) => {
     receiveAllAnswers: () => dispatch(receiveAllAnswers()),
     createVote: vote => dispatch(createVote(vote)),
     requestAnswer: id => dispatch(requestAnswer(id)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 
