@@ -23,7 +23,7 @@ class CommentsList extends React.Component {
         return (
           <li className='comment' key={idx}>
           {post.body} &nbsp;-&nbsp;
-          <span className='username'></span>
+          <span className='username'>{this.props.users[post.user_id].username}</span>
           &nbsp;<span className='timestamp'>{this.props.timestamp}</span>
           </li>
         )
