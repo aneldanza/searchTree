@@ -24,6 +24,7 @@ const msp = (state, ownProps) => {
   let date_function = new Date(date);
   let timestamp = date_function.toLocaleString();
   return {
+    
     comments: post_comments,
     users: state.entities.users,
     timestamp: timestamp,

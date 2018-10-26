@@ -21,6 +21,7 @@ class Api::CommentsController < ApplicationController
         ids.unshift(@question.id)
         @all_related_comments = Comment.where(post_id: ids )
         authorIds = @answers.pluck(:user_id).push(@question.user_id)
+        authorIds = authorIds + @all_related_comments.pluck(:user_id)
         @authors = User.where(id: authorIds)
         render "api/questions/show"
       elsif comments_params[:post_type] == 'Answer'
@@ -31,8 +32,9 @@ class Api::CommentsController < ApplicationController
     else 
       @errors = []
       message = ''
-
-      if comments_params[:body].length < 15
+      if comments_params[:user_id] == ''
+        message = 'Please sign in to post an answer'
+      elsif comments_params[:body].length < 15
         message = 'Enter at least 15 characters'
       else 
         message = 'Invalid entry'

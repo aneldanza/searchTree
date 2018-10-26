@@ -6,11 +6,12 @@ class Api::QuestionsController < ApplicationController
     def show      
         @question = Question.find(params[:id])
         @answers = @question.answers
-        authorIds = @answers.pluck(:user_id).push(@question.user_id)
-        @authors = User.where(id: authorIds) 
         ids = @answers.pluck(:id)
         ids.unshift(@question.id)
         @all_related_comments = Comment.where(post_id: ids )
+        authorIds = @answers.pluck(:user_id).push(@question.user_id)
+        authorIds = authorIds + @all_related_comments.pluck(:user_id)
+        @authors = User.where(id: authorIds) 
     end
 
     def search     
@@ -35,11 +36,12 @@ class Api::QuestionsController < ApplicationController
         })
         if @question.save
             @answers = @question.answers
-            authorIds = @answers.pluck(:user_id).push(@question.user_id)
-            @authors = User.where(id: authorIds)
             ids = @answers.pluck(:id)
             ids.unshift(@question.id)
             @all_related_comments = Comment.where(post_id: ids)
+            authorIds = @answers.pluck(:user_id).push(@question.user_id)
+            authorIds = authorIds + @all_related_comments.pluck(:user_id)
+            @authors = User.where(id: authorIds)
             render :show
         else
             render json: @question.errors.full_messages, status: 422

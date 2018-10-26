@@ -25,6 +25,7 @@
     @all_related_comments.each do |comment|
       json.set! comment.id do 
         json.extract! comment, :id, :user_id, :post_id, :post_type, :body
+        
       end 
     end
   end
