@@ -17,9 +17,9 @@ class CommentsList extends React.Component {
     if (this.props.comments.length === 0) {
       return <div></div>;
     } else {
-      debugger
+
       list = this.props.comments.map((post, idx) => {
-        debugger
+      
         return (
           <li className='comment' key={idx}>
           {post.body} &nbsp;-&nbsp;

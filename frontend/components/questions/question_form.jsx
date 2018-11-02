@@ -7,6 +7,8 @@ class QuestionForm extends React.Component {
   constructor(props) {
     super(props)  
     this.state = this.props.question;
+    this.refs = React.createRef();
+    this.tags = [];
   }
 
   componentDidMount() {
@@ -22,6 +24,21 @@ class QuestionForm extends React.Component {
 
   updateBody(value) {
     this.setState({body: value});
+  }
+
+  updateTags(value) {
+    this.setState({tags: value})
+    const quillRef = this.myQuillRef.getEditor();
+  
+    quillRef.focus();
+    debugger
+    if (quillRef.container.innerText.trim().endsWith(',')) {
+      debugger
+      this.tags.push()
+    }
+    debugger
+
+
   }
 
   handleSubmit(e) {
@@ -44,6 +61,8 @@ class QuestionForm extends React.Component {
         return <li key={idx}>{err}</li>
       })
     }
+
+    const myRef = (el) => this.myQuillRef = el;
 
     return(
       <section className='container'>
@@ -70,11 +89,13 @@ class QuestionForm extends React.Component {
         <div className='form-section'>
           <label className='form-label'>Tags</label>
           <ReactQuill
-          className='form-input tags-input'
+          className='form-input'
+          ref={myRef}
           value={this.state.tags}
           modules={QuestionForm.tagModules}
           theme={'snow'}
           formats={QuestionForm.tagFormats}
+          onChange={this.updateTags.bind(this)}
           />
         </div>
   

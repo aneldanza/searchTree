@@ -16,6 +16,13 @@ class AnswerForm extends React.Component {
     super(props)
     this.state = this.props.answer;
   }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.answer.user_id !== nextProps.answer.user_id) {
+      return true;
+    }
+    return false;
+  }
   
   updateBody(value) {
     this.setState({body: value});
@@ -24,10 +31,16 @@ class AnswerForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.clearErrors();
-    this.props.action(this.state)
+    const answer = {
+      user_id: this.props.answer.user_id,
+      question_id: this.props.answer.question_id,
+      body: this.state.body,
+    }
+
+    this.props.action(answer)
     .then(data => {
       this.setState({title: '', body: '', tags: ''})
-      this.props.history.push(`/questions/${data.answer.question_id}`)
+      // this.props.history.push(`/questions/${data.answer.question_id}`)
     });
   }
 
