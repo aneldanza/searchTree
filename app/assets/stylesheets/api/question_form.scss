@@ -16,7 +16,18 @@
 }
 
 .tags-input {
-  min-height: 1em !important;
+  // min-height: 1em !important;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: start;
+}
+
+code {
+  background: #bbc0c4;
+  border-radius: 3px;
+  padding: 3px;
+  margin-right: 10px;
 }
 
 .form-input {

@@ -11,6 +11,7 @@
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.11",
     "logger": "0.0.1",
+    "mootools": "^1.5.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-highlight": "^0.12.0",

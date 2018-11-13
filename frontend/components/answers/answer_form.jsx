@@ -36,12 +36,12 @@ class AnswerForm extends React.Component {
       question_id: this.props.answer.question_id,
       body: this.state.body,
     }
-
-    this.props.action(answer)
-    .then(data => {
-      this.setState({title: '', body: '', tags: ''})
-      // this.props.history.push(`/questions/${data.answer.question_id}`)
-    });
+    // this.setState({body: ""});
+    // this.props.action(answer);
+    this.props.action(answer).then(
+      () => this.setState({body: ''})
+    );
+    debugger
   }
 
   render() {

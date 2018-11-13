@@ -3,66 +3,110 @@ import ReactQuill from 'react-quill';
 import { toolbar } from '../../util/quil_toolbar';
 import { withRouter } from 'react-router-dom';
 
+
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props)  
-    this.state = this.props.question;
+    this.state = Object.assign({}, {
+      question: this.props.question, 
+      tags: [ { value: '', type: 'input' } ],
+    });
     this.refs = React.createRef();
-    this.tags = [];
+    this.tags = [ { value: '', type: 'input' } ];
+    this.textInput = React.createRef();
+    this.focusTextInput = this.focusTextInput.bind(this);
+  }
+
+  focusTextInput() {
+    this.textInput.current.focus();
   }
 
   componentDidMount() {
     const tags = document.getElementsByClassName('ql-container')[1];
-    tags.classList.add('tags-input');
+    this.textInput.current.focus();
+    // tags.classList.add('tags-input');
   }
 
-  updateField(field) {
-    return e => {
-      this.setState({[field]: e.target.value});
+  updateTitle(e) {
+    let question = {
+      user_id: this.state.question.user_id,
+      title: e.target.value,
+      body: this.state.question.body,
+      tags: this.state.question.tags
     }
+   
+    this.setState({question: question});
+    
   }
 
   updateBody(value) {
-    this.setState({body: value});
+    let question = {
+      user_id: this.state.question.user_id,
+      title: this.state.question.title,
+      body: value,
+      tags: this.state.question.tags
+    }
+  
+    this.setState({question: question});
   }
 
-  updateTags(value) {
-    this.setState({tags: value})
-    const quillRef = this.myQuillRef.getEditor();
-  
-    quillRef.focus();
-    debugger
-    if (quillRef.container.innerText.trim().endsWith(',')) {
-      debugger
-      this.tags.push()
+  updateTags(e) {
+    this.tags[this.tags.length - 1].value = e.target.value;
+    if (e.target.value[e.target.value.length - 1] === ',') {
+      this.tags[this.tags.length - 1].value = e.target.value.slice(0, -1);
+      this.tags[this.tags.length - 1].type = 'code';
+      this.tags.push({ value: '', type: 'input' });
     }
-    debugger
-
-
+   
+    let tag_array = this.tags;
+    this.setState({tags: tag_array},this.focusTextInput);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
-    this.props.action(this.state) 
+
+    let question = {
+      user_id: this.state.question.user_id,
+      title: this.state.question.title,
+      body: this.state.question.body,
+      tags: this.tags
+    }
+      
+    let blankQuestion = {
+      user_id: this.state.question.user_id,
+      title: '', 
+      body: '', 
+      tags: ''
+    }
+    this.props.action(question) 
     .then(data => {
-      this.setState({title: '', body: '', tags: ''})
+      this.setState({question: blankQuestion})
       this.props.history.push(`/questions/${data.question.id}`)
     });
   }
   
   render() {
-    if (this.state === undefined) {
+    if (this.state.question === undefined) {
       return <div></div>;
     }
-    let errors;
+    let errors = '';
     if (this.props.errors.length > 0) {
       errors = this.props.errors.map((err, idx) => {
         return <li key={idx}>{err}</li>
       })
     }
 
-    const myRef = (el) => this.myQuillRef = el;
+    const tags = this.state.tags.map((tag, idx) => {
+      if (tag.type === 'input') {
+        return <input ref={this.textInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
+        value={tag.value}></input>
+
+      } else {
+        return <code key={idx} id='code' onChange={this.updateTags.bind(this)}>{tag.value}</code>
+      }
+    })
+
 
     return(
       <section className='container'>
@@ -72,31 +116,27 @@ class QuestionForm extends React.Component {
           <label className='form-label'>Title</label>
           <input type='text' 
           className='form-input title' 
-          value={this.state.title}
-          onChange={this.updateField('title').bind(this)}></input>
+          value={this.state.question.title}
+          onChange={this.updateTitle.bind(this)}
+          ref={this.textInput}></input>
         </div>
         <div className='form-section'>
           <label className='form-label'>Body</label>
           <ReactQuill 
           className='textarea'
-          value={this.state.body}
+          value={this.state.question.body}
           onChange={this.updateBody.bind(this)}
           modules={QuestionForm.modules}
           formats={QuestionForm.formats}
           theme={'snow'}
+          ref={this.textInput}
           />
         </div>
         <div className='form-section'>
           <label className='form-label'>Tags</label>
-          <ReactQuill
-          className='form-input'
-          ref={myRef}
-          value={this.state.tags}
-          modules={QuestionForm.tagModules}
-          theme={'snow'}
-          formats={QuestionForm.tagFormats}
-          onChange={this.updateTags.bind(this)}
-          />
+        </div>
+        <div className='tags-input'>
+          {tags}
         </div>
   
         <div>
@@ -133,5 +173,16 @@ export default withRouter(QuestionForm);
 
 {/* <input type='text' 
 className='form-input' 
-value={this.state.tags}
+value={this.state.question.tags}
 onChange={this.updateField('tags').bind(this)}></input> */}
+
+{/* <ReactQuill
+  className='form-input'
+  ref={myRef}
+  value={this.state.question.tags}
+  modules={QuestionForm.tagModules}
+  theme={'snow'}
+  formats={QuestionForm.tagFormats}
+  onChange={this.updateTags.bind(this)}
+/> */}
+{/* <input type='text' value={this.state.tags} onChange={this.updateTags.bind(this)}></input> */}
