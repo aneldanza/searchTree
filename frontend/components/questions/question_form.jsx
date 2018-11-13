@@ -91,7 +91,8 @@ class QuestionForm extends React.Component {
       return <div></div>;
     }
     let errors = '';
-    if (this.props.errors.length > 0) {
+   
+    if (this.props.errors && this.props.errors.length > 0) {
       errors = this.props.errors.map((err, idx) => {
         return <li key={idx}>{err}</li>
       })
@@ -101,7 +102,6 @@ class QuestionForm extends React.Component {
       if (tag.type === 'input') {
         return <input ref={this.textInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
         value={tag.value}></input>
-
       } else {
         return <code key={idx} id='code' onChange={this.updateTags.bind(this)}>{tag.value}</code>
       }
@@ -171,18 +171,3 @@ QuestionForm.formats = [
 
 export default withRouter(QuestionForm);
 
-{/* <input type='text' 
-className='form-input' 
-value={this.state.question.tags}
-onChange={this.updateField('tags').bind(this)}></input> */}
-
-{/* <ReactQuill
-  className='form-input'
-  ref={myRef}
-  value={this.state.question.tags}
-  modules={QuestionForm.tagModules}
-  theme={'snow'}
-  formats={QuestionForm.tagFormats}
-  onChange={this.updateTags.bind(this)}
-/> */}
-{/* <input type='text' value={this.state.tags} onChange={this.updateTags.bind(this)}></input> */}
