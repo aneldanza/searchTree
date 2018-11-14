@@ -17,8 +17,9 @@ class QuestionShow extends React.Component {
   }
 
   componentDidMount() { 
-    this.props.requestQuestion(this.props.match.params.questionId)
+    // this.props.requestQuestion(this.props.match.params.questionId)
     this.props.clearErrors();
+    debugger
   }
 
   componendDidUpdate(prevProps) {
@@ -88,6 +89,11 @@ class QuestionShow extends React.Component {
                 modules={{toolbar: null}}
                 value={this.props.question.body}
                 />
+                <ReactQuill
+                  readOnly
+                  modules={{toolbar: null}}
+                  value={this.props.tags}
+                />
                 <PostLinks user_id={this.props.user_id}
                            author_id={this.props.question.user_id} 
                            post_id={this.props.question.id}
@@ -131,6 +137,7 @@ const msp = (state, ownProps) => {
     answers: state.entities.answers,
     comments: Object.values(state.entities.comments),
     errors: state.errors.session,
+    tags: state.entities.questions.tags,
   }
 }
 

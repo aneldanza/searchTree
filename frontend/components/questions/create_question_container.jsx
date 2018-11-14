@@ -7,6 +7,7 @@ const msp = (state) => {
   return {
     user_id: state.session.id,
     question: {
+      id: '',
       user_id: state.session.id,
       title: '',
       body: '',

@@ -6,14 +6,18 @@ export const RECEIVE_QUESTION = 'RECEIVE_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION'; 
 export const RECEIVE_SEARCH_REQUEST = 'RECEIVE_SEARCH_REQUEST';
 
-export const receiveQuestion = ({ question, answers, users, votes, comments }) => ({
-  type: RECEIVE_QUESTION,
-  question,
-  users: users || {},
-  answers: answers || {},
-  votes: votes || {},
-  comments: comments || {},
-});
+export const receiveQuestion = ({ question, answers, users, votes, comments, tags }) => {
+  debugger
+  return {
+    type: RECEIVE_QUESTION,
+    question,
+    users: users || {},
+    answers: answers || {},
+    votes: votes || {},
+    comments: comments || {},
+    tags: tags || '',
+  }
+};
 
 export const receiveAllQuestions = () => {
   return dispatch => {

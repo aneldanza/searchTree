@@ -42,6 +42,7 @@ class Api::QuestionsController < ApplicationController
             authorIds = @answers.pluck(:user_id).push(@question.user_id)
             authorIds = authorIds + @all_related_comments.pluck(:user_id)
             @authors = User.where(id: authorIds)
+           
             render :show
         else
             render json: @question.errors.full_messages, status: 422

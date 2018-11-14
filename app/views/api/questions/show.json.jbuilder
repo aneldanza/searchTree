@@ -30,6 +30,7 @@
     end
   end
 
+  json.tags @tags
 
 
 

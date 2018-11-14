@@ -55,6 +55,7 @@ class QuestionForm extends React.Component {
     if (e.target.value[e.target.value.length - 1] === ',') {
       this.tags[this.tags.length - 1].value = e.target.value.slice(0, -1);
       this.tags[this.tags.length - 1].type = 'code';
+      this.tags.push({value: '  ', type: 'div'});
       this.tags.push({ value: '', type: 'input' });
     }
    
@@ -65,13 +66,14 @@ class QuestionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
-
     let question = {
+      id: this.props.question.id,
       user_id: this.state.question.user_id,
       title: this.state.question.title,
       body: this.state.question.body,
-      tags: this.tags
+      tags: document.getElementsByClassName('tags-input')[0].innerHTML,
     }
+  
       
     let blankQuestion = {
       user_id: this.state.question.user_id,
@@ -102,8 +104,10 @@ class QuestionForm extends React.Component {
       if (tag.type === 'input') {
         return <input ref={this.textInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
         value={tag.value}></input>
-      } else {
+      } else if (tag.type === 'code') {
         return <code key={idx} id='code' onChange={this.updateTags.bind(this)}>{tag.value}</code>
+      } else {
+        return <div key={idx}>&nbsp;&nbsp;</div>
       }
     })
 
