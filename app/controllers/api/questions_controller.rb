@@ -33,6 +33,7 @@ class Api::QuestionsController < ApplicationController
             title: params[:question][:title],
             body: params[:question][:body],
             user_id: params[:question][:user_id], 
+            tags: @tags
         })
         if @question.save
             @answers = @question.answers

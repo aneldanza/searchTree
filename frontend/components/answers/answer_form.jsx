@@ -17,6 +17,13 @@ class AnswerForm extends React.Component {
     this.state = this.props.answer;
   }
 
+  componentDidMount() {
+    const count = document.getElementsByClassName('ql-container')['length'];
+    const container = document.getElementsByClassName('ql-container')[count - 1];
+    container.classList.add('body-area')
+    debugger
+  }
+
   shouldComponentUpdate(nextProps) {
     if (this.props.answer.user_id !== nextProps.answer.user_id) {
       return true;

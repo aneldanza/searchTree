@@ -11,10 +11,9 @@
 #
 
 class Question < ApplicationRecord
-    validates :title, :body, :user_id, presence: true
+    validates :title, :tags, :body, :user_id, presence: true
     has_many :answers
     belongs_to :user
     has_many :votes, as: :post
     has_many :comments, as: :post
-    has_many :tags, as: :post
 end

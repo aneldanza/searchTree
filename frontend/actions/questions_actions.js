@@ -6,8 +6,7 @@ export const RECEIVE_QUESTION = 'RECEIVE_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION'; 
 export const RECEIVE_SEARCH_REQUEST = 'RECEIVE_SEARCH_REQUEST';
 
-export const receiveQuestion = ({ question, answers, users, votes, comments, tags }) => {
-  debugger
+export const receiveQuestion = ({ question, answers, users, votes, comments, }) => {
   return {
     type: RECEIVE_QUESTION,
     question,
@@ -15,7 +14,6 @@ export const receiveQuestion = ({ question, answers, users, votes, comments, tag
     answers: answers || {},
     votes: votes || {},
     comments: comments || {},
-    tags: tags || '',
   }
 };
 
