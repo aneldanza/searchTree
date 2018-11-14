@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :answers
   has_many :votes
   has_many :comments
+  has_many :tags
   
   attr_reader :password
   after_initialize :ensure_session_token

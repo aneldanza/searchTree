@@ -16,4 +16,5 @@ class Question < ApplicationRecord
     belongs_to :user
     has_many :votes, as: :post
     has_many :comments, as: :post
+    has_many :tags, as: :post
 end
