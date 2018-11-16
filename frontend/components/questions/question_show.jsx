@@ -19,11 +19,6 @@ class QuestionShow extends React.Component {
   componentDidMount() { 
     this.props.clearErrors();
     this.props.requestQuestion(this.props.match.params.questionId)
-    
-    // tags.map(tag => {
-    //   tag.classList.add('tags-input');
-    // });
-    // debugger
   }
 
   componendDidUpdate(prevProps) {
