@@ -92,6 +92,7 @@ class QuestionShow extends React.Component {
                 />
                 
                   <ReactQuill
+                    className='tag-show'
                     readOnly
                     modules={{toolbar: null}}
                     value={this.props.question.tags}

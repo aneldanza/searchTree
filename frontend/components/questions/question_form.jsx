@@ -22,12 +22,10 @@ class QuestionForm extends React.Component {
   }
 
   componentDidMount() {
-    const tags = document.getElementsByClassName('ql-container')[1];
     const count = document.getElementsByClassName('ql-container')['length'];
     const container = document.getElementsByClassName('ql-container')[count - 1];
     container.classList.add('body-area')
     this.textInput.current.focus();
-    // tags.classList.add('tags-input');
   }
 
   updateTitle(e) {
