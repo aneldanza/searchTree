@@ -37,16 +37,26 @@ class AnswerForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.clearErrors();
+  
     const answer = {
+      id: this.props.answer.id,
       user_id: this.props.answer.user_id,
       question_id: this.props.answer.question_id,
       body: this.state.body,
     }
-    // this.setState({body: ""});
-    // this.props.action(answer);
-    this.props.action(answer).then(
-      () => this.setState({body: ''})
-    );
+    if (this.props.formType === 'Edit Answer') {
+      this.props.action(answer).then(
+        (data) => {
+         
+        this.setState({body: ''})
+        this.props.history.push(`/questions/${data.answer.question_id}`)
+        }
+      );
+    } else {
+      this.props.action(answer).then(
+        () => this.setState({body: ''})
+      );
+    }
   }
 
   render() {

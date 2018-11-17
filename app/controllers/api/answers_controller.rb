@@ -21,7 +21,7 @@ class Api::AnswersController < ApplicationController
   end
 
   def update
-    @answer = Answer.find(params[:id])
+    @answer = Answer.find(params[:answer][:id])
     if @answer.update_attributes(answer_params)
       @comments = @answer.comments
       render :show
