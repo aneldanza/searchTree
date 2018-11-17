@@ -7,9 +7,14 @@ import { withRouter } from 'react-router-dom';
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props)  
+    let tags = '';
+    if (this.props.question.tags.length > 0) {
+      tags = JSON.parse(this.props.question.tags)
+    }
+ 
     this.state = Object.assign({}, {
       question: this.props.question, 
-      tags: [ { value: '', type: 'input' } ],
+      tags: tags || [ { value: '', type: 'input' } ],
     });
     this.refs = React.createRef();
     this.tags = [ { value: '', type: 'input' } ];
@@ -26,6 +31,7 @@ class QuestionForm extends React.Component {
     const container = document.getElementsByClassName('ql-container')[count - 1];
     container.classList.add('body-area')
     this.textInput.current.focus();
+
   }
 
   updateTitle(e) {
@@ -52,6 +58,7 @@ class QuestionForm extends React.Component {
   }
 
   updateTags(e) {
+    this.tags = this.state.tags;
     this.tags[this.tags.length - 1].value = e.target.value;
     if (e.target.value[e.target.value.length - 1] === ',') {
       this.tags[this.tags.length - 1].value = e.target.value.slice(0, -1);
@@ -72,7 +79,7 @@ class QuestionForm extends React.Component {
       user_id: this.state.question.user_id,
       title: this.state.question.title,
       body: this.state.question.body,
-      tags: document.getElementsByClassName('tags-input')[0].innerHTML,
+      tags: JSON.stringify(this.tags),
     }
   
       
@@ -100,7 +107,7 @@ class QuestionForm extends React.Component {
         return <li key={idx}>{err}</li>
       })
     }
-
+   
     const tags = this.state.tags.map((tag, idx) => {
       if (tag.type === 'input') {
         return <input ref={this.textInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
@@ -111,7 +118,6 @@ class QuestionForm extends React.Component {
         return <div key={idx}>&nbsp;&nbsp;</div>
       }
     })
-
 
     return(
       <section className='container'>

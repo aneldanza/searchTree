@@ -39,11 +39,19 @@ class QuestionShow extends React.Component {
   }
 
   render() {
+    let tags = '';
     if (!(this.props.question)) {
       return (<div></div>);
+    } else {
+      tags = JSON.parse(this.props.question.tags).map((tag, idx) => {
+        if (tag.type === 'code') {
+          return <code key={idx} id='code' >{tag.value}</code>
+        } else if (tag.type === 'div') {
+          return <div key={idx}>&nbsp;&nbsp;</div>
+        }
+      });
     }
   
-    const tags = document.getElementsByClassName('ql-editor');
    
     let votes = 0 
    
@@ -56,7 +64,6 @@ class QuestionShow extends React.Component {
     if (this.props.errors.length > 0 && this.props.errors[2] === "Question") {
       vote_error = this.props.errors[0]
     }
-
     return(
       <div>
       <div className='question-header'>
@@ -91,12 +98,7 @@ class QuestionShow extends React.Component {
                 value={this.props.question.body}
                 />
                 
-                  <ReactQuill
-                    className='tag-show'
-                    readOnly
-                    modules={{toolbar: null}}
-                    value={this.props.question.tags}
-                  />
+                  <div className='tags-show'>{tags}</div>
 
                
                 <PostLinks user_id={this.props.user_id}

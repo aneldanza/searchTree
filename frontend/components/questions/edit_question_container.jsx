@@ -5,9 +5,10 @@ import QuestionForm from './question_form';
 import { clearErrors } from '../../actions/session_actions';
 
 const msp = (state, ownProps) => { 
+  const question = state.entities.questions[ownProps.match.params.questionId];
   return {
     user_id: state.session.id,
-    question: state.entities.questions[ownProps.match.params.questionId],
+    question: question,
     formType: 'Save Edits',
     header: '', 
     errors: state.errors.session,
@@ -30,12 +31,12 @@ class EditQuestion extends React.Component {
   componentDidMount() {  
     this.props.requestQuestion(this.props.match.params.questionId);
   }
-
+  
   render() {
     if (this.props.question === undefined) {
       return <div></div>;
     }
-
+    
     const {action, clearErrors, question, user_id, formType, header} = this.props;  
     return (
       <QuestionForm 
