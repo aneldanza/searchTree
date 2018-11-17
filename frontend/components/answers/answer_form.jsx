@@ -20,8 +20,7 @@ class AnswerForm extends React.Component {
   componentDidMount() {
     const count = document.getElementsByClassName('ql-container')['length'];
     const container = document.getElementsByClassName('ql-container')[count - 1];
-    container.classList.add('body-area')
-    debugger
+    container.classList.add('body-area');
   }
 
   shouldComponentUpdate(nextProps) {
@@ -48,7 +47,6 @@ class AnswerForm extends React.Component {
     this.props.action(answer).then(
       () => this.setState({body: ''})
     );
-    debugger
   }
 
   render() {

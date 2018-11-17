@@ -42,7 +42,8 @@ class QuestionShow extends React.Component {
     let tags = '';
     if (!(this.props.question)) {
       return (<div></div>);
-    } else {
+    } 
+    else {
       tags = JSON.parse(this.props.question.tags).map((tag, idx) => {
         if (tag.type === 'code') {
           return <code key={idx} id='code' >{tag.value}</code>
@@ -97,17 +98,16 @@ class QuestionShow extends React.Component {
                 modules={{toolbar: null}}
                 value={this.props.question.body}
                 />
+                  
+                <div className='tag-show'>{tags}</div>
                 
-                  <div className='tags-show'>{tags}</div>
-
-               
                 <PostLinks user_id={this.props.user_id}
-                           author_id={this.props.question.user_id} 
-                           post_id={this.props.question.id}
-                           deletePost={this.props.deleteQuestion}
-                           post='question'
-                           history={this.props.history}
-                           />
+                            author_id={this.props.question.user_id} 
+                            post_id={this.props.question.id}
+                            deletePost={this.props.deleteQuestion}
+                            post='question'
+                            history={this.props.history}
+                            />
               </div> 
 
               <CommentsContainer post={this.props.question}/>

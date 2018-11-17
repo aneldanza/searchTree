@@ -21,7 +21,12 @@ class QuestionIndex extends React.Component {
   render() {
   
     if (!(Object.values(this.props.users).length > 0 && this.props.questions.length > 0)) {
-      return <div></div>;
+      return <section className='container'> 
+      <div className='questions-index-header'>
+        <h1>All Questions</h1>
+        <Link to={`/questions/ask`} id='cool-button'>Ask Question</Link>
+      </div>
+    </section>;
     }
  
     const questions = this.props.questions.map( (question, idx) => {
