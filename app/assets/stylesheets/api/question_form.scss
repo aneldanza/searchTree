@@ -17,7 +17,9 @@
 
 .tags-input {
   // min-height: 1em !important;
-  border: 1px solid black;
+  border: 1px solid #bbc0c4;
+  border-radius: 3px;
+  box-shadow: inset 0 0 1px rgba(145,153,161,0.2),0 0 0 rgba(255,255,255,0);
   padding: 10px;
   display: flex;
   justify-content: start;
@@ -42,7 +44,7 @@ code {
   border: 1px solid #bbc0c4;
   border-radius: 3px;
   box-shadow: inset 0 0 1px rgba(145,153,161,0.2),0 0 0 rgba(255,255,255,0);
-  padding: 5px;
+  padding: 10px;
 }
 
 .question-form-error {

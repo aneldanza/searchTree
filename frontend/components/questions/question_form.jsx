@@ -4,6 +4,7 @@ import { toolbar } from '../../util/quil_toolbar';
 import { withRouter } from 'react-router-dom';
 
 
+
 class QuestionForm extends React.Component {
   constructor(props) {
     super(props)  
@@ -16,14 +17,20 @@ class QuestionForm extends React.Component {
       question: this.props.question, 
       tags: tags || [ { value: '', type: 'input' } ],
     });
-    this.refs = React.createRef();
     this.tags = [ { value: '', type: 'input' } ];
     this.textInput = React.createRef();
+    this.bodyInput = React.createRef();
+    this.tagsInput = React.createRef();
     this.focusTextInput = this.focusTextInput.bind(this);
+    this.focusTagsInput = this.focusTagsInput.bind(this);
   }
 
   focusTextInput() {
     this.textInput.current.focus();
+  }
+
+  focusTagsInput() {
+    this.tagsInput.current.focus();
   }
 
   componentDidMount() {
@@ -42,7 +49,7 @@ class QuestionForm extends React.Component {
       tags: this.state.question.tags
     }
    
-    this.setState({question: question});
+    this.setState({question: question},this.focusTextInput);
     
   }
 
@@ -54,7 +61,7 @@ class QuestionForm extends React.Component {
       tags: this.state.question.tags
     }
   
-    this.setState({question: question});
+    this.setState({question: question},this.bodyInput.current.focus());
   }
 
   updateTags(e) {
@@ -68,7 +75,7 @@ class QuestionForm extends React.Component {
     }
    
     let tag_array = this.tags;
-    this.setState({tags: tag_array},this.focusTextInput);
+    this.setState({tags: tag_array},this.focusTagsInput);
   }
 
   handleSubmit(e) {
@@ -110,7 +117,7 @@ class QuestionForm extends React.Component {
    
     const tags = this.state.tags.map((tag, idx) => {
       if (tag.type === 'input') {
-        return <input ref={this.textInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
+        return <input ref={this.tagsInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
         value={tag.value}></input>
       } else if (tag.type === 'code') {
         return <code key={idx} id='code' onChange={this.updateTags.bind(this)}>{tag.value}</code>
@@ -140,7 +147,7 @@ class QuestionForm extends React.Component {
           modules={QuestionForm.modules}
           formats={QuestionForm.formats}
           theme={'snow'}
-          ref={this.textInput}
+          ref={this.bodyInput}
           />
         </div>
         <div className='form-section'>
@@ -182,3 +189,4 @@ QuestionForm.formats = [
 
 export default withRouter(QuestionForm);
 
+// ref={this.textInput}
