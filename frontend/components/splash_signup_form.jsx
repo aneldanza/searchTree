@@ -68,10 +68,7 @@ class SplashSignup extends React.Component {
         <div id='splash-signup-container'>
           <section className='welcome-text'>
             <h1>Learn, Share, Build</h1>
-            <p>Come to <strong>code</strong> to learn, share their knowledge, and build their careers.</p>
-            <p>
-              Join the world’s largest developer community.
-            </p>
+            <p>Come to <strong>searchTree</strong> to learn and share knowledge.</p>
           </section>
 
           <form className='splash-form-container'>
