@@ -117,10 +117,10 @@ class QuestionForm extends React.Component {
    
     const tags = this.state.tags.map((tag, idx) => {
       if (tag.type === 'input') {
-        return <input ref={this.tagsInput} id='focus' key={idx} onChange={this.updateTags.bind(this)}
+        return <input ref={this.tagsInput} key={idx} onChange={this.updateTags.bind(this)}
         value={tag.value}></input>
       } else if (tag.type === 'code') {
-        return <code key={idx} id='code' onChange={this.updateTags.bind(this)}>{tag.value}</code>
+        return <code key={idx} onChange={this.updateTags.bind(this)}>{tag.value}</code>
       } else {
         return <div key={idx}>&nbsp;&nbsp;</div>
       }

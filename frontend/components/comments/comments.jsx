@@ -26,6 +26,7 @@ class Comments extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.clearErrors();
+    debugger
     this.props.createComment(this.state)
     this.setState({body: ''})
   }
@@ -35,7 +36,7 @@ class Comments extends React.Component {
     let comment_error = ''
     if (this.props.comment.user_id === null) {
       comment_error = (
-        <div className='warning'>Please sign in to post an answer</div>
+        <div className='warning'>Please sign in to post a comment</div>
       )
     } else if (this.props.errors.length > 0 && this.props.errors[1] == this.props.post.id) {
       comment_error = this.props.errors[0]

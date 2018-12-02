@@ -46,17 +46,16 @@ class AnswerForm extends React.Component {
     }
     if (this.props.formType === 'Edit Answer') {
       this.props.action(answer).then(
-        (data) => {
-         
-        this.setState({body: ''})
-        this.props.history.push(`/questions/${data.answer.question_id}`)
+        (data) => {    
+          this.props.history.push(`/questions/${data.answer.question_id}`)
         }
-      );
-    } else {
-      this.props.action(answer).then(
-        () => this.setState({body: ''})
-      );
-    }
+        );
+      } 
+      else {
+        this.props.action(answer);
+        }
+
+      this.setState({body: ''});
   }
 
   render() {
